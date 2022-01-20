@@ -5,7 +5,7 @@ Feel free to add/change project structure to a clean architecture to your view.
 and if you are not able to work on FrontEnd project, you can add a Swagger UI
 in a new Front project.
 
-Create a simple CRUD application with ASP NET Core that implements the below model:
+Create a simple CRUD application with Angular that implements the below model:
 ```
 Customer {
 	Firstname
@@ -21,7 +21,6 @@ Customer {
 - [TDD](https://angular.io/guide/testing)
 - [DDD](https://en.wikipedia.org/wiki/Domain-driven_design)
 - [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)
-- [Clean acrhitecture](https://miro.medium.com/max/1400/1*B7LkQDyDqLN3rRSrNYkETA.jpeg)
 - Clean git commits that shows your work progress.
 
 ### Validations (Must)
@@ -29,6 +28,8 @@ Customer {
 - During Create; validate the phone number to be a valid *mobile* number only (You can use [Google LibPhoneNumber](https://github.com/google/libphonenumber) to validate number at the backend).
 
 - A Valid email and a valid account number must be checked before submitting the form.
+
+- Create a Browser local storage in to store list of customers.
 
 - Customers must be unique in database: By `Firstname`, `Lastname` and `DateOfBirth`.
 
