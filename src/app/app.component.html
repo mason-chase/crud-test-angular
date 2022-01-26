@@ -1,0 +1,81 @@
+<mat-card>
+  <form [formGroup]="form"
+    (ngSubmit)="onSubmit()">
+
+    <div fxLayout="column">
+      <div fxLayout="row"
+        fxLayoutGap="15px">
+        <!-- FirstName -->
+        <mat-form-field appearance="outline">
+          <mat-label>FirstName</mat-label>
+          <input matInput
+            type="text"
+            formControlName="firstName">
+
+        </mat-form-field>
+        <!-- Lastname -->
+        <mat-form-field appearance="outline">
+          <mat-label>Lastname</mat-label>
+          <input matInput
+            type="text"
+            formControlName="lastname">
+
+        </mat-form-field>
+        <!-- DateOfBirth -->
+        <mat-form-field appearance="outline">
+          <mat-label>DateOfBirth</mat-label>
+          <input matInput
+            [matDatepicker]="picker"
+            (dateInput)="addEvent('input', $event)"
+            (dateChange)="addEvent('change', $event)"
+            formControlName="dateOfBirth">
+          <mat-datepicker-toggle matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row"
+        fxLayoutGap="15px">
+        <!-- PhoneNumber -->
+        <mat-form-field appearance="outline">
+          <mat-label>PhoneNumber</mat-label>
+          <input matInput
+            type="text"
+            required
+            formControlName="phoneNumber">
+        </mat-form-field>
+        <!-- Email -->
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput
+            type="text"
+            required
+            formControlName="email">
+        </mat-form-field>
+        <!-- BankAccountNumber -->
+        <mat-form-field appearance="outline">
+          <mat-label>BankAccountNumber</mat-label>
+          <input matInput
+            type="text"
+            formControlName="bankAccountNumber">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row"
+      fxLayoutAlign="end"
+      fxLayoutGap="10px">
+
+
+      <button mat-raised-button
+        color="warn"
+        type="submit"
+        [disabled]="!form.valid"
+        (click)="resetForm()">Reset</button>
+      <button mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!form.valid">Submit</button>
+    </div>
+
+  </form>
+</mat-card>
