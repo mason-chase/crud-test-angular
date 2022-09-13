@@ -1,11 +1,12 @@
 
-const Firstname='[formControlName="Firstname"]';
-const Lastname='[formControlName="Lastname"]';
-const DateOfBirth='[formControlName="DateOfBirth"]';
-const PhoneNumber='[formControlName="PhoneNumber"]';
-const Email='[formControlName="Email"]';
-const BankAccountNumber='[formControlName="BankAccountNumber"]';
-const submit =  '[data-cy="submit-customer-form"]';
+const Firstname = '[formControlName="Firstname"]';
+const Lastname = '[formControlName="Lastname"]';
+const DateOfBirth = '[formControlName="DateOfBirth"]';
+const PhoneNumber = '[formControlName="PhoneNumber"]';
+const Email = '[formControlName="Email"]';
+const BankAccountNumber = '[formControlName="BankAccountNumber"]';
+const submit = '[data-cy="submit-customer-form"]';
+import { CreateCustomerComponent } from 'src/app/feautres/customer/components/create-customer/create-customer.component'
 describe('visit the create customer ', () => {
 
     it('visit the create customer page', () => {
@@ -19,20 +20,20 @@ describe('visit the create customer ', () => {
         cy.get(Email).should('exist')
         cy.get(BankAccountNumber).should('exist')
     })
-    it('Invalid phone number formate message is exist',()=>{
+    it('Invalid phone number formate message is exist', () => {
         cy.get(PhoneNumber).type('sdf23432424');
-        cy.get(Email).focus().then(()=>{
+        cy.get(Email).focus().then(() => {
             cy.get('[data-cy="invalid-phone-number"]').should('exist')
         });
     })
-    it('Invalid email address formate message is exist',()=>{
+    it('Invalid email address formate message is exist', () => {
         cy.get(Email).type('sdf23432424@');
-        cy.get(PhoneNumber).focus().then(()=>{
+        cy.get(PhoneNumber).focus().then(() => {
             cy.get('[data-cy="invalid-email"]').should('exist');
 
         });
     })
-    it('Enabled save button after form is valid',()=>{
+    it('Enabled save button after form is valid', () => {
         cy.get(PhoneNumber).clear();
         cy.get(Email).clear();
         cy.get(Firstname).type('Ali');
@@ -42,5 +43,8 @@ describe('visit the create customer ', () => {
         cy.get(Email).type('shoghianpoorali@gmail.com')
         cy.get(BankAccountNumber).type('322');
         cy.get(submit).should('not.be.disabled')
+    })
+    it('when the customer information was duplicated', () => {
+        cy.get(submit).click()
     })
 })
