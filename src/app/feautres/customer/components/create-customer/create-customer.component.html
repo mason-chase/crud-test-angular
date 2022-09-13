@@ -1,4 +1,5 @@
 <div class="container" [formGroup]="customerForm">
+    <h2 class="row">create customer form</h2>
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>First name</mat-label>
@@ -48,6 +49,6 @@
     </div>
     <mat-error class="duplicate-error" *ngIf="submitResult === 409" data-cy="duplicated-customer-info">The customer
         information is duplicate!</mat-error>
-    <button (click)="submitForm(customerForm.value)" mat-raised-button data-cy="submit-customer-form" color="primary"
+    <button (click)="submitForm()" mat-raised-button data-cy="submit-customer-form" color="primary"
         [disabled]="customerForm.invalid" type="submit" test-id="create-submit-btn">save</button>
 </div>

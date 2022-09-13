@@ -6,7 +6,7 @@ const PhoneNumber = '[formControlName="PhoneNumber"]';
 const Email = '[formControlName="Email"]';
 const BankAccountNumber = '[formControlName="BankAccountNumber"]';
 const submit = '[data-cy="submit-customer-form"]';
-import { CreateCustomerComponent } from 'src/app/feautres/customer/components/create-customer/create-customer.component'
+
 describe('visit the create customer ', () => {
 
     it('visit the create customer page', () => {
@@ -44,7 +44,26 @@ describe('visit the create customer ', () => {
         cy.get(BankAccountNumber).type('322');
         cy.get(submit).should('not.be.disabled')
     })
-    it('when the customer information was duplicated', () => {
+    it('Success the customer information create', () => {
+        cy.clearLocalStorage('customer')
         cy.get(submit).click()
+    })
+    it('should the customer information were duplicated', () => {
+        cy.get(submit).click();
+        cy.get('[data-cy="duplicated-customer-info"]').should('exist')
+    })
+
+    it('should the customer information were duplicated whit different email', () => {
+        cy.get(Email).clear();
+        cy.get(Email).type('anyEmail.address@gmail.com')
+        cy.get(submit).click();
+        cy.get('[data-cy="duplicated-customer-info"]').should('exist');
+    })
+    it('should the customer information were duplicated whit different email', () => {
+        cy.get(Email).clear();
+        cy.get(Email).type('anyEmail.address@gmail.com');
+        cy.get(Firstname).type('_2')
+        cy.get(submit).click();
+        cy.get('[data-cy="duplicated-customer-info"]').should('not.exist');
     })
 })

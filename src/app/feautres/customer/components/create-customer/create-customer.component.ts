@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ICustomer, ICustomerForm } from 'src/app/core/models/customer-model/customer.model';
-import { PhoneNumberValidator } from 'src/app/core/models/customer-model/_helpers/phone-number-regexps';
+import { PhoneNumberValidator } from 'src/app/core/_helpers/phone-number-regexps';
 import { ToastPopupService } from 'src/app/core/services/toast.service';
+import { CustomerRepositoryService } from 'src/app/domain/services/respositorys/customer/customer-repository.service';
 
 @Component({
   selector: 'app-create-customer',
@@ -21,12 +22,22 @@ export class CreateCustomerComponent implements OnInit {
   })
   submitResult?: number;
 
-  constructor(private toastService: ToastPopupService) { }
+  constructor(
+    private toastService: ToastPopupService,
+    private customerRepository: CustomerRepositoryService) { }
 
   ngOnInit(): void {
   }
-  submitForm(customerData: any) {
-    console.log(customerData);
-    this.toastService.onErrorMessage('The customer information is Duplicate')
+  submitForm() {
+    this.submitResult = undefined;
+    if (this.customerForm.valid) {
+      this.submitResult = this.customerRepository.createCustomer(this.customerForm.value as ICustomer)
+      if (this.submitResult === 409)
+        this.toastService.onErrorMessage('The customer information is Duplicate')
+      else
+        this.toastService.onSuccessMessage('Create Customer successfully')
+    } else {
+      this.toastService.onErrorMessage('Please fill out the customer form correctly')
+    }
   }
 }
