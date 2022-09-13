@@ -31,7 +31,8 @@ export class CreateCustomerComponent implements OnInit {
   submitForm() {
     this.submitResult = undefined;
     if (this.customerForm.valid) {
-      this.submitResult = this.customerRepository.createCustomer(this.customerForm.value as ICustomer)
+      this.submitResult = this.customerRepository.createCustomer(this.customerForm.value as ICustomer);
+      this.customerForm.reset()
       if (this.submitResult === 409)
         this.toastService.onErrorMessage('The customer information is Duplicate')
       else

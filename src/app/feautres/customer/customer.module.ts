@@ -7,13 +7,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { CustomersListComponent } from './components/customers-list/customers-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     MainComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    CustomersListComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatIconModule
   ]
 })
 export class CustomerModule { }
