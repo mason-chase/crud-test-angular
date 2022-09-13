@@ -21,7 +21,7 @@
             <mat-label>Phone number</mat-label>
             <input matInput formControlName="PhoneNumber" placeholder="Placeholder">
             <mat-hint>2025550195</mat-hint>
-            <mat-error *ngIf="customerForm.get('PhoneNumber')?.invalid && customerForm.get('PhoneNumber')?.touched">Invalid phone number formate</mat-error>
+            <mat-error data-cy="invalid-phone-number" *ngIf="customerForm.get('PhoneNumber')?.invalid && customerForm.get('PhoneNumber')?.touched">Invalid phone number formate</mat-error>
         </mat-form-field>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@
             <mat-label>Email</mat-label>
             <input matInput formControlName="Email" placeholder="Placeholder">
             <mat-hint>yourEmailAddress@gmail.com</mat-hint>
-            <mat-error *ngIf="customerForm.get('Email')?.invalid && customerForm.get('Email')?.touched">Invalid email address formate</mat-error>
+            <mat-error data-cy="invalid-email" *ngIf="customerForm.get('Email')?.invalid && customerForm.get('Email')?.touched">Invalid email address formate</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Bank account number</mat-label>
@@ -37,5 +37,5 @@
             <mat-error *ngIf="customerForm.get('BankAccountNumber')?.invalid && customerForm.get('BankAccountNumber')?.touched">Bank account number is required</mat-error>
         </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" [disabled]="customerForm.invalid"  type="submit" test-id="create-submit-btn">Primary</button>
+    <button mat-raised-button data-cy="submit-customer-form" color="primary" [disabled]="customerForm.invalid"  type="submit" test-id="create-submit-btn">save</button>
 </div>
