@@ -77,7 +77,7 @@ export class CustomerRepositoryService extends LocalStorageService<ICustomer[]> 
    */
   updateCustomer(customer: ICustomer): Events {
     let _customers = this.$customers.value
-    let index = _customers.findIndex(c => c === customer)
+    let index = _customers.findIndex(c => c.Email === customer.Email)
     if (index > -1) {
       _customers[index] = customer;
       this.updateStorage(_customers);

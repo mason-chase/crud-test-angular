@@ -68,21 +68,23 @@ describe('visit the create customer ', () => {
     })
 
     it('should the customer information were duplicated whit different email', () => {
-        cy.get(Firstname).type(customer.Firstname);
-        cy.get(Lastname).type(customer.Lastname);
-        cy.get(DateOfBirth).type(customer.DateOfBirth);
-        cy.get(PhoneNumber).type(customer.PhoneNumber);
-        cy.get(BankAccountNumber).type(customer.BankAccountNumber);
+        cy.get(Email).clear();
         cy.get(Email).type('anyEmail.address@gmail.com')
         cy.get(submit).click();
         cy.get('[data-cy="duplicated-customer-info"]').should('exist');
     })
     it('Success the customer information create again', () => {
-        cy.get(Email).type('anyEmail.address@gmail.com');
+        cy.get(Email).clear();
+        cy.get(Firstname).clear();
+        cy.get(Lastname).clear()
+        cy.get(DateOfBirth).clear()
+        cy.get(PhoneNumber).clear()
+        cy.get(BankAccountNumber).clear()
         cy.get(Firstname).type(customer.Firstname + '_2')
         cy.get(Lastname).type(customer.Lastname);
         cy.get(DateOfBirth).type(customer.DateOfBirth);
         cy.get(PhoneNumber).type(customer.PhoneNumber);
+        cy.get(Email).type('anyEmail.address@gmail.com');
         cy.get(BankAccountNumber).type(customer.BankAccountNumber);
         cy.get(submit).click();
         cy.get('[data-cy="duplicated-customer-info"]').should('not.exist');
@@ -96,5 +98,36 @@ describe('visit the create customer ', () => {
         cy.get(BankAccountNumber).type(customer.BankAccountNumber);
         cy.get(submit).click();
         cy.get('[data-cy="duplicated-customer-info"]').should('exist');
+    })
+    it('should the columns were exist', () => {
+        cy.get('[data-cy="th-Firstname"]').should('exist')
+        cy.get('[data-cy="th-Lastname"]').should('exist')
+        cy.get('[data-cy="th-DateOfBirth"]').should('exist')
+        cy.get('[data-cy="th-PhoneNumber"]').should('exist')
+        cy.get('[data-cy="th-DateOfBirth"]').should('exist')
+        cy.get('[data-cy="th-BankAccountNumber"]').should('exist')
+        cy.get('[data-cy="th-action"]').should('exist')
+    })
+
+    it('should edit the first row', () => {
+        let listLength = Cypress.$('[data-cy="customer-tbl"]').find('tbody').children().length
+        if (listLength > 0) {
+            let edit = cy.get('[data-cy="customer-list-index-0"]').find('[data-cy="customer-edit"]')
+            edit.should('exist')
+            edit.click();
+            const editBtn = cy.get('[data-cy="edit-customer-form"]');
+            editBtn.should('exist');
+            cy.get(Lastname).type(' poor');
+            editBtn.click()
+        }
+    })
+    it('should delete the second row', () => {
+        let listLength = Cypress.$('[data-cy="customer-tbl"]').find('tbody').children().length
+        if (listLength > 1) {
+            let deleteRow = cy.get('[data-cy="customer-list-index-1"]').find('[data-cy="customer-delete"]')
+            deleteRow.should('exist')
+            deleteRow.click();
+            cy.get('[data-cy="customer-tbl"]').find('tbody').children().should('have.length',listLength-1);
+        }
     })
 })

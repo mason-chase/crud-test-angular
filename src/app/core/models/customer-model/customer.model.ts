@@ -25,3 +25,4 @@ export interface ICustomerImplementation {
     deleteCustomer(email: string): Events;
     updateCustomer(customer: ICustomer): Events;
 }
+export type CustomerFormBtnType = 'insert' | 'edit'
