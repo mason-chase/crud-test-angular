@@ -47,10 +47,12 @@
                 Bank account number is required</mat-error>
         </mat-form-field>
     </div>
-    <mat-error class="duplicate-error" *ngIf="submitResult === 409" data-cy="duplicated-customer-info">The customer
-        information is duplicate!</mat-error>
-    <button *ngIf="btnType === 'insert'" (click)="submitForm()" mat-raised-button data-cy="submit-customer-form"
-        color="primary" [disabled]="customerForm.invalid" type="submit" >Save</button>
-    <button *ngIf="btnType === 'edit'" (click)="edit()" mat-raised-button data-cy="edit-customer-form"
-        color="primary" [disabled]="customerForm.invalid" type="submit" >Update</button>
+    <div class="row">
+        <mat-error class="duplicate-error" *ngIf="submitResult === 409" data-cy="duplicated-customer-info">The customer
+            information is duplicate!</mat-error>
+        <button *ngIf="btnType === 'insert'" (click)="submitForm()" mat-raised-button data-cy="submit-customer-form"
+            color="primary" [disabled]="customerForm.invalid" type="submit">Save</button>
+        <button (click)="reset()" mat-raised-button data-cy="reset-customer-form" color="secondary"
+            type="button">reset</button>
+    </div>
 </div>

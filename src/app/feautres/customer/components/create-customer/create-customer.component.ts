@@ -80,4 +80,9 @@ export class CreateCustomerComponent extends BaseComponent implements OnInit {
     }
 
   }
+  reset(){
+    this.btnType='insert';
+    this.setSubmitResultUndefined();
+    this.customerForm.reset()
+  }
 }
