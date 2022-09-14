@@ -51,7 +51,8 @@ export class CreateCustomerComponent extends BaseComponent implements OnInit {
       this.toastService.onErrorMessage('The customer information is Duplicate')
     else {
       this.toastService.onSuccessMessage('Create Customer successfully')
-      this.customerForm.reset()
+      this.customerForm.reset();
+      this.btnType='insert';
     }
   }
   private beforeSubmitForm() {
@@ -75,6 +76,7 @@ export class CreateCustomerComponent extends BaseComponent implements OnInit {
       const customer = this.customerForm.value ;
       customer.Email = this.editCustomerInfo?.Email;
       this.submitResult = this.customerRepository.updateCustomer(customer as ICustomer)
+      this.afterTokeSubmitRes()
     }
 
   }
