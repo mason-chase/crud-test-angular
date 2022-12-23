@@ -25,7 +25,7 @@ Customer {
 
 ### Validations (Must)
 
-- During Create; validate the phone number to be a valid *mobile* number only (You can use [Google LibPhoneNumber](https://github.com/google/libphonenumber) to validate number at the backend).
+- During Create; validate the phone number to be a valid *mobile* number only (You can use [Google LibPhoneNumber](https://github.com/google/libphonenumber) to validate mobile number).
 
 - A Valid email and a valid account number must be checked before submitting the form.
 
