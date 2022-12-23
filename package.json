@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "jasmine-browser-runner runSpecs"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +28,7 @@
     "@angular/compiler-cli": "^14.2.10",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "jasmine-browser-runner": "^1.2.0",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
