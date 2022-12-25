@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routing';
+import { CustomerManageModule } from './customer-manage/customer-manage.module';
 
 @NgModule({
   declarations: [
@@ -11,8 +13,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutes,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CustomerManageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
