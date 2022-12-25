@@ -1,0 +1,26 @@
+<section>
+  <div class="customers">
+    <div class="card" *ngFor="let customer of customers">
+      <div class="card-body">
+        <div class="image-customer">
+          <img src="../assets/icon.png" alt="icon" />
+        </div>
+        <div class="info">
+          <h3>{{ customer.firstname + " " +customer.lastname }}</h3>
+          <p>{{ customer.email }}</p>
+        </div>
+      </div>
+      <div class="overlay">
+        <div class="details">
+          <p>phone number: <span>{{customer.phoneNumber}}</span></p>
+          <p>Date of Birth: <span>{{ customer.dateOfBirth }}</span></p>
+          <p>Bank Account NUmber: <span>{{ customer.bankAccountNumber }}</span></p>
+        </div>
+        <div class="actions">
+          <button class="delete" (click)="deleteCustomer(customer.firstname)">Delete</button>
+          <button class="update" (click)="updateCustomer(customer.firstname)">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
