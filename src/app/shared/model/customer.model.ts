@@ -1,8 +1,8 @@
 export interface ICustomer {
-  Firstname: string;
-  Lastname: string;
-  DateOfBirth: string;
-  PhoneNumber: string | number;
-  Email: string;
-  BankAccountNumber: string | number;
+  Firstname: string | null;
+  Lastname: string | null;
+  DateOfBirth: string | null;
+  PhoneNumber: string | null;
+  Email: string | null;
+  BankAccountNumber: string | null;
 }

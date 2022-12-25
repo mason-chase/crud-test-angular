@@ -23,7 +23,7 @@ export class CustomerRepositoryService extends LocalStorageService<
   }
 
   createCustomer(customer: ICustomer): boolean {
-    if (!this.isExistCustomer(customer) && !this.getCustomer(customer.Email)) {
+    if (!this.isExistCustomer(customer) && !this.getCustomer(customer.Email!)) {
       let customers = this.customerList$.value;
       customers.push(customer);
       this.updateLocalStorage(customers);

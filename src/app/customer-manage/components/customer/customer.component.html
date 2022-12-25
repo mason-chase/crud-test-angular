@@ -1,1 +1,142 @@
-<p>customer works!</p>
+<div class="row mt-5">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="col-md-8 col-12">
+      <label for="firstname" class="form-label required">FirstName</label>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          autocomplete="off"
+          formControlName="Firstname"
+          required
+          [appBootstrapInputValidation]="getFormControl('Firstname')"
+        />
+        <div [appBootstrapInputFeedback]="getFormControl('Firstname')"></div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-12">
+      <label for="lastname" class="form-label required">LastName</label>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          formControlName="Lastname"
+          required
+          [appBootstrapInputValidation]="getFormControl('Lastname')"
+        />
+        <div [appBootstrapInputFeedback]="getFormControl('Lastname')"></div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-12">
+      <label for="birthdate" class="form-label required">DateOfBirth</label>
+      <div class="input-group mb-3">
+        <input
+          type="date"
+          class="form-control"
+          id="birthdate"
+          formControlName="DateOfBirth"
+          required
+          [appBootstrapInputValidation]="getFormControl('DateOfBirth')"
+        />
+        <div [appBootstrapInputFeedback]="getFormControl('DateOfBirth')"></div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-12">
+      <label for="phoneNumber" class="form-label required">PhoneNumber</label>
+      <div class="input-group mb-3">
+        <input
+          type="number"
+          class="form-control"
+          id="phoneNumber"
+          formControlName="PhoneNumber"
+          required
+          [appBootstrapInputValidation]="getFormControl('PhoneNumber')"
+        />
+        <div [appBootstrapInputFeedback]="getFormControl('PhoneNumber')"></div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-12">
+      <label for="email" class="form-label required">Email</label>
+      <div class="input-group mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="Email"
+          required
+          [appBootstrapInputValidation]="getFormControl('Email')"
+        />
+        <div [appBootstrapInputFeedback]="getFormControl('Email')"></div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-12">
+      <label for="bankaccount" class="form-label required"
+        >BankAccountNumber</label
+      >
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="bankaccount"
+          formControlName="BankAccountNumber"
+          required
+          [appBootstrapInputValidation]="getFormControl('BankAccountNumber')"
+        />
+        <div
+          [appBootstrapInputFeedback]="getFormControl('BankAccountNumber')"
+        ></div>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      [ngClass]="isUpdateMode ? 'btn btn-warning' : 'btn btn-success'"
+    >
+      {{ isUpdateMode ? "Update" : "Register" }}
+    </button>
+  </form>
+</div>
+
+<div class="row mt-5">
+  <table class="table" *ngIf="customerList">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">DateOfBirth</th>
+        <th scope="col">PhoneNumber</th>
+        <th scope="col">Email</th>
+        <th scope="col">BankAccountNumber</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of customerList">
+        <td>{{ item.Firstname }}</td>
+        <td>{{ item.Lastname }}</td>
+        <td>{{ item.DateOfBirth }}</td>
+        <td>{{ item.PhoneNumber }}</td>
+        <td>{{ item.Email }}</td>
+        <td>{{ item.BankAccountNumber }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="updateCustomer(item)">
+            Update
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteCustomer(item.Email!)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
