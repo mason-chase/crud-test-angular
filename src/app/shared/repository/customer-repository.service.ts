@@ -13,6 +13,7 @@ export class CustomerRepositoryService extends LocalStorageService<
   private customerList$: BehaviorSubject<ICustomer[]> = new BehaviorSubject(
     [] as ICustomer[]
   );
+  public customers = this.customerList$.asObservable();
   constructor() {
     super('customer');
     let customer = this.getLocalStorage();
