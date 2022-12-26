@@ -1,8 +1,9 @@
-import { ICustomer } from './../model/customer.model';
+import { ICustomer } from 'src/app/shared/model/customer.model';
 import { Injectable } from '@angular/core';
 import { Status } from '../model/status.enum';
 import { CustomerRepositoryService } from '../repository/customer-repository.service';
 import { CustomerCrudImpl } from './customer-crud.model';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,9 +23,10 @@ export class CustomerImplService implements CustomerCrudImpl {
     let isDeleted = this.customerRepo.deleteCustomer(email);
     return isDeleted ? Status.success : Status.notFound;
   }
-  getCustomer(email: string): ICustomer | null {
+  getCustomer(email: string) {
     let customer: ICustomer = this.customerRepo.getCustomer(email)!;
-    return customer;
+    const mcustomer: Observable<ICustomer> = of(customer)
+    return mcustomer;
   }
   getCustomers(): ICustomer[] {
     let customerList: ICustomer[] = this.customerRepo.getCustomers();

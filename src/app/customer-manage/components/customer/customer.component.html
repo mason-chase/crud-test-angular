@@ -50,7 +50,7 @@
       <label for="phoneNumber" class="form-label required">PhoneNumber</label>
       <div class="input-group mb-3">
         <input
-          type="number"
+          type="text"
           class="form-control"
           id="phoneNumber"
           formControlName="PhoneNumber"
@@ -116,6 +116,7 @@
         <th scope="col">BankAccountNumber</th>
         <th scope="col"></th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -136,6 +137,7 @@
             Delete
           </button>
         </td>
+        <td><button class="btn btn-info" (click)="showDetails(item.Email!)">Details</button></td>
       </tr>
     </tbody>
   </table>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NumberPhoneValidator } from 'src/app/shared/config/phone-number-validate';
 import { ICustomer } from 'src/app/shared/model/customer.model';
 import { Status } from 'src/app/shared/model/status.enum';
 import { CustomerImplService } from 'src/app/shared/services/customer-impl.service';
@@ -15,7 +17,7 @@ export class CustomerComponent implements OnInit {
     Firstname: new FormControl('', [Validators.required]),
     Lastname: new FormControl('', [Validators.required]),
     DateOfBirth: new FormControl('', [Validators.required]),
-    PhoneNumber: new FormControl('', [Validators.required]),
+    PhoneNumber: new FormControl('', [Validators.required, NumberPhoneValidator('US')]),
     Email: new FormControl('', [Validators.required, Validators.email]),
     BankAccountNumber: new FormControl('', [Validators.required]),
   });
@@ -25,7 +27,8 @@ export class CustomerComponent implements OnInit {
   customerList: ICustomer[] = [];
   constructor(
     private customerService: CustomerImplService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +78,10 @@ export class CustomerComponent implements OnInit {
     } else if (this.status == Status.success) {
       this.toastr.success('Customer deleted successfully');
     }
+  }
+
+  showDetails(email: string) {
+    this.route.navigate(['/customer-details', email])
   }
 
   onSubmit() {
