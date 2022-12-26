@@ -1,0 +1,22 @@
+<div class="bg-light p-5 rounded mt-5">
+  <div class="row">
+    <div class="col title-details">
+      <p>FirstName:</p>
+      <p>LastName:</p>
+      <p>DateOfBirth:</p>
+      <p>PhoneNumber:</p>
+      <p>Email:</p>
+      <p>BankAccountNumber:</p>
+    </div>
+    <div class="col" *ngIf="customerDetails">
+      <p>{{ customerDetails.Firstname }}</p>
+      <p>{{ customerDetails.Lastname }}</p>
+      <p>{{ customerDetails.DateOfBirth }}</p>
+      <p>{{ customerDetails.PhoneNumber }}</p>
+      <p>{{ customerDetails.Email }}</p>
+      <p>{{ customerDetails.BankAccountNumber }}</p>
+    </div>
+
+    <a routerLink="/" class="btn btn-info mt-5">Back to Home</a>
+  </div>
+</div>
