@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing.module';
-import { AuthComponent } from './auth.component';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
+import {AuthRoutingModule} from './auth-routing.module';
+import {AuthComponent} from './auth.component';
+import {LoginComponent} from './login/login.component';
+import {RegistrationComponent} from './registration/registration.component';
+import {InlineSVGModule} from "ng-inline-svg-2";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -15,7 +17,10 @@ import { RegistrationComponent } from './registration/registration.component';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    InlineSVGModule,
+    HttpClientModule
   ]
 })
-export class AuthModule { }
+export class AuthModule {
+}

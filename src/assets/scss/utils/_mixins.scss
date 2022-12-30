@@ -1,0 +1,42 @@
+// center --------------------------------------------------------------------------------------------------------------
+
+@mixin color-set($name, $hue, $saturation, $lightness, $alpha) {
+
+  --#{$name}: hsla(var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-l), var(--#{$name}-a));
+  --#{$name}-h: #{$hue};
+  --#{$name}-s: #{$saturation};
+  --#{$name}-l: #{$lightness};
+  --#{$name}-a: #{$alpha};
+
+}
+
+@mixin button($name, $color, $bg, $border, $color-h, $bg-h, $border-h) {
+
+  .btn-#{$name} {
+    color: $color !important;
+    background-color: $bg !important;
+    border-color: $border !important;
+
+    &:not(:disabled):hover {
+      color: $color-h !important;
+      background-color: $bg-h !important;
+      border-color: $border-h !important;
+    }
+
+  }
+
+}
+
+@mixin button-set($name) {
+
+  @include button($name, #FFFFFF, var(--color-#{$name}), var(--color-#{$name}), #FFFFFF, dark(color-#{$name}), dark(color-#{$name}));
+
+  @include button('light-#{$name}', var(--color-#{$name}), var(--color-#{$name}-light), transparent, #FFFFFF, var(--color-#{$name}), var(--color-#{$name}));
+
+  @include button('outline-#{$name}', var(--color-#{$name}), transparent, var(--color-#{$name}), var(--color-#{$name}), var(--color-#{$name}-light), var(--color-#{$name}-light));
+
+  @include button('transparent-#{$name}', var(--color-#{$name}), var(--color-#{$name}-transparent), transparent, var(--color-#{$name}), var(--color-#{$name}-light), transparent);
+
+  @include button('clean-#{$name}', #B5B5C3, transparent, transparent, var(--color-#{$name}), #F3F6F9, transparent);
+
+}

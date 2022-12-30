@@ -1,14 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-@import "assets/fonts/style.css";
+@import "assets/prod/fonts/style.css";
 * {
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
 }
 body {
+  overflow-x: hidden;
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #f2f7ff;
   font-family: IRANSansX, sans-serif;
+}
+
+body {
 }
 
 #splash-screen {

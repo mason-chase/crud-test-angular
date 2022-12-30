@@ -1,0 +1,368 @@
+// =====================================================
+//  Styles for student layout structure.
+// =====================================================
+
+@import "aside";
+@import "header";
+@import "footer";
+@import "containers";
+
+// Student -------------------------------------------------------------------------------------------------------------
+
+.pattern::after {
+  display: block;
+  top: -5rem;
+  left: -53rem;
+  border-radius: 25rem;
+  transform: rotate(44deg);
+  background-color: #f6f9fe;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 34.375rem;
+}
+
+.template {
+  margin-top: -124px;
+  position: relative;
+  z-index: 1;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+p {
+  line-height: 1.8rem;
+}
+
+.aside-open .student-panel .layout {
+  width: calc(100% - 265px);
+  margin-right: 265px;
+}
+
+body.ltr.aside-open .student-panel .layout {
+  margin-left: 265px;
+  margin-right: unset;
+}
+
+.student-panel .layout {
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: width 0.4s ease, margin-right 0.4s ease;
+
+  > div:nth-child(2) {
+    flex: 2;
+  }
+
+}
+
+body.ltr .student-panel .layout {
+  margin-left: 0;
+  transition: width 0.4s ease, margin-left 0.4s ease;
+}
+
+.wave-svg-up {
+  margin-top: -27px;
+  position: relative;
+  z-index: 1;
+}
+
+.wave-svg-down {
+  margin-bottom: -27px;
+  position: relative;
+  transform: scaleY(-1) scaleX(-1);
+  z-index: 1;
+  margin-top: -4px;
+}
+
+a:visited {
+  color: unset;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+#toTop.active {
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 40px 0 transparent;
+  cursor: default;
+
+}
+
+#toTop {
+  transition: opacity 0.2s ease;
+  opacity: 0.4;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  background: var(--color-primary);
+  position: fixed;
+  bottom: 42px;
+  left: 32px;
+  z-index: 1;
+  color: var(--bg-primary);
+  transform: scaleX(0.9);
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg g [fill] {
+    transition: fill 0.2s ease;
+    fill: var(--bg-primary);
+  }
+
+}
+
+body.ltr #toTop {
+  left: unset;
+  right: 32px;
+}
+
+//.off-canvas {
+//  overflow: hidden;
+//}
+
+.quick-panel {
+  transition: left 0.3s ease;
+  width: 350px;
+  position: fixed;
+  z-index: 6;
+  top: 0;
+  left: -350px;
+}
+
+body.ltr .quick-panel {
+  transition: right 0.3s ease;
+  left: unset;
+  right: -350px;
+}
+
+.bg-overlay {
+  transition: all 0.3s;
+}
+
+.off-canvas .bg-overlay {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.off-canvas .quick-panel {
+  left: 0;
+}
+
+body.ltr.off-canvas .quick-panel {
+  left: unset;
+  right: 0;
+}
+
+.quick-panel {
+  line-height: 1.5;
+  font-size: 13px;
+
+  .offcanvas {
+    background: #ffffff;
+    box-shadow: 0 0 100px 0 rgba(77, 77, 119, 0.16);
+    height: 100vh;
+  }
+
+  // metronic styles -------------------------------------------------------------------------------------------------
+
+
+}
+
+// Master --------------------------------------------------------------------------------------------------------------
+
+body.ltr.aside-open .master-panel .layout {
+  margin-left: 410px;
+  margin-right: unset;
+}
+
+.aside-open .master-panel .layout {
+  width: calc(100% - 410px);
+  margin-right: 410px;
+}
+
+body.ltr .master-panel .layout {
+  margin-right: unset;
+  margin-left: 90px;
+  transition: width 0.4s ease, margin-left 0.4s ease;
+}
+
+body.ltr .master-panel .quick-panel {
+  transition: right 0.3s ease;
+  left: unset;
+  right: -350px;
+}
+
+body.ltr.off-canvas .master-panel .quick-panel {
+  left: unset;
+  right: 0;
+}
+
+.master-panel {
+
+  .layout {
+    margin-right: 90px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: width 0.4s ease, margin-right 0.4s ease;
+
+    > div:nth-child(2) {
+      flex: 2;
+    }
+
+  }
+
+  //.off-canvas {
+  //  overflow: hidden;
+  //}
+
+  .quick-panel {
+    transition: left 0.3s ease;
+    width: 350px;
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    left: -350px;
+  }
+
+  .bg-overlay {
+    transition: all 0.3s;
+  }
+
+  .off-canvas .bg-overlay {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .off-canvas .quick-panel {
+    left: 0;
+  }
+
+  .quick-panel {
+    line-height: 1.5;
+    font-size: 13px;
+
+    .offcanvas {
+      background: #ffffff;
+      box-shadow: 0 0 100px 0 rgba(77, 77, 119, 0.16);
+      height: 100vh;
+    }
+
+    // metronic styles -------------------------------------------------------------------------------------------------
+
+
+  }
+
+}
+
+// Admin ---------------------------------------------------------------------------------------------------------------
+
+body.ltr.aside-open .admin-panel .layout {
+  margin-left: 410px;
+  margin-right: unset;
+}
+
+.aside-open .admin-panel .layout {
+  width: calc(100% - 410px);
+  margin-right: 410px;
+}
+
+body.ltr .admin-panel .layout {
+  margin-right: unset;
+  margin-left: 90px;
+  transition: width 0.4s ease, margin-left 0.4s ease;
+}
+
+body.ltr .admin-panel .quick-panel {
+  transition: right 0.3s ease;
+  left: unset;
+  right: -350px;
+}
+
+body.ltr.off-canvas .admin-panel .quick-panel {
+  left: unset;
+  right: 0;
+}
+
+.admin-panel {
+
+  .layout {
+    margin-right: 90px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: width 0.4s ease, margin-right 0.4s ease;
+
+    > div:nth-child(2) {
+      flex: 2;
+    }
+
+  }
+
+  //.off-canvas {
+  //  overflow: hidden;
+  //}
+
+  .quick-panel {
+    transition: left 0.3s ease;
+    width: 350px;
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    left: -350px;
+  }
+
+  .bg-overlay {
+    transition: all 0.3s;
+  }
+
+  .off-canvas .bg-overlay {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .off-canvas .quick-panel {
+    left: 0;
+  }
+
+  .quick-panel {
+    line-height: 1.5;
+    font-size: 13px;
+
+    .offcanvas {
+      background: #ffffff;
+      box-shadow: 0 0 100px 0 rgba(77, 77, 119, 0.16);
+      height: 100vh;
+    }
+
+    // metronic styles -------------------------------------------------------------------------------------------------
+
+
+  }
+
+}

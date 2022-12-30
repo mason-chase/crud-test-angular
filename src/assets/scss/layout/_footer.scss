@@ -1,0 +1,186 @@
+/*
+footer {
+  position: relative;
+  border-bottom: 1px solid #2a2c3f;
+
+  svg {
+    margin-bottom: -5px;
+  }
+
+  > div:nth-child(1) {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+  }
+
+  > div:nth-child(2) {
+
+    > div:nth-child(1) {
+      padding-top: 10%;
+      padding-right: 6%;
+
+      img {
+        width: 30%;
+        z-index: 2;
+        position: relative;
+      }
+    }
+
+    > div:nth-child(2) img {
+      width: 90%;
+      padding-bottom: 164px;
+    }
+
+  }
+
+}
+*/
+
+footer {
+
+  /*&::after {
+    content: '';
+    background: url('/assets/student/images/shape.png') no-repeat;
+    right: 30px;
+    bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    width: 323px;
+    position: absolute;
+    height: 293px;
+  }*/
+
+  section:first-child {
+    //height: 50px;
+    background: #212d3e;
+  }
+
+  section:last-child {
+    position: relative;
+    background: #15202f;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      height: 1700px;
+      width: 1200px;
+      background: rgb(37, 57, 83);
+      position: absolute;
+      border-radius: 100%;
+      left: -348px;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.1;
+      top: -1250px;
+    }
+
+    &::after {
+      content: "";
+      height: 1700px;
+      width: 1700px;
+      background: #253953;
+      position: absolute;
+      border-radius: 100%;
+      right: -1048px;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.1;
+      bottom: -1450px;
+    }
+
+    div:first-child {
+      font-family: IRANSansX_Bold, sans-serif;
+      color: white;
+      font-size: 17px;
+
+      h3 {
+        margin: 0;
+        font-weight: normal;
+      }
+    }
+  }
+
+}
+
+.quiq-links-footer-ul {
+  font-family: IRANSansX_Bold, sans-serif;
+
+  li {
+    list-style: none;
+    position: relative;
+    padding: 4px 0;
+
+    a {
+      cursor: pointer;
+      color: #cacfec;
+      font-weight: 500;
+      line-height: 25px;
+      font-size: 15px;
+      text-transform: capitalize;
+      text-decoration: none;
+
+      &:hover {
+        color: whitesmoke;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: #fe7301;
+      right: -19px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      border-radius: 1px;
+    }
+
+  }
+
+}
+
+.footer-info {
+
+  a {
+    background: #fff;
+    padding: 8px 20px 12px;
+    display: block;
+    border-radius: 5px;
+    position: relative;
+    text-decoration: none !important;
+    overflow: hidden;
+    margin-top: 15px;
+
+
+    span {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      color: #607D8B;
+      text-transform: uppercase;
+    }
+
+    b {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-size: 14px;
+      color: #006495;
+      display: block;
+    }
+
+    i {
+      position: absolute;
+      font-size: 50px;
+      bottom: -5px;
+      color: #33334f;
+      left: 5px;
+      opacity: 0.2;
+    }
+  }
+
+
+}
+

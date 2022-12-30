@@ -1,0 +1,44 @@
+.label.label-sm.label-dot {
+  line-height: 4px;
+  min-height: 4px;
+  min-width: 4px;
+  height: 4px;
+  width: 4px;
+}
+//.label.label-sm {
+//  height: 16px;
+//  width: 16px;
+//  font-size: 0.75rem;
+//}
+//.label.label-dot {
+//  line-height: 6px;
+//  min-height: 6px;
+//  min-width: 6px;
+//  height: 6px;
+//  width: 6px;
+//}
+.label.label-dot {
+  display: inline-block;
+  font-size: 0 !important;
+  vertical-align: middle;
+  text-align: center;
+}
+.label {
+  padding: 0;
+  margin: 0;
+  margin-right: 0px;
+  margin-left: 0px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  background-color: #5E6278;
+  color: #3F4254;
+  font-weight: 400;
+  height: 20px;
+  width: 20px;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,53 @@
+// =====================================================
+//  Styles for student dropdown menu structure.
+// =====================================================
+
+// Animations
+@keyframes animation-dropdown-menu-fade-in {
+  from   { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes animation-dropdown-menu-move-down {
+  from   { margin-top: 10px }
+  to { margin-top: 0px }
+}
+
+@keyframes animation-dropdown-menu-move-up {
+  from   { margin-top: 10px }
+  to { margin-top: 0px }
+}
+
+.dropdown-menu {
+  top: 0;
+  will-change: transform;
+  position: absolute;
+  animation: animation-dropdown-menu-fade-in 0.3s ease 1, animation-dropdown-menu-move-up 0.3s ease-out 1;
+  display: none;
+  background-color: #ffffff;
+  border-radius: 0.42rem;
+}
+
+.dropdown-menu-lg-right {
+  right: 0;
+  transform: translate(20px, 60px);
+}
+
+body.ltr .dropdown-menu-lg-right {
+  right: unset;
+  left: 0;
+  transform: translate(-20px, 60px);
+}
+
+.dropdown-menu-lg-left {
+  left: 0;
+  transform: translate(-20px, 60px);
+}
+
+body.ltr .dropdown-menu-lg-left {
+  left: unset;
+  right: 0;
+  transform: translate(20px, 60px);
+}
+
+
