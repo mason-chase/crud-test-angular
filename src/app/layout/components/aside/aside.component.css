@@ -1,0 +1,42 @@
+.aside {
+  height: 100vh;
+  width: 300px;
+  background-color: white;
+  position: fixed;
+  overflow: auto;
+  color: #405281;
+  font-family: Fa_Num_Bold, sans-serif;
+}
+::ng-deep .aside-inner {
+  padding: 0 36px;
+}
+::ng-deep .aside-inner > div {
+  cursor: pointer;
+  padding: 10px 10px 4px 10px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  transition: all 180ms;
+}
+::ng-deep .aside-inner > div svg g [fill] {
+  fill: #7c8db5;
+  transition: fill 180ms;
+}
+::ng-deep .aside-inner > div:hover {
+  background-color: #7c8db517;
+}
+::ng-deep .aside-inner > div:hover svg g [fill] {
+  fill: #3699ff;
+}
+::ng-deep .aside-inner > div > div:last-child {
+  margin-bottom: 6px;
+  padding-left: 12px;
+}
+::ng-deep .aside-inner .active {
+  color: #3699ff;
+  background-color: #3699ff12;
+}
+::ng-deep .aside-inner .active svg g [fill] {
+  fill: #3699ff;
+}

@@ -1,1 +1,45 @@
-<p>aside works!</p>
+<div class="aside">
+
+  <img src="assets/brand/corex-logo.svg">
+
+  <div class="aside-inner">
+
+    <div [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="''">
+      <div [inlineSVG]="'./assets/svg/icons/General/gen001.svg'"></div>
+      <div>Dashboard</div>
+    </div>
+
+    <!-- start::tags for populating aside -->
+    <div>
+      <div [inlineSVG]="'./assets/svg/icons/General/gen002.svg'"></div>
+      <div>Projects</div>
+    </div>
+
+    <div>
+      <div [inlineSVG]="'./assets/svg/icons/General/gen005.svg'"></div>
+      <div>Tasks</div>
+    </div>
+
+    <div>
+      <div [inlineSVG]="'./assets/svg/icons/General/gen014.svg'"></div>
+      <div>Calendar</div>
+    </div>
+
+    <div>
+      <div [inlineSVG]="'./assets/svg/icons/Home/Flower1.svg'"></div>
+      <div>Teams</div>
+    </div>
+
+    <div>
+      <div [inlineSVG]="'./assets/svg/icons/Code/Compiling.svg'"></div>
+      <div>Messenger</div>
+    </div>
+
+    <div>
+      <div [inlineSVG]="'./assets/svg/icons/Home/Armchair.svg'"></div>
+      <div>Activity</div>
+    </div>
+    <!-- start::tags for populating aside -->
+
+  </div>
+</div>

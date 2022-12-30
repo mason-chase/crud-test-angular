@@ -1,0 +1,8 @@
+.body {
+  display: flex;
+  justify-content: space-between;
+}
+.body .outlet {
+  width: calc(100% - 300px);
+  padding: 40px 70px;
+}
