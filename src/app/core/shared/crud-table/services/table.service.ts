@@ -101,6 +101,21 @@ export abstract class TableService<T> {
     );
   }
 
+  // READ
+  getItemById(id: any): Observable<any> {
+    this._isLoading$.next(true);
+    this._errorMessage.next('');
+    const url = `${this.API_URL}/${id}`;
+    return this.http.get<T>(url).pipe(
+      catchError(err => {
+        this._errorMessage.next(err);
+        console.error('GET ITEM', id, err);
+        return of({});
+      }),
+      finalize(() => this._isLoading$.next(false))
+    );
+  }
+
   // UPDATE
   update(item: BaseModel): Observable<any> {
     this._isLoading$.next(true);
