@@ -1,23 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {BehaviorSubject, of} from "rxjs";
 import {CustomerService} from "../../../../services/customers/customer.service";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../../../../services/api/api.service";
-import {BehaviorSubject} from "rxjs";
+import {formatDate} from "@angular/common";
+import {catchError} from "rxjs/operators";
 
 @Component({
-  selector: 'app-create-customer',
-  templateUrl: './create-customer.component.html',
-  styleUrls: ['./create-customer.component.css']
+  selector: 'app-update-customer',
+  templateUrl: './update-customer.component.html',
+  styleUrls: ['./update-customer.component.css']
 })
-export class CreateCustomerComponent implements OnInit {
-
+export class UpdateCustomerComponent implements OnInit {
   // @ts-ignore
   isLoading$;
   // @ts-ignore
   formGroup: FormGroup;
 
-  error$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
+  log$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 
   constructor(
     private customersService: CustomerService,
@@ -31,6 +32,23 @@ export class CreateCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.loadForm();
     this.isLoading$ = this.customersService.isLoading$;
+    this.loadCustomer();
+  }
+
+  loadCustomer() {
+    this.customersService.getItemById(this.route.snapshot.params['id']).subscribe({
+      next: customer => {
+        this.formGroup.patchValue({
+          id: customer.id,
+          firstName: customer.firstName,
+          lastName: customer.lastName,
+          dateOfBirth: formatDate(customer.dateOfBirth, 'yyyy-MM-dd', 'en'),
+          phone: customer.phone,
+          email: customer.email,
+          bankAccountNumber: customer.bankAccountNumber
+        })},
+      error: () => this.router.navigate([''])
+    })
   }
 
   loadForm() {
@@ -54,31 +72,19 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   save() {
-
-    this.apiService.customers.subscribe({
-      next: customers => {
-        const handle = this.formGroup.value;
-
-        this.error$.next(undefined);
-
-        customers.forEach(customer => {
-
-          if (customer.firstName === handle.firstName) this.error$.next('Customer with this first name already exists!');
-          if (customer.lastName === handle.lastName) this.error$.next('Customer with this last name already exists!');
-          if (customer.dateOfBirth === handle.dateOfBirth) this.error$.next('Customer with this date of birth already exists!');
-
-        })
-
-        if (this.error$.value === undefined) this.create();
-
-      }
-    })
-
+    this.log$.next(undefined);
+    this.update();
   }
 
-  create() {
-    this.customersService.create(this.formGroup.value).subscribe(res => {
-      this.router.navigate(['']);
+  update() {
+    this.customersService.update(this.formGroup.value).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.log$.next('Customer was updated successfully!')
+      },
+      error: () => {
+        this.log$.next('Error on updating the customer!')
+      }
     });
   }
 

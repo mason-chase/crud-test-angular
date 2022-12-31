@@ -205,16 +205,16 @@
     <div class="modal-footer">
       <button
         type="button"
-        class="btn btn-primary btn-elevate mr-2"
+        class="btn btn-facebook btn-elevate mr-2"
         (click)="save()"
         [disabled]="formGroup.invalid"
       >
-        create
+        update
       </button>
     </div>
   </div>
 
-  <div *ngIf="(error$ | async) as error" class="container modal-content mt-3">
+  <div *ngIf="(log$ | async) as error" class="container modal-content mt-3">
     <div class="modal-body">
       {{error}}
     </div>

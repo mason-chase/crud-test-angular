@@ -86,10 +86,8 @@ export abstract class TableService<T> {
   find(tableState: ITableState): Observable<TableResponseModel<T>> {
     this._isLoading$.next(true);
     this._errorMessage.next('');
-    console.log(this.API_URL);
     return this.http.get<T[]>(this.API_URL).pipe(
       map((response: T[]) => {
-        console.log(response)
         const filteredResult = baseFilter(response, tableState);
         const result: TableResponseModel<T> = {
           items: filteredResult.items,
@@ -110,7 +108,7 @@ export abstract class TableService<T> {
       catchError(err => {
         this._errorMessage.next(err);
         console.error('GET ITEM', id, err);
-        return of({});
+        throw err
       }),
       finalize(() => this._isLoading$.next(false))
     );
@@ -118,6 +116,7 @@ export abstract class TableService<T> {
 
   // UPDATE
   update(item: BaseModel): Observable<any> {
+    console.log(item)
     this._isLoading$.next(true);
     this._errorMessage.next('');
     const url = `${this.API_URL}/${item.id}`;
@@ -125,7 +124,7 @@ export abstract class TableService<T> {
       catchError(err => {
         this._errorMessage.next(err);
         console.error('UPDATE ITEM', item, err);
-        return of(item);
+        throw err
       }),
       finalize(() => this._isLoading$.next(false))
     );
@@ -140,7 +139,7 @@ export abstract class TableService<T> {
       catchError(err => {
         this._errorMessage.next(err);
         console.error('DELETE ITEM', id, err);
-        return of({});
+        throw err
       }),
       finalize(() => this._isLoading$.next(false))
     );

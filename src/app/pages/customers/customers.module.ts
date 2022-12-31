@@ -9,12 +9,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {CRUDTableModule} from "../../core/shared/crud-table";
 import {ReactiveFormsModule} from "@angular/forms";
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
+import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 
 
 @NgModule({
   declarations: [
     CustomersComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     CommonModule,
