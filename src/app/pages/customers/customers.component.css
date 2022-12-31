@@ -1,0 +1,42 @@
+.upper {
+  display: flex;
+  margin-bottom: 20px;
+}
+.search {
+  width: 100%;
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.search > div:first-child {
+  margin-right: 20px;
+}
+.search > div:last-child {
+  color: #7c8db5;
+}
+.profile {
+  width: 66px;
+  height: 62px;
+  margin-left: 28px;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.error {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.error > div {
+  width: 300px;
+  padding-top: 40px;
+}
+.container {
+  width: 1300px;
+}

@@ -1,0 +1,28 @@
+.login-form h3 {
+  font-family: IRANSansX_Bold, sans-serif;
+  font-weight: normal;
+  color: #474766;
+}
+.login-form h3:nth-child(2) {
+  font-size: 18px;
+}
+.login-form > h3:nth-child(1) {
+  font-size: 25px;
+}
+.login-form > h3:nth-child(2) {
+  color: #B5B5C3;
+}
+.login-form > h3:nth-child(2) a {
+  color: var(--color-primary);
+}
+.login-form p {
+  font-family: IRANSansX, sans-serif;
+}
+.login-form input {
+  font-family: IRANSansX, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
+.login-form input::placeholder {
+  font-family: IRANSansX_Bold, sans-serif;
+}

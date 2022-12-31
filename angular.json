@@ -32,6 +32,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/assets/style.rtl.css",
               "src/assets/scss/style.scss"
             ],
             "scripts": []

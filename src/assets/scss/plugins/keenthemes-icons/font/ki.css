@@ -5,11 +5,11 @@
 
 @font-face {
   font-family: "Ki";
-  src: url("./Ki.eot");
-  src: url("./Ki.eot?#iefix") format("embedded-opentype"),
-       url("./Ki.woff") format("woff"),
-       url("./Ki.ttf") format("truetype"),
-       url("./Ki.svg#Ki") format("svg");
+  src: url("Ki.eot");
+  src: url("Ki.eot?#iefix") format("embedded-opentype"),
+       url("Ki.woff") format("woff"),
+       url("Ki.ttf") format("truetype"),
+       url("Ki.svg#Ki") format("svg");
   font-weight: normal;
   font-style: normal;
 }
