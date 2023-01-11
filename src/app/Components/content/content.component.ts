@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
+  providers: [MessageService],
 })
 export class ContentComponent implements OnInit {
 
@@ -18,6 +20,7 @@ export class ContentComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       bankAccountNumber: new FormControl('', Validators.required),
     })
+      this.messageService.add({ severity: 'error', summary: 'error', detail: 'is not valid form' });
   }
 
 }
