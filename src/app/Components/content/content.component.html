@@ -48,4 +48,9 @@
             </span>
         </div>
     </div>
+        <div class="col-12 d-flex justify-content-end mt-5">
+            <!-- <p-button label="Submit" icon="pi pi-check" (onClick)="submit()"></p-button> -->
+            <button pButton pRipple [disabled]="!form.valid" [style]="!form.valid ? 'opacity: 0.5' : null "
+                type="submit" label="submit"></button>
+        </div>
 </div>
