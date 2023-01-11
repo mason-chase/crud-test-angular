@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { ICustomer } from 'src/app/Models/ICustomers';
+import { PhoneNumberValidator } from 'src/app/Shared/customValidators/phone-number.validator';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: ['./content.component.css'],
   providers: [MessageService],
+  encapsulation: ViewEncapsulation.None
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private messageService: MessageService, private cdr: ChangeDetectorRef) { }
+
+  form: FormGroup;
+  customers: ICustomer[] = [];
   messageIsNotValidFirstName: string;
   messageIsNotValidLastName: string;
   messageIsNotValidEmail: string;
@@ -18,6 +26,7 @@ export class ContentComponent implements OnInit {
   validDataCustomer: boolean = false;
 
   ngOnInit(): void {
+    this.customers = JSON.parse(localStorage.getItem('customers')) || [];
     this.form = new FormGroup({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
@@ -26,6 +35,15 @@ export class ContentComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       bankAccountNumber: new FormControl('', Validators.required),
     })
+    this.form.get('phoneNumber').valueChanges.subscribe(data => {
+      if (this.form.get('phoneNumber').valid) {
+        this.messageIsNotValidPhoneNumber = null;
+      } else {
+        this.messageIsNotValidPhoneNumber = 'is not valid phone number';
+      }
+    })
+  }
+
   messageValidator(key: string) {
     switch (key) {
       case 'firstName':
@@ -54,6 +72,7 @@ export class ContentComponent implements OnInit {
         break;
     }
   }
+
   submit() {
     if (this.form.valid) {
       const { firstName, lastName, dateOfBirth, email } = this.form.value;
