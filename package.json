@@ -20,7 +20,7 @@
     "@angular/router": "~13.2.0",
     "bootstrap": "^5.2.3",
     "font-awesome": "^4.7.0",
-    "primeicons": "^6.0.1",
+    "primeicons": "^5.0.0",
     "primeng": "^13.4.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
