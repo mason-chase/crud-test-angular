@@ -15,12 +15,14 @@
                 <input formControlName="lastName" type="text" id="lastName" class="w-75" pInputText>
                 <label for="lastName">LastName</label>
             </span>
+            <small *ngIf="messageIsNotValidLastName">{{messageIsNotValidLastName}}</small>
         </div>
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">
                 <p-calendar inputId="calendar" styleClass="w-75"></p-calendar>
                 <label for="calendar">Calendar</label>
             </span>
+            <small *ngIf="messageIsNotValidDateOfBirth">{{messageIsNotValidDateOfBirth}}</small>
         </div>
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">
@@ -28,6 +30,7 @@
                 <label for="phoneNumber">PhoneNumber</label>
                 <input formControlName="phoneNumber" type="text" id="phoneNumber" class="w-75" pInputText>
             </span>
+            <small *ngIf="messageIsNotValidPhoneNumber">{{messageIsNotValidPhoneNumber}}</small>
         </div>
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">
@@ -35,6 +38,7 @@
                 <input formControlName="email" type="text" id="email" class="w-75" pInputText>
                 <label for="email">Email</label>
             </span>
+            <small *ngIf="messageIsNotValidEmail">{{messageIsNotValidEmail}}</small>
         </div>
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">

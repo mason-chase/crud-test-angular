@@ -10,6 +10,12 @@ import { MessageService } from 'primeng/api';
 export class ContentComponent implements OnInit {
 
   constructor() { }
+  messageIsNotValidFirstName: string;
+  messageIsNotValidLastName: string;
+  messageIsNotValidEmail: string;
+  messageIsNotValidDateOfBirth: string;
+  messageIsNotValidPhoneNumber: string;
+  validDataCustomer: boolean = false;
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -20,6 +26,34 @@ export class ContentComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       bankAccountNumber: new FormControl('', Validators.required),
     })
+  messageValidator(key: string) {
+    switch (key) {
+      case 'firstName':
+        this.messageIsNotValidFirstName = "The value of firstName is repeated";
+        this.validDataCustomer = false;
+        break;
+      case 'lastName':
+        this.messageIsNotValidLastName = "The value of lastName is repeated";
+        this.validDataCustomer = false;
+        break;
+      case 'dateOfBirth':
+        this.messageIsNotValidDateOfBirth = "The value of dateOfBirth is repeated";
+        this.validDataCustomer = false;
+        break;
+      case 'email':
+        this.messageIsNotValidEmail = "The value of email is repeated";
+        this.validDataCustomer = false;
+        break;
+      case null:
+        this.messageIsNotValidFirstName = null;
+        this.messageIsNotValidLastName = null;
+        this.messageIsNotValidDateOfBirth = null;
+        this.messageIsNotValidEmail = null;
+        this.messageIsNotValidPhoneNumber = null;
+        this.validDataCustomer = true;
+        break;
+    }
+  }
   submit() {
     if (this.form.valid) {
       const { firstName, lastName, dateOfBirth, email } = this.form.value;
