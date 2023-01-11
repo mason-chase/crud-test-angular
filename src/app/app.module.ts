@@ -5,17 +5,17 @@ import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SharedModule } from './Shared/shared.module';
 import { HeaderComponent } from './Components/header/header.component';
+import { ContentComponent } from './Components/content/content.component';
 import { FooterComponent } from './Components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
     AppComponent,
     HeaderComponent,
+    ContentComponent,
     FooterComponent
   ],
   imports: [
-    BrowserModule
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
