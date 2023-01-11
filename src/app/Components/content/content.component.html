@@ -1,14 +1,17 @@
 <div class="container mt-5">
     <div class="row">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="row">
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">
                 <input type="text" id="firstName" class="w-75" pInputText>
+                <input formControlName="firstName" type="text" id="firstName" class="w-75" pInputText>
                 <label for="firstName">FirstName</label>
             </span>
         </div>
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">
                 <input type="text" id="lastName" class="w-75" pInputText>
+                <input formControlName="lastName" type="text" id="lastName" class="w-75" pInputText>
                 <label for="lastName">LastName</label>
             </span>
         </div>
@@ -22,17 +25,20 @@
             <span class="p-float-label">
                 <input type="text" id="phoneNumber" class="w-75" pInputText>
                 <label for="phoneNumber">PhoneNumber</label>
+                <input formControlName="phoneNumber" type="text" id="phoneNumber" class="w-75" pInputText>
             </span>
         </div>
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">
                 <input type="text" id="email" class="w-75" pInputText>
+                <input formControlName="email" type="text" id="email" class="w-75" pInputText>
                 <label for="email">Email</label>
             </span>
         </div>
         <div class="field col-12 col-md-6 col-lg-4 mt-5">
             <span class="p-float-label">
                 <input type="text" id="bankAccountNumber" class="w-75" pInputText>
+                <input formControlName="bankAccountNumber" type="number" id="bankAccountNumber" class="w-75" pInputText>
                 <label for="bankAccountNumber">BankAccountNumber</label>
             </span>
         </div>
