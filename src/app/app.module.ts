@@ -7,6 +7,8 @@ import { SharedModule } from './Shared/shared.module';
 import { HeaderComponent } from './Components/header/header.component';
 import { ContentComponent } from './Components/content/content.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { FooterComponent } from './Components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
