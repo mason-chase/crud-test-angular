@@ -98,15 +98,15 @@ export class ContentComponent implements OnInit {
           if (customer.email.includes(email)) {
             this.messageValidator('email')
           }
-          if (this.validDataCustomer) {
-            this.form.get('dateOfBirth').setValue(date);
-            this.customers.push(this.form.value);
-            localStorage.setItem('customers', JSON.stringify(this.customers));
-            this.form.reset();
-            this.messageService.add({ severity: 'success', detail: 'SuccessFully' });
-            this.messageValidator(null)
-          }
         })
+        if (this.validDataCustomer) {
+          this.form.get('dateOfBirth').setValue(date);
+          this.customers.push(this.form.value);
+          localStorage.setItem('customers', JSON.stringify(this.customers));
+          this.form.reset();
+          this.messageService.add({ severity: 'success', detail: 'SuccessFully' });
+          this.messageValidator(null)
+        }
       }
     } else {
       this.messageService.add({ severity: 'error', summary: 'error', detail: 'is not valid form' });
