@@ -1,0 +1,8 @@
+/* input.ng-invalid,
+.calendar .ng-invalid input {
+    border-color: red
+  } */
+
+.content-component small {
+    color: red;
+}

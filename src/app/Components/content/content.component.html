@@ -1,0 +1,52 @@
+<p-toast></p-toast>
+<div class="container mt-5 content-component">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="row">
+        <div class="field col-12 col-md-6 col-lg-4 mt-5">
+            <span class="p-float-label">
+                <input formControlName="firstName" type="text" id="firstName" class="w-75" pInputText>
+                <label for="firstName">FirstName</label>
+            </span>
+            <small *ngIf="messageIsNotValidFirstName">{{messageIsNotValidFirstName}}</small>
+        </div>
+        <div class="field col-12 col-md-6 col-lg-4 mt-5">
+            <span class="p-float-label">
+                <input formControlName="lastName" type="text" id="lastName" class="w-75" pInputText>
+                <label for="lastName">LastName</label>
+            </span>
+            <small *ngIf="messageIsNotValidLastName">{{messageIsNotValidLastName}}</small>
+        </div>
+        <div class="field col-12 col-md-6 col-lg-4 mt-5">
+            <span class="p-float-label calendar">
+                <p-calendar formControlName="dateOfBirth" dateFormat="dd/mm/yy" inputId="dateOfBirth"
+                    styleClass="w-75"></p-calendar>
+                <label for="dateOfBirth">DateOfBirth</label>
+            </span>
+            <small *ngIf="messageIsNotValidDateOfBirth">{{messageIsNotValidDateOfBirth}}</small>
+        </div>
+        <div class="field col-12 col-md-6 col-lg-4 mt-5">
+            <span class="p-float-label">
+                <input formControlName="phoneNumber" type="text" id="phoneNumber" class="w-75" pInputText>
+                <label for="phoneNumber">PhoneNumber(US)</label>
+            </span>
+            <small *ngIf="messageIsNotValidPhoneNumber">{{messageIsNotValidPhoneNumber}}</small>
+        </div>
+        <div class="field col-12 col-md-6 col-lg-4 mt-5">
+            <span class="p-float-label">
+                <input formControlName="email" type="text" id="email" class="w-75" pInputText>
+                <label for="email">Email</label>
+            </span>
+            <small *ngIf="messageIsNotValidEmail">{{messageIsNotValidEmail}}</small>
+        </div>
+        <div class="field col-12 col-md-6 col-lg-4 mt-5">
+            <span class="p-float-label">
+                <input formControlName="bankAccountNumber" type="number" id="bankAccountNumber" class="w-75" pInputText>
+                <label for="bankAccountNumber">BankAccountNumber</label>
+            </span>
+        </div>
+        <div class="col-12 d-flex justify-content-end mt-5">
+            <!-- <p-button label="Submit" icon="pi pi-check" (onClick)="submit()"></p-button> -->
+            <button pButton pRipple [disabled]="!form.valid" [style]="!form.valid ? 'opacity: 0.5' : null "
+                type="submit" label="submit"></button>
+        </div>
+    </form>
+</div>
