@@ -49,7 +49,7 @@ export class CustomerRepositoryService extends LocalStorageService<
 
   getCustomer(email: string): ICustomer | null {
     let customers = this.customerList$.value;
-    let Cindex = customers.findIndex((c) => c.Email == email);
+    let Cindex = customers.findIndex((c) => c.Email?.toLowerCase() == email.toLowerCase());
     return Cindex > -1 ? customers[Cindex] : null;
   }
 

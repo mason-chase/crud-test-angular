@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BankAccountValidator } from 'src/app/shared/config/bank-account-number.validate';
 import { NumberPhoneValidator } from 'src/app/shared/config/phone-number-validate';
 import { ICustomer } from 'src/app/shared/model/customer.model';
 import { Status } from 'src/app/shared/model/status.enum';
@@ -17,9 +18,12 @@ export class CustomerComponent implements OnInit {
     Firstname: new FormControl('', [Validators.required]),
     Lastname: new FormControl('', [Validators.required]),
     DateOfBirth: new FormControl('', [Validators.required]),
-    PhoneNumber: new FormControl('', [Validators.required, NumberPhoneValidator('US')]),
+    PhoneNumber: new FormControl('', [
+      Validators.required,
+      NumberPhoneValidator('US'),
+    ]),
     Email: new FormControl('', [Validators.required, Validators.email]),
-    BankAccountNumber: new FormControl('', [Validators.required]),
+    BankAccountNumber: new FormControl('', [Validators.required, Validators.pattern("[0-9]{9,18}")]),
   });
 
   isUpdateMode = false;
@@ -81,8 +85,9 @@ export class CustomerComponent implements OnInit {
   }
 
   showDetails(email: string) {
-    this.route.navigate(['/customer-details', email])
+    this.route.navigate(['/customer-details', email]);
   }
+
 
   onSubmit() {
     if (this.beforeSubmitForm()) {

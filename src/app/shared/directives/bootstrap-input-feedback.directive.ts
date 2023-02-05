@@ -17,6 +17,7 @@ export class BootstrapInputFeedbackDirective implements AfterViewInit, DoCheck {
     minlength: `Please insert this field with true length`,
     maxlength: `Please insert this field with true length`,
     pattern: `Please insert valid format`,
+    account: `Bank Account Number is not valid`
   };
 
   _errorElements: any = {};

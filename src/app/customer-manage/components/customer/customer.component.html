@@ -57,7 +57,16 @@
           required
           [appBootstrapInputValidation]="getFormControl('PhoneNumber')"
         />
-        <div [appBootstrapInputFeedback]="getFormControl('PhoneNumber')"></div>
+        <div
+          class="invalid-feedback"
+          data-cy="invalid-phone-number"
+          *ngIf="
+            getFormControl('PhoneNumber').invalid &&
+            getFormControl('PhoneNumber').touched
+          "
+        >
+          Invalid phone number formate
+        </div>
       </div>
     </div>
 
@@ -71,8 +80,9 @@
           formControlName="Email"
           required
           [appBootstrapInputValidation]="getFormControl('Email')"
+
         />
-        <div [appBootstrapInputFeedback]="getFormControl('Email')"></div>
+        <div [appBootstrapInputFeedback]="getFormControl('Email')" data-cy = "invalid-email"></div>
       </div>
     </div>
 
@@ -94,14 +104,19 @@
         ></div>
       </div>
     </div>
+    <div class="text-danger" data-cy="customer-info-duplicated" *ngIf="status === 400">Customer Information is duplicated</div>
 
     <button
       type="submit"
+      data-cy="submit-customer-form"
       [ngClass]="isUpdateMode ? 'btn btn-warning' : 'btn btn-success'"
     >
       {{ isUpdateMode ? "Update" : "Register" }}
     </button>
+
+
   </form>
+
 </div>
 
 <div class="row mt-5">
@@ -137,7 +152,11 @@
             Delete
           </button>
         </td>
-        <td><button class="btn btn-info" (click)="showDetails(item.Email!)">Details</button></td>
+        <td>
+          <button class="btn btn-info" (click)="showDetails(item.Email!)">
+            Details
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
