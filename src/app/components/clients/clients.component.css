@@ -1,7 +1,6 @@
 table {
     border-top: 1px solid var(--gray);
     width: 100%;
-    
 }
 
 thead th {
@@ -17,6 +16,7 @@ button {
 }
 .table-content{
     margin-right: var(--lateralmargin);
+    overflow-x:auto;
 }
 .table-head {
     color: var(--gray);
@@ -25,10 +25,14 @@ button {
 
 .client-info {
     background-color: #FFFFFF;
+    margin: 0.5rem 0;
 }
 .last {
     border-radius: 0 8px 8px 0 ;
 }
 .material-symbols-outlined {
     color: var(--blue);
+}
+.space {
+    height: 0.5rem;
 }

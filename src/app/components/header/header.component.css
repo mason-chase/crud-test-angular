@@ -34,13 +34,13 @@
 .form {
     display: flex;
     justify-content: flex-end;
-
 }
 .add-form{
     margin: var(--lateralmargin);
     display: flex;
     flex-direction: column;
-    max-width: 30rem;
+    min-width: 30rem;
+    max-width: 50%;
 }
 .form-double {
     display: flex;

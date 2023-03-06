@@ -8,34 +8,34 @@
         </button>
     </div>
     <div class="form">
-        <form class="add-form" (ngSubmit)="onSubmit()">
+        <form class="add-form" (ngSubmit)="addClient()">
             <div class="form-double">
                 <div class="form-str">
                     <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" id="" placeholder="Write client First Name" />
+                    <input type="text" name="firstName" id="firstName" placeholder="First Name" [(ngModel)]="firstName"/>
                 </div>
                 <div class="form-str">    
                     <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" id="" placeholder="Write client Last Name" />
+                    <input type="text" name="lastName" id="lastName" placeholder="Last Name" [(ngModel)]="lastName"/>
                 </div>
             </div>
             <div class="form-double">
                 <div class="form-str">
                     <label for="dob">Date of Birth</label>
-                    <input type="date" name="dob" id="" />
+                    <input type="date" name="dob" id="dob" [(ngModel)]="dob"/>
                 </div>
                 <div class="form-str">    
-                    <label for="phone">Phone Number</label>
-                    <input type="text" name="phone" id="" placeholder="Client Phone Number" />
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Client Phone Number" [(ngModel)]="phoneNumber"/>
                 </div>
             </div>
             <div class="form-str">
                 <label for="email">E-mail</label>
-                <input type="text" name="email" id="" placeholder="Client E-mail">
+                <input type="text" name="email" id="email" placeholder="Client E-mail" [(ngModel)]="email">
             </div>
             <div class="form-str">
                 <label for="iban">Account number</label>
-                <input type="text" name="iban" id="" placeholder="Client Account Number">
+                <input type="text" name="iban" id="iban" placeholder="Client Account Number" [(ngModel)]="bankAccount">
             </div>
             <input type="submit" value="Save" class="save-btn"/>
         </form>
