@@ -57,7 +57,19 @@ table {
   padding: 0;
 }
 
+:root {
+	--background: #F8F8F8;
+	--blue: #5989C1;
+	--red: #C15959;
+	--gray: #ACACAC;
+	--lightgray: #E5E5E5;
+	--shadow: 0 1px 3px rgba(0,0,0,0.1);
+	--topmargin: 3.75rem;
+	--lateralmargin: 2rem;
+}
+
 body {
     font-family: "Montserrat", sans-serif;
-  }
+	background-color: var(--background);
+}
   

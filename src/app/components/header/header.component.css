@@ -1,0 +1,59 @@
+.nav {
+    margin: var(--topmargin) var(--lateralmargin) 0 var(--lateralmargin);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.nav h1 {
+    border-left: 4px solid var(--blue);
+    padding-left: 0.4rem;
+    font-weight: 700;
+    font-size: 20px;
+}
+.nav button,
+.add-form .save-btn {
+    background-color: var(--blue);
+    border-radius: 0.2rem;
+    padding: 0.4rem 0.7rem;
+    border: none;
+    color: #FFFFFF;
+    box-shadow: var(--shadow);
+    margin-top: 0.75rem;
+}
+.nav button:hover,
+.add-form .save-btn:hover {
+    opacity: 0.7;
+}
+.nav button:active,
+.add-form .save-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.807);;
+}
+
+.add-form{
+    margin: var(--lateralmargin);
+    display: flex;
+    flex-direction: column;
+}
+.form-double {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.form-str {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.form-str label {
+    font-size: 0.8rem;
+}
+.form-str input{
+    border: var(--gray);
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.5rem;
+    margin-top: 0.3rem;
+}
+.add-form .save-btn {
+    align-self: center;
+}
