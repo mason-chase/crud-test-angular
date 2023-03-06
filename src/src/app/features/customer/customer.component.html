@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <div class="alert alert-info" role="alert">
+    <strong>Welcome to Rayankar!</strong>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      Customer profile data
+    </div>
+    <div class="card-body">
+      <form [formGroup]="rootFormGroup">
+        <app-info [customerList]="customerList" formControlName="information"></app-info>
+
+        <div class="row mt-4">
+
+          <div class="col-2">
+        <button class="btn btn-info" [disabled]="rootFormGroup.invalid" (click)="submit()">Save</button>
+          </div>
+          <div class="col-2">
+            <small>Form status: {{ rootFormGroup.status | json }}</small>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="table-responsive my-3">
+    <div class="alert alert-info" role="alert">
+      <strong>Customer list</strong>
+    </div>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Date of birth</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Bank account number</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let customer of customerList">
+        <td>{{customer.firstname}}</td>
+        <td>{{customer.lastname}}</td>
+        <td>{{customer.dateOfBirth}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.phoneNumber}}</td>
+        <td>{{customer.bankAccountNumber}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+

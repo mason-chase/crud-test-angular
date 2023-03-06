@@ -1,0 +1,107 @@
+  <form [formGroup]="formGroup">
+    <div class="row mb-4">
+      <div class="form-group col-4 ">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstname" required>
+        <div
+          *ngIf="formGroup.controls['firstname'].invalid && (formGroup.controls['firstname'].dirty || formGroup.controls['firstname'].touched)"
+          class="error-massage">
+          <div *ngIf="formGroup.controls['firstname'].errors?.['required']">
+            First name is required.
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group col-4">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" required formControlName="lastname">
+        <div
+          *ngIf="formGroup.controls['lastname'].invalid && (formGroup.controls['lastname'].dirty || formGroup.controls['lastname'].touched)"
+          class="error-massage">
+          <div *ngIf="formGroup.controls['lastname'].errors?.['required']">
+            Last name is required.
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group col-4">
+        <label>Date of birth
+          <input type="date" formControlName="dateOfBirth">
+        </label>
+        <div *ngIf="formGroup.controls['dateOfBirth'].invalid && (formGroup.controls['dateOfBirth'].dirty || formGroup.controls['dateOfBirth'].touched)" class="error-massage">
+          <div *ngIf="formGroup.controls['dateOfBirth'].errors?.['required']">
+            Date of birth is required.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-4">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email"
+               required placeholder="your-name@provider.com"  minlength="1" maxlength="250">
+        <div
+          *ngIf="formGroup.controls['email'].invalid && (formGroup.controls['email'].dirty || formGroup.controls['email'].touched)"
+          class="error-massage">
+          <div *ngIf="formGroup.controls['email'].errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="formGroup.controls['email'].errors?.['minlength']">
+            Email must have at least 1 character.
+          </div>
+          <div *ngIf="formGroup.controls['email'].errors?.['maxlength']">
+            Email must have at most 250 characters.
+          </div>
+          <div
+            *ngIf="!formGroup.controls['email'].errors?.['required'] && !formGroup.controls['email'].errors?.['minlength'] && !formGroup.controls['email'].errors?.['maxlength'] && formGroup.controls['email'].errors?.['emailValidator']">
+            Invalid email format.
+          </div>
+
+          <div
+            *ngIf="!formGroup.controls['email'].errors?.['required'] && !formGroup.controls['email'].errors?.['minlength'] && !formGroup.controls['email'].errors?.['maxlength'] && formGroup.controls['email'].errors?.['isUniqueEmail']">
+            This email has already been registered.
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group col-4">
+        <label for="phoneNumber">US Phone</label>
+        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber"
+               placeholder="(301) 333-0205"
+               required
+        >
+        <div
+          *ngIf="formGroup.controls['phoneNumber'].invalid && (formGroup.controls['phoneNumber'].dirty || formGroup.controls['phoneNumber'].touched)"
+          class="error-massage">
+          <div *ngIf="formGroup.controls['phoneNumber'].errors?.['required']">
+            Phone is required.
+          </div>
+          <div
+            *ngIf="!formGroup.controls['phoneNumber'].errors?.['required']  && formGroup.controls['phoneNumber'].errors?.['wrongNumber']">
+            Enter US format phone number.
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-4">
+
+        <label for="phoneNumber">Bank account number</label>
+        <input type="text" id="bankAccountNumber" class="form-control" formControlName="bankAccountNumber"
+               required
+        >
+        <div
+          *ngIf="formGroup.controls['bankAccountNumber'].invalid && (formGroup.controls['bankAccountNumber'].dirty || formGroup.controls['bankAccountNumber'].touched)"
+          class="error-massage">
+          <div *ngIf="formGroup.controls['bankAccountNumber'].errors?.['required']">
+            Bank account number is required.
+          </div>
+          <div
+            *ngIf="!formGroup.controls['bankAccountNumber'].errors?.['required']  && formGroup.controls['bankAccountNumber'].errors?.['pattern']">
+            Invalid bank account number.
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
