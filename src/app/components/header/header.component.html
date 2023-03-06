@@ -7,35 +7,37 @@
         Add New Client
         </button>
     </div>
-    <form class="add-form" (ngSubmit)="onSubmit()">
-        <div class="form-double">
+    <div class="form">
+        <form class="add-form" (ngSubmit)="onSubmit()">
+            <div class="form-double">
+                <div class="form-str">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" id="" placeholder="Write client First Name" />
+                </div>
+                <div class="form-str">    
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" id="" placeholder="Write client Last Name" />
+                </div>
+            </div>
+            <div class="form-double">
+                <div class="form-str">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" id="" />
+                </div>
+                <div class="form-str">    
+                    <label for="phone">Phone Number</label>
+                    <input type="text" name="phone" id="" placeholder="Client Phone Number" />
+                </div>
+            </div>
             <div class="form-str">
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="" placeholder="Write client First Name" />
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="" placeholder="Client E-mail">
             </div>
-            <div class="form-str">    
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="" placeholder="Write client Last Name" />
-            </div>
-        </div>
-        <div class="form-double">
             <div class="form-str">
-                <label for="dob">Date of Birth</label>
-                <input type="date" name="dob" id="" />
+                <label for="iban">Account number</label>
+                <input type="text" name="iban" id="" placeholder="Client Account Number">
             </div>
-            <div class="form-str">    
-                <label for="phone">Phone Number</label>
-                <input type="text" name="phone" id="" placeholder="Client Phone Number" />
-            </div>
-        </div>
-        <div class="form-str">
-            <label for="email">E-mail</label>
-            <input type="text" name="email" id="" placeholder="Client E-mail">
-        </div>
-        <div class="form-str">
-            <label for="iban">Account number</label>
-            <input type="text" name="iban" id="" placeholder="Client Account Number">
-        </div>
-        <input type="submit" value="Save" class="save-btn"/>
-    </form>
+            <input type="submit" value="Save" class="save-btn"/>
+        </form>
+    </div>
 </header>

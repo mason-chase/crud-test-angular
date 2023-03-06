@@ -19,5 +19,6 @@ export class HeaderComponent implements OnInit {
 
   onSubmit() {
     console.log('test');
+    
   }
 }

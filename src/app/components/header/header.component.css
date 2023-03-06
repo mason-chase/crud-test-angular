@@ -30,15 +30,23 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.807);;
 }
 
+
+.form {
+    display: flex;
+    justify-content: flex-end;
+
+}
 .add-form{
     margin: var(--lateralmargin);
     display: flex;
     flex-direction: column;
+    max-width: 30rem;
 }
 .form-double {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 1rem;
 }
 .form-str {
     display: flex;
@@ -56,4 +64,10 @@
 }
 .add-form .save-btn {
     align-self: center;
+}
+
+input[type="date"],
+input::placeholder {
+    font-family: "Montserrat", sans-serif;
+    color: var(--gray);
 }
