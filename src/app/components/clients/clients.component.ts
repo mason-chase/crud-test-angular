@@ -9,7 +9,7 @@ import { ClientService } from '../../services/client.service';
 })
 export class ClientsComponent implements OnInit{
   @Input() client!: Client;
-  clients!: { firstName: string; lastName: string; dateOfBirth: Date; phoneNumber: string; email: string; banckAccountNumber: string; }[];
+  clients!: { firstName: string; lastName: string; dateOfBirth: Date; phoneNumber: string; email: string; bankAccountNumber: string; }[];
   
   constructor (private clientService: ClientService) {}
 
@@ -27,8 +27,8 @@ export class ClientsComponent implements OnInit{
     this.clientService.onDelete(email);
    }
 
-   onEdit() {
-    
+   onEdit(email: string) {
+    this.clientService.onEdit(email);
    }
 
 }

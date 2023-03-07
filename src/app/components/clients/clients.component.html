@@ -20,9 +20,9 @@
                 <td>{{client.dateOfBirth}}</td>
                 <td>{{client.phoneNumber}}</td>
                 <td>{{client.email}}</td>
-                <td>{{client.banckAccountNumber}}</td>
+                <td>{{client.bankAccountNumber}}</td>
                 <td>
-                    <button (click)="onEdit()">
+                    <button (click)="onEdit(client.email)">
                         <span class="material-symbols-outlined">
                             edit
                         </span>

@@ -4,5 +4,5 @@ export interface Client {
     dateOfBirth: Date;
     phoneNumber: string;
     email: string;
-    banckAccountNumber: string;
+    bankAccountNumber: string;
 }

@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ClientService } from '../../services/client.service';
 import { UiService } from '../../services/ui.service';
+import { Client } from '../../Client'
+import { ValidatePhone } from 'src/app/ValidatePhone';
 
 @Component({
   selector: 'app-header',
@@ -11,49 +13,107 @@ import { UiService } from '../../services/ui.service';
 })
 export class HeaderComponent implements OnInit {
 
-  firstName: string = '';
-  lastName: string = '';
-  dob!: Date ;
-  phoneNumber: string = '';
-  email: string = '';
-  bankAccount: string = '';
-  clients!: { firstName: string; lastName: string; dateOfBirth: Date; phoneNumber: string; email: string; banckAccountNumber: string; }[];
+  clients!: Client[];
   btnText: string = 'Add New Client';
   showAddClient: boolean = false;
   subscription!: Subscription;
+  clientForm!: FormGroup;
+  isSubmitted = false;
+  selectedClient: Client | undefined;
 
-
-
-  constructor (private clientService: ClientService, private uiService: UiService) {
+  constructor (
+      private clientService: ClientService, 
+      private uiService: UiService, 
+      private formBuilder: FormBuilder
+    ) {
     this.subscription = this.uiService
           .onToggle()
-          .subscribe(value => this.showAddClient = value);
+          .subscribe(value => {
+            this.showAddClient = value; 
+            this.btnText = this.showAddClient ? 'Close' : 'Add New Client'});
+
+    this.clientForm = this.formBuilder.group  ({
+      firstName: new FormControl ('', [Validators.required]),
+      lastName: new FormControl ('', [Validators.required]),
+      dateOfBirth: new FormControl ('', [Validators.required]),
+      phoneNumber: new FormControl ('', 
+        [Validators.required, ValidatePhone, Validators.minLength(13), Validators.maxLength(13)]),
+      email: new FormControl ('', [Validators.required, Validators.email]),
+      bankAccountNumber: new FormControl ('', [Validators.required, Validators.minLength(9), Validators.maxLength(10)])
+    })
   }
 
   ngOnInit(): void { 
     this.clients = this.clientService.getClients();
+    this.clientService.client.subscribe(client => {
+      this.toggleAddClient();
+      this.selectedClient = client;
+      this.clientForm.patchValue({
+        firstName: client.firstName,
+        lastName: client.lastName,
+        dateOfBirth: client.dateOfBirth,
+        phoneNumber: client.phoneNumber,
+        email: client.email,
+        bankAccountNumber: client.bankAccountNumber
+      });
+    })
   }
 
   toggleAddClient() {
     this.uiService.toggleAddClient();
-    this.btnText = this.showAddClient ? 'Close' : 'Add New Client'
-    
   }
 
-  addClient() {
-    if(!this.firstName || !this.lastName || !this.phoneNumber ||  !this.bankAccount || !this.email || !this.dob){
+  addClient(form: FormGroup) {
+    this.isSubmitted = true;
+
+    if (!form.value.firstName || !form.value.lastName || 
+      !form.value.phoneNumber ||  !form.value.bankAccountNumber || 
+      !form.value.email || !form.value.dateOfBirth) 
+      {
       alert('Please fill the form')
       return;
-    } 
-    const newClient = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      dateOfBirth: this.dob,
-      phoneNumber: this.phoneNumber,
-      email: this.email,
-      banckAccountNumber: this.bankAccount
+      }
+
+    if (this.clientForm.invalid) {
+      alert('Some information is not valid. Please rectify')
+      return;
     }
-    this.clients.push(newClient);
+
+    if (this.clients.filter(
+      c =>
+        c.firstName.toLowerCase() === form.value.firstName.toLowerCase() &&
+        c.lastName.toLowerCase() === form.value.lastName.toLowerCase() &&
+        c.dateOfBirth === form.value.dateOfBirth ||
+        c.email === form.value.email &&
+        c !== this.selectedClient
+      ).length > 0) {
+      alert('This client is already in the database');
+      return;
+    } 
+
+    const newClient = {
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      dateOfBirth: form.value.dateOfBirth,
+      phoneNumber: form.value.phoneNumber,
+      email: form.value.email,
+      bankAccountNumber: form.value.bankAccountNumber
+    }
+
+    if (this.selectedClient) {
+      this.clientService.onUpdate(newClient)
+      this.clientService.onDelete(this.selectedClient.email)
+      this.clientService.client.next(newClient);
+    } else {
+      this.clientService.addClient(newClient);
+    }
+
     this.clientService.addClient(newClient);
+    this.clientForm.reset();
+    this.toggleAddClient();
+    this.clientService.getClients();
+   
   }
 }
+
+
