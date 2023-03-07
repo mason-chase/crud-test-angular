@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ClientService } from '../../services/client.service';
+import { UiService } from '../../services/ui.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,7 @@ import { ClientService } from '../../services/client.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() btnClick = new EventEmitter();
+
   firstName: string = '';
   lastName: string = '';
   dob!: Date ;
@@ -16,24 +18,33 @@ export class HeaderComponent implements OnInit {
   email: string = '';
   bankAccount: string = '';
   clients!: { firstName: string; lastName: string; dateOfBirth: Date; phoneNumber: string; email: string; banckAccountNumber: string; }[];
+  btnText: string = 'Add New Client';
+  showAddClient: boolean = false;
+  subscription!: Subscription;
 
 
 
-  constructor (private clientService: ClientService) {}
+  constructor (private clientService: ClientService, private uiService: UiService) {
+    this.subscription = this.uiService
+          .onToggle()
+          .subscribe(value => this.showAddClient = value);
+  }
 
   ngOnInit(): void { 
     this.clients = this.clientService.getClients();
   }
 
-  onClick() {
-    this.btnClick.emit();
+  toggleAddClient() {
+    this.uiService.toggleAddClient();
+    this.btnText = this.showAddClient ? 'Close' : 'Add New Client'
+    
   }
 
   addClient() {
-    // if(!this.firstName || !this.lastName || !this.phoneNumber ||  !this.bankAccount || !this.email || !this.dob){
-    //   alert('Please fill the form')
-    //   return;
-    // } 
+    if(!this.firstName || !this.lastName || !this.phoneNumber ||  !this.bankAccount || !this.email || !this.dob){
+      alert('Please fill the form')
+      return;
+    } 
     const newClient = {
       firstName: this.firstName,
       lastName: this.lastName,

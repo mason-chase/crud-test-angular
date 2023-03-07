@@ -10,12 +10,13 @@ import { ClientService } from '../../services/client.service';
 export class ClientsComponent implements OnInit{
   @Input() client!: Client;
   clients!: { firstName: string; lastName: string; dateOfBirth: Date; phoneNumber: string; email: string; banckAccountNumber: string; }[];
-
+  
   constructor (private clientService: ClientService) {}
 
   ngOnInit(): void {
     this.clients = this.clientService.getClients();
    }
+
 
    onDelete(email: string) {
     for(let i = 0; i < this.clients.length; i++) {
@@ -24,6 +25,10 @@ export class ClientsComponent implements OnInit{
       }
     }
     this.clientService.onDelete(email);
+   }
+
+   onEdit() {
+    
    }
 
 }

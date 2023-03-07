@@ -15,14 +15,14 @@
         <tbody *ngFor="let client of clients" >
             <tr class="client-info">
                 <td>{{client.firstName}}</td>
-                <!-- <input type="text" name="" id="" value="{{client.firstName}}" readonly> -->
+                
                 <td>{{client.lastName}}</td>
                 <td>{{client.dateOfBirth}}</td>
                 <td>{{client.phoneNumber}}</td>
                 <td>{{client.email}}</td>
                 <td>{{client.banckAccountNumber}}</td>
                 <td>
-                    <button >
+                    <button (click)="onEdit()">
                         <span class="material-symbols-outlined">
                             edit
                         </span>

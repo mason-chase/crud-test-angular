@@ -2,12 +2,12 @@
     <div class="nav">
         <h1>BankBase CRUD</h1>
         <button 
-        class="add-client"
-        (click)="onClick()">
-        Add New Client
+            class="add-client"
+            (click)="toggleAddClient()">
+            {{btnText}}
         </button>
     </div>
-    <div class="form">
+    <div class="form" *ngIf="showAddClient">
         <form class="add-form" (ngSubmit)="addClient()">
             <div class="form-double">
                 <div class="form-str">

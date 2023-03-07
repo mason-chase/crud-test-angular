@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Init } from '../initClient';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ClientService extends Init{
 
   constructor() { 
@@ -23,13 +25,12 @@ export class ClientService extends Init{
   
   onDelete(email: string) {
     let clients = JSON.parse(localStorage.getItem('clients')!);
-
-     for(let i = 0; i <clients.length; i++) {
+    
+    for(let i = 0; i <clients.length; i++) {
       if(clients[i].email == email) {
-          clients.splice(i, 1);
+        clients.splice(i, 1);
       }
-   }
-      localStorage.setItem('clients', JSON.stringify(clients));
+    }
+    localStorage.setItem('clients', JSON.stringify(clients));
   }
-
 }

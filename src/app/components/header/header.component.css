@@ -1,5 +1,5 @@
 .nav {
-    margin: var(--topmargin) var(--lateralmargin) 0 var(--lateralmargin);
+    margin: var(--topmargin) var(--lateralmargin) var(--lateralmargin) var(--lateralmargin);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
