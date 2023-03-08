@@ -61,6 +61,7 @@
     padding: 0.4rem 0.7rem;
     border-radius: 0.5rem;
     margin-top: 0.3rem;
+    min-width: 13rem;
 }
 .add-form .save-btn {
     align-self: center;
@@ -70,4 +71,8 @@ input[type="date"],
 input::placeholder {
     font-family: "Montserrat", sans-serif;
     color: var(--gray);
+}
+
+input[type="date"]::-webkit-input-placeholder {
+    color: var(--blue);
 }

@@ -21,6 +21,7 @@ button {
 .table-head {
     color: var(--gray);
     font-size: 0.8rem;
+    text-align: left;
 }
 
 .client-info {
