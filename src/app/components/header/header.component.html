@@ -76,13 +76,7 @@
                                 <span class="material-symbols-outlined">
                                 error
                                 </span>
-                                Phone Number not valid <br> (example: +351917369284)
-                            </div>
-                            <div *ngIf="formControl['phoneNumber'].errors['required']">
-                                <span class="material-symbols-outlined">
-                                error
-                                </span>
-                                Insert phone number
+                                Insert valid phone number <br> (example: +351917369284)
                             </div>
                         </div>
                     </div>
@@ -121,17 +115,11 @@
                         placeholder="Client Account Number (9 digits)" 
                         />
                     <div class="error" *ngIf="formControl['bankAccountNumber'].errors && isSubmitted">
-                        <div *ngIf="formControl['bankAccountNumber'].errors['required']">
-                            <span class="material-symbols-outlined">
-                            error
-                            </span>
-                            Please insert bank account number
-                        </div>
                         <div *ngIf="formControl['bankAccountNumber'].invalid">
                             <span class="material-symbols-outlined">
                             error
                             </span>
-                            nvalid bank account number. Must have 9 characters long
+                            Bank account number must have 9 digits
                         </div>
                     </div>
                 </div>
@@ -212,13 +200,7 @@
                                     <span class="material-symbols-outlined">
                                     error
                                     </span>
-                                    Phone Number not valid  <br> (example: +351917369284)
-                                </div>
-                                <div *ngIf="formControl['phoneNumber'].errors['required']">
-                                    <span class="material-symbols-outlined">
-                                    error
-                                    </span>
-                                    Insert phone number
+                                    Insert valid phone number <br> (example: +351917369284)
                                 </div>
                             </div>
                         </div>
@@ -257,17 +239,11 @@
                             placeholder="Client Account Number"
                             />
                         <div class="error" *ngIf="formControl['bankAccountNumber'].errors && isSubmitted">
-                            <div *ngIf="formControl['bankAccountNumber'].errors['required']">
-                                <span class="material-symbols-outlined">
-                                error
-                                </span>
-                                Please insert bank account number
-                            </div>
                             <div *ngIf="formControl['bankAccountNumber'].invalid">
                                 <span class="material-symbols-outlined">
                                 error
                                 </span>
-                                Invalid bank account number. Must have 9 characters long
+                                Bank account number must have 9 digits
                             </div>
                         </div>
                     </div>

@@ -74,7 +74,6 @@ export class HeaderComponent implements OnInit {
       !form.value.phoneNumber ||  !form.value.bankAccountNumber || 
       !form.value.email || !form.value.dateOfBirth) 
       {
-      alert('Please fill the form')
       return;
       }
 

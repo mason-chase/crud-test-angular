@@ -72,9 +72,6 @@ input::placeholder {
     font-family: "Montserrat", sans-serif;
     color: var(--gray);
 }
-input:invalid {
-    border: 1px solid var(--red);
-}
 
 .error,
 .material-symbols-outlined {
