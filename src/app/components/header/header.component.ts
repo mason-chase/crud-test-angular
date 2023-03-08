@@ -105,6 +105,7 @@ export class HeaderComponent implements OnInit {
     this.clientService.addClient(newClient);
     this.clientForm.reset();
     this.toggleAddClient();
+    this.clientService.getClients();
   }
 
   updateClient(form: FormGroup) {

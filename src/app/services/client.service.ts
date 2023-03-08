@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Client } from '../Client';
+import { Init } from '../initClients'
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class ClientService extends Init {
   client = new Subject<Client>();
 
   constructor() { 
+    super();
+    this.load();
   }
 
   getClients() {
@@ -16,8 +19,8 @@ export class ClientService {
     return clients;
   }
   
-  addClient(newClient: any) {
-    let clients = JSON.parse(localStorage.getItem('clients')!) || [];
+  addClient(newClient: Client) {
+    let clients = JSON.parse(localStorage.getItem('clients')!);
     clients.push(newClient);
     localStorage.setItem('clients', JSON.stringify(clients));
     this.getClients();
