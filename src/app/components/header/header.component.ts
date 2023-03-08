@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ClientService } from '../../services/client.service';
@@ -15,11 +15,13 @@ export class HeaderComponent implements OnInit {
 
   clients!: Client[];
   btnText: string = 'Add New Client';
+  color: string = '#5989C1';
   showAddClient: boolean = false;
   subscription!: Subscription;
   clientForm!: FormGroup;
   isSubmitted = false;
   selectedClient: Client | undefined;
+  appState = 'default';
 
   constructor (
       private clientService: ClientService, 
@@ -30,7 +32,8 @@ export class HeaderComponent implements OnInit {
           .onToggle()
           .subscribe(value => {
             this.showAddClient = value; 
-            this.btnText = this.showAddClient ? 'Close' : 'Add New Client'});
+            this.btnText = this.showAddClient ? 'Close' : 'Add New Client'
+            this.color = this.showAddClient ? '#C15959' : '#5989C1'});
 
     this.clientForm = this.formBuilder.group  ({
       firstName: new FormControl ('', [Validators.required]),
@@ -48,6 +51,7 @@ export class HeaderComponent implements OnInit {
     this.clientService.client.subscribe(client => {
       this.toggleAddClient();
       this.selectedClient = client;
+      this.appState = 'edit';
       this.clientForm.patchValue({
         firstName: client.firstName,
         lastName: client.lastName,
@@ -61,6 +65,7 @@ export class HeaderComponent implements OnInit {
 
   toggleAddClient() {
     this.uiService.toggleAddClient();
+    this.clientService.getClients();
   }
 
   addClient(form: FormGroup) {
@@ -84,8 +89,8 @@ export class HeaderComponent implements OnInit {
         c.firstName.toLowerCase() === form.value.firstName.toLowerCase() &&
         c.lastName.toLowerCase() === form.value.lastName.toLowerCase() &&
         c.dateOfBirth === form.value.dateOfBirth ||
-        c.email === form.value.email &&
-        c !== this.selectedClient
+        c.email === form.value.email 
+        //&& c !== this.selectedClient
       ).length > 0) {
       alert('This client is already in the database');
       return;
@@ -100,19 +105,26 @@ export class HeaderComponent implements OnInit {
       bankAccountNumber: form.value.bankAccountNumber
     }
 
-    if (this.selectedClient) {
-      this.clientService.onUpdate(newClient)
-      this.clientService.onDelete(this.selectedClient.email)
-      this.clientService.client.next(newClient);
-    } else {
-      this.clientService.addClient(newClient);
-    }
-
     this.clientService.addClient(newClient);
     this.clientForm.reset();
     this.toggleAddClient();
     this.clientService.getClients();
-   
+  }
+
+  updateClient(form: FormGroup) {
+
+    const newClient = {
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      dateOfBirth: form.value.dateOfBirth,
+      phoneNumber: form.value.phoneNumber,
+      email: form.value.email,
+      bankAccountNumber: form.value.bankAccountNumber
+    }
+
+    this.clientService.onUpdate(this.selectedClient, newClient);
+    this.toggleAddClient();
+    this.clientService.getClients();
   }
 }
 
