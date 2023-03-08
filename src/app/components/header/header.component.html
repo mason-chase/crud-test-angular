@@ -1,4 +1,5 @@
 <header>
+
     <div class="nav">
         <h1>BankBase CRUD</h1>
         <button 
@@ -8,7 +9,10 @@
             {{btnText}}
         </button>
     </div>
+
     <div class="form" *ngIf="showAddClient" >
+
+<!-- SECTION TO ADD A CLIENT  -->
         <div *ngIf="appState == 'default'">
             <form class="add-form" (ngSubmit)="addClient(clientForm)"  [formGroup]="clientForm" >
                 <div class="form-double">
@@ -127,7 +131,7 @@
             </form>
         </div>
 
-
+<!-- SECTION TO EDIT A CLIENT  -->
         <div *ngIf="appState == 'edit'">
                 <form class="add-form" (ngSubmit)="updateClient(clientForm)"  [formGroup]="clientForm" >
                     <div class="form-double">
@@ -250,5 +254,6 @@
                 <input type="submit" value="Save" class="save-btn"/>
             </form>
         </div>
+        
     </div>
 </header>

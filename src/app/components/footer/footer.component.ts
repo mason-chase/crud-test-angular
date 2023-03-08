@@ -26,11 +26,18 @@ import { Component, OnInit } from '@angular/core';
       color: var(--gray);
       font-size: 0.7rem;
     }
-    a:hover {
+    a:hover,
+    a:active {
       transform: scale(1.1);
     }
     .material-symbols-outlined {
       color: var(--gray);
+    }
+    @media screen and (max-width: 450px){
+      .footer {
+        flex-direction: column;
+      }
+
     }
   `]
 })

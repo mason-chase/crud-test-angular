@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ClientService } from '../../services/client.service';
 import { UiService } from '../../services/ui.service';
@@ -15,12 +15,12 @@ export class HeaderComponent implements OnInit {
   clients!: Client[];
   btnText: string = 'Add New Client'; // text of the button
   color: string = '#5989C1'; // color of the button
-  showAddClient: boolean = false;
+  showAddClient: boolean = false; 
   subscription!: Subscription;
   clientForm!: FormGroup;
-  isSubmitted = false;
+  isSubmitted = false; 
   selectedClient: Client | undefined;
-  appState = 'default';
+  appState = 'default'; // variable to store the info to select the form to update or to add a client
 
   constructor (
       private clientService: ClientService, 
@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
             this.btnText = this.showAddClient ? 'Close' : 'Add New Client'
             this.color = this.showAddClient ? '#C15959' : '#5989C1'});
 
+    //Create a new Form with specified validation rules
     this.clientForm = this.formBuilder.group  ({
       firstName: new FormControl ('', [Validators.required]),
       lastName: new FormControl ('', [Validators.required]),
@@ -47,6 +48,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void { 
     this.clients = this.clientService.getClients();
+    //to activate the addForm on edit and to patch the values of the selected client to edit
     this.clientService.client.subscribe(client => {
       this.toggleAddClient();
       this.selectedClient = client;
@@ -69,18 +71,21 @@ export class HeaderComponent implements OnInit {
 
   addClient(form: FormGroup) {
     this.isSubmitted = true;
-
+    //to guarantee that the form is all filled
     if (!form.value.firstName || !form.value.lastName || 
       !form.value.phoneNumber ||  !form.value.bankAccountNumber || 
       !form.value.email || !form.value.dateOfBirth) 
       {
       return;
       }
-
+    
+    //to not allow to add the client in case there is some invalid information
     if (this.clientForm.invalid) {
       return;
     }
 
+    //Verify that the information is not already in the the storage
+    //Can't have client's with the same firstName + lastName + dob and the e-mail should be unique in all database
     if (this.clients.find(
       c =>
         c.firstName.toLowerCase() === form.value.firstName.toLowerCase() &&
@@ -108,7 +113,7 @@ export class HeaderComponent implements OnInit {
 
   updateClient(form: FormGroup) {
     this.isSubmitted = true;
-
+  
     const newClient = {
       firstName: form.value.firstName,
       lastName: form.value.lastName,
@@ -118,6 +123,7 @@ export class HeaderComponent implements OnInit {
       bankAccountNumber: form.value.bankAccountNumber
     }
 
+    //to not allow to add the client in case there is some invalid information
     if (this.clientForm.invalid) {
       return;
     }
@@ -127,7 +133,7 @@ export class HeaderComponent implements OnInit {
     this.clientForm.reset();
     this.clientService.getClients();
   }
-
+  // to get information about the validation errors
   get formControl(){
     return this.clientForm.controls;
   }

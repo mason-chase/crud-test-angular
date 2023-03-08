@@ -4,7 +4,7 @@ table {
 }
 
 thead th {
-    padding: 1rem 0.4rem;
+    padding: 0.9rem;
 }
 td {
     padding: var(--lateralmargin) 1rem;
@@ -37,10 +37,26 @@ button {
 .material-symbols-outlined.delete {
     color: var(--red);
 }
-.material-symbols-outlined:hover {
+.material-symbols-outlined:hover,
+.material-symbols-outlined:active {
     opacity: 0.6;
     transform: scale(1.2);
 }
 .space {
     height: 0.5rem;
+}
+
+@media screen and (max-width: 968px) {
+    .table-head,
+    .client-info,
+    .material-symbols-outlined {
+        font-size: 0.7rem;
+    }
+
+    thead th {
+        padding: 0.6rem;
+    }
+    td {
+        padding: var(--lateralmargin) 0.7rem;
+    }
 }

@@ -29,7 +29,7 @@ export class ClientService extends Init {
   
   onDelete(email: string) {
     let clients = JSON.parse(localStorage.getItem('clients')!);
-    
+    //iterate through clients storage and since emails are unique search for the selected email and remove it
     for(let i = 0; i <clients.length; i++) {
       if(clients[i].email == email) {
         clients.splice(i, 1);
@@ -47,6 +47,8 @@ export class ClientService extends Init {
     
   onUpdate (oldClient: any, newClient:  any) { 
     let clients = JSON.parse(localStorage.getItem('clients')!);
+
+    //find the selected client index on the storage to replace with the new information
     let uniqueClient = clients.find( (c: { email: any; firstName: any; lastName: any; dateOfBirth: any; }) => 
         c.email === oldClient.email || 
         c.firstName === oldClient.firstName && 
@@ -54,6 +56,7 @@ export class ClientService extends Init {
         c.dateOfBirth === oldClient.dateOfBirth)
     const index = clients.findIndex( (c: { email: any; }) => c.email === uniqueClient.email );
     
+    //Verify that that there is no duplicate to the new one in the storage
     let copyClient = clients.find((c: { firstName: string; lastName: string; dateOfBirth: any; email: any; }) =>
         (c.firstName.toLowerCase() === newClient.firstName.toLowerCase() &&
         c.lastName.toLowerCase() === newClient.lastName.toLowerCase() &&
@@ -61,6 +64,7 @@ export class ClientService extends Init {
         c.email === newClient.email);
     const copyIndex = clients.findIndex( (c: { email: any; }) => c.email === copyClient.email );
 
+    //If there is a copy alert otherwise replace that client index with the updated information
     if (copyIndex != index) {
       alert('This client is already in the database');
       return;
