@@ -24,6 +24,7 @@ export class ClientService extends Init {
     clients.push(newClient);
     localStorage.setItem('clients', JSON.stringify(clients));
     this.getClients();
+    location.reload();
   }
   
   onDelete(email: string) {
@@ -35,6 +36,7 @@ export class ClientService extends Init {
       }
     }
     localStorage.setItem('clients', JSON.stringify(clients));
+    location.reload();
   }
 
   onEdit(email:string) {
@@ -53,10 +55,10 @@ export class ClientService extends Init {
     const index = clients.findIndex( (c: { email: any; }) => c.email === uniqueClient.email );
     
     let copyClient = clients.find((c: { firstName: string; lastName: string; dateOfBirth: any; email: any; }) =>
-    (c.firstName.toLowerCase() === newClient.firstName.toLowerCase() &&
-    c.lastName.toLowerCase() === newClient.lastName.toLowerCase() &&
-    c.dateOfBirth === newClient.dateOfBirth) ||
-    c.email === newClient.email);
+        (c.firstName.toLowerCase() === newClient.firstName.toLowerCase() &&
+        c.lastName.toLowerCase() === newClient.lastName.toLowerCase() &&
+        c.dateOfBirth === newClient.dateOfBirth) ||
+        c.email === newClient.email);
     const copyIndex = clients.findIndex( (c: { email: any; }) => c.email === copyClient.email );
 
     if (copyIndex != index) {
@@ -68,6 +70,7 @@ export class ClientService extends Init {
 
     localStorage.setItem('clients', JSON.stringify(clients));
     this.getClients();
+    location.reload();
   }
   
 }
