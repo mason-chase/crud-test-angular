@@ -13,8 +13,8 @@ import { ValidatePhone } from 'src/app/ValidatePhone';
 })
 export class HeaderComponent implements OnInit {
   clients!: Client[];
-  btnText: string = 'Add New Client';
-  color: string = '#5989C1';
+  btnText: string = 'Add New Client'; // text of the button
+  color: string = '#5989C1'; // color of the button
   showAddClient: boolean = false;
   subscription!: Subscription;
   clientForm!: FormGroup;
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
       phoneNumber: new FormControl ('', 
         [Validators.required, ValidatePhone, Validators.minLength(13), Validators.maxLength(13)]),
       email: new FormControl ('', [Validators.required, Validators.email]),
-      bankAccountNumber: new FormControl ('', [Validators.required, Validators.minLength(9), Validators.maxLength(10)])
+      bankAccountNumber: new FormControl ('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
     })
   }
 
@@ -79,7 +79,6 @@ export class HeaderComponent implements OnInit {
       }
 
     if (this.clientForm.invalid) {
-      alert('Some information is not valid. Please rectify')
       return;
     }
 
@@ -109,6 +108,7 @@ export class HeaderComponent implements OnInit {
   }
 
   updateClient(form: FormGroup) {
+    this.isSubmitted = true;
 
     const newClient = {
       firstName: form.value.firstName,
@@ -119,10 +119,18 @@ export class HeaderComponent implements OnInit {
       bankAccountNumber: form.value.bankAccountNumber
     }
 
+    if (this.clientForm.invalid) {
+      return;
+    }
+
     this.clientService.onUpdate(this.selectedClient, newClient);
     this.toggleAddClient();
     this.clientForm.reset();
     this.clientService.getClients();
+  }
+
+  get formControl(){
+    return this.clientForm.controls;
   }
 }
 

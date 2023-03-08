@@ -21,6 +21,14 @@
                             id="firstName" 
                             placeholder="First Name" 
                             />
+                        <div class="error" *ngIf="formControl['firstName'].errors && isSubmitted">
+                            <div *ngIf="formControl['firstName'].errors['required']">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                Please insert first name
+                            </div>
+                        </div>
                     </div>
                     <div class="form-str">    
                         <label for="lastName">Last Name</label>
@@ -31,12 +39,28 @@
                             id="lastName" 
                             placeholder="Last Name" 
                             />
+                        <div class="error" *ngIf="formControl['lastName'].errors && isSubmitted">
+                            <div *ngIf="formControl['lastName'].errors['required']">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                Please insert last name
+                            </div>
                         </div>
+                    </div>
                     </div>
                     <div class="form-double">
                         <div class="form-str">
                             <label for="dob">Date of Birth</label>
                             <input formControlName="dateOfBirth"  type="date" name="dob" id="dob"/>
+                            <div class="error" *ngIf="formControl['dateOfBirth'].errors && isSubmitted">
+                                <div *ngIf="formControl['dateOfBirth'].errors['required']">
+                                    <span class="material-symbols-outlined">
+                                    error
+                                    </span>
+                                    Please insert date of birth
+                                </div>
+                            </div>
                     </div>
                     <div class="form-str">    
                         <label for="phoneNumber">Phone Number</label>
@@ -47,6 +71,20 @@
                             id="phoneNumber" 
                             placeholder="+351917625391"
                             />
+                        <div class="error" *ngIf="formControl['phoneNumber'].errors && isSubmitted">
+                            <div *ngIf="formControl['phoneNumber'].invalid">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                Phone Number not valid <br> (example: +351917369284)
+                            </div>
+                            <div *ngIf="formControl['phoneNumber'].errors['required']">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                Insert phone number
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-str">
@@ -58,6 +96,20 @@
                         id="email" 
                         placeholder="Client E-mail"
                         />
+                    <div class="error" *ngIf="formControl['email'].errors && isSubmitted">
+                        <div *ngIf="formControl['email'].errors['email']">
+                            <span class="material-symbols-outlined">
+                            error
+                            </span>
+                            E-mail not valid
+                        </div>
+                        <div *ngIf="formControl['email'].errors['required']">
+                            <span class="material-symbols-outlined">
+                            error
+                            </span>
+                            Insert e-mail
+                        </div>
+                    </div>
                 </div>
                 <div class="form-str">
                     <label for="iban">Account number</label>
@@ -68,6 +120,20 @@
                         id="iban" 
                         placeholder="Client Account Number (9 digits)" 
                         />
+                    <div class="error" *ngIf="formControl['bankAccountNumber'].errors && isSubmitted">
+                        <div *ngIf="formControl['bankAccountNumber'].errors['required']">
+                            <span class="material-symbols-outlined">
+                            error
+                            </span>
+                            Please insert bank account number
+                        </div>
+                        <div *ngIf="formControl['bankAccountNumber'].invalid">
+                            <span class="material-symbols-outlined">
+                            error
+                            </span>
+                            nvalid bank account number. Must have 9 characters long
+                        </div>
+                    </div>
                 </div>
                 <input type="submit" value="Save" class="save-btn"/>
             </form>
@@ -86,6 +152,14 @@
                                 id="firstName" 
                                 placeholder="First Name" 
                                 />
+                            <div class="error" *ngIf="formControl['firstName'].errors && isSubmitted">
+                                <div *ngIf="formControl['firstName'].errors['required']">
+                                    <span class="material-symbols-outlined">
+                                    error
+                                    </span>
+                                    Please insert first name
+                                </div>
+                            </div>
                         </div>
                         <div class="form-str">    
                             <label for="lastName">Last Name</label>
@@ -96,7 +170,15 @@
                                 id="lastName" 
                                 placeholder="Last Name" 
                                 />
+                            <div class="error" *ngIf="formControl['lastName'].errors && isSubmitted">
+                                <div *ngIf="formControl['lastName'].errors['required']">
+                                    <span class="material-symbols-outlined">
+                                    error
+                                    </span>
+                                    Please insert last name
+                                </div>
                             </div>
+                        </div>
                         </div>
                         <div class="form-double">
                             <div class="form-str">
@@ -107,6 +189,14 @@
                                     name="dob" 
                                     id="dob"
                                     />
+                                <div class="error" *ngIf="formControl['dateOfBirth'].errors && isSubmitted">
+                                    <div *ngIf="formControl['dateOfBirth'].errors['required']">
+                                        <span class="material-symbols-outlined">
+                                        error
+                                        </span>
+                                        Please insert date of birth
+                                    </div>
+                                </div>
                         </div>
                         <div class="form-str">    
                             <label for="phoneNumber">Phone Number</label>
@@ -117,6 +207,20 @@
                                 id="phoneNumber" 
                                 placeholder="Country code + Phone"
                                 />
+                            <div class="error" *ngIf="formControl['phoneNumber'].errors && isSubmitted">
+                                <div *ngIf="formControl['phoneNumber'].invalid">
+                                    <span class="material-symbols-outlined">
+                                    error
+                                    </span>
+                                    Phone Number not valid  <br> (example: +351917369284)
+                                </div>
+                                <div *ngIf="formControl['phoneNumber'].errors['required']">
+                                    <span class="material-symbols-outlined">
+                                    error
+                                    </span>
+                                    Insert phone number
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-str">
@@ -128,6 +232,20 @@
                             id="email" 
                             placeholder="Client E-mail"
                             />
+                        <div class="error" *ngIf="formControl['email'].errors && isSubmitted">
+                            <div *ngIf="formControl['email'].errors['email']">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                E-mail not valid
+                            </div>
+                            <div *ngIf="formControl['email'].errors['required']">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                Insert e-mail
+                            </div>
+                        </div>
                     </div>
                     <div class="form-str">
                         <label for="iban">Account number</label>
@@ -138,6 +256,20 @@
                             id="iban" 
                             placeholder="Client Account Number"
                             />
+                        <div class="error" *ngIf="formControl['bankAccountNumber'].errors && isSubmitted">
+                            <div *ngIf="formControl['bankAccountNumber'].errors['required']">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                Please insert bank account number
+                            </div>
+                            <div *ngIf="formControl['bankAccountNumber'].invalid">
+                                <span class="material-symbols-outlined">
+                                error
+                                </span>
+                                Invalid bank account number. Must have 9 characters long
+                            </div>
+                        </div>
                     </div>
                 <input type="submit" value="Save" class="save-btn"/>
             </form>

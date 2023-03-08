@@ -72,7 +72,13 @@ input::placeholder {
     font-family: "Montserrat", sans-serif;
     color: var(--gray);
 }
+input:invalid {
+    border: 1px solid var(--red);
+}
 
-input[type="date"]::-webkit-input-placeholder {
-    color: var(--blue);
+.error,
+.material-symbols-outlined {
+    color: #e72729;
+    font-size: 0.6rem;
+    padding-left: 0.4rem;
 }
