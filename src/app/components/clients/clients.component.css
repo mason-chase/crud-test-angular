@@ -33,6 +33,13 @@ button {
 .material-symbols-outlined {
     color: var(--blue);
 }
+.material-symbols-outlined.delete {
+    color: var(--red);
+}
+.material-symbols-outlined:hover {
+    opacity: 0.6;
+    transform: scale(1.2);
+}
 .space {
     height: 0.5rem;
 }

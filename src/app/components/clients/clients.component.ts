@@ -25,6 +25,7 @@ export class ClientsComponent implements OnInit{
       }
     }
     this.clientService.onDelete(email);
+    this.clientService.getClients();
    }
 
    onEdit(email: string) {

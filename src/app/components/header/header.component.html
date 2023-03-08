@@ -3,88 +3,144 @@
         <h1>BankBase CRUD</h1>
         <button 
             class="add-client"
+            [ngStyle]="{'background-color': color}"
             (click)="toggleAddClient()">
             {{btnText}}
         </button>
     </div>
     <div class="form" *ngIf="showAddClient" >
-        <form class="add-form" (ngSubmit)="addClient(clientForm)"  [formGroup]="clientForm" >
-            <div class="form-double">
-                <div class="form-str">
-                    <label for="firstName">First Name</label>
-                    <input 
-                        formControlName="firstName"
-                        type="text" 
-                        name="firstName" 
-                        id="firstName" 
-                        placeholder="First Name" 
-                        />
-                    <!-- <div class="error" *ngIf="form['firstName'].errors && isSubmitted">
-                        <div *ngIf="form['firstName'].errors['required']">
-                            Please insert First Name
-                        </div>
-                    </div> -->
-                </div>
-                <div class="form-str">    
-                    <label for="lastName">Last Name</label>
-                    <input 
-                        formControlName="lastName" 
-                        type="text" 
-                        name="lastName" 
-                        id="lastName" 
-                        placeholder="Last Name" 
-                        />
-                        <!-- <div class="error" *ngIf="form['lastName'].errors && isSubmitted">
-                            <div *ngIf="form['lastName'].errors['required']">
-                                Please insert Last Name
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
+        <div *ngIf="appState == 'default'">
+            <form class="add-form" (ngSubmit)="addClient(clientForm)"  [formGroup]="clientForm" >
                 <div class="form-double">
                     <div class="form-str">
-                        <label for="dob">Date of Birth</label>
-                        <input formControlName="dateOfBirth"  type="date" name="dob" id="dob"/>
-                        
-                    <!-- <div class="error" *ngIf="form['dateOfBirth'].errors && isSubmitted">
-                        <div *ngIf="form['dateOfBirth'].errors['required']">
-                            Please insert Date of Birth
-                        </div>
-                    </div> -->
-                </div>
-                <div class="form-str">    
-                    <label for="phoneNumber">Phone Number</label>
-                    <input formControlName="phoneNumber" type="text" name="phoneNumber" id="phoneNumber" placeholder="Country code + Phone"/>
-                    <!-- <div class="error" *ngIf="(
-                        phoneNumber?.dirty ||
-                        phoneNumber?.touched
-                                 ) &&
-                                 phoneNumber?.invalid">
-                        <div *ngIf="phoneNumber?.errors?.['maxlength']">
-                            Phone number should be in this format +351918827735
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-            <div class="form-str">
-                <label for="email">E-mail</label>
-                <input formControlName="email" type="text" name="email" id="email" placeholder="Client E-mail">
-                <!-- <div class="error" *ngIf="form['email'].errors && isSubmitted">
-                    <div *ngIf="form['email'].errors['required']">
-                        E-mail not valid
+                        <label for="firstName">First Name</label>
+                        <input 
+                            formControlName="firstName"
+                            type="text" 
+                            name="firstName" 
+                            id="firstName" 
+                            placeholder="First Name" 
+                            />
                     </div>
-                </div> -->
-            </div>
-            <div class="form-str">
-                <label for="iban">Account number</label>
-                <input formControlName="bankAccountNumber" type="text" name="iban" id="iban" placeholder="Client Account Number" >
-                <!-- <div class="error" *ngIf="form['bankAccountNumber'].errors && isSubmitted">
-                    <div *ngIf="form['bankAccountNumber'].errors['required']">
-                        Bank Account should have 9 numbers
+                    <div class="form-str">    
+                        <label for="lastName">Last Name</label>
+                        <input 
+                            formControlName="lastName" 
+                            type="text" 
+                            name="lastName" 
+                            id="lastName" 
+                            placeholder="Last Name" 
+                            />
+                        </div>
                     </div>
-                </div> -->
-            </div>
-            <input type="submit" value="Save" class="save-btn"/>
-        </form>
+                    <div class="form-double">
+                        <div class="form-str">
+                            <label for="dob">Date of Birth</label>
+                            <input formControlName="dateOfBirth"  type="date" name="dob" id="dob"/>
+                    </div>
+                    <div class="form-str">    
+                        <label for="phoneNumber">Phone Number</label>
+                        <input 
+                            formControlName="phoneNumber" 
+                            type="text" 
+                            name="phoneNumber" 
+                            id="phoneNumber" 
+                            placeholder="Country code + Phone"
+                            />
+                    </div>
+                </div>
+                <div class="form-str">
+                    <label for="email">E-mail</label>
+                    <input 
+                        formControlName="email" 
+                        type="text" 
+                        name="email" 
+                        id="email" 
+                        placeholder="Client E-mail"
+                        />
+                </div>
+                <div class="form-str">
+                    <label for="iban">Account number</label>
+                    <input 
+                        formControlName="bankAccountNumber" 
+                        type="text" 
+                        name="iban" 
+                        id="iban" 
+                        placeholder="Client Account Number" 
+                        />
+                </div>
+                <input type="submit" value="Save" class="save-btn"/>
+            </form>
+        </div>
+
+
+        <div *ngIf="appState == 'edit'">
+                <form class="add-form" (ngSubmit)="updateClient(clientForm)"  [formGroup]="clientForm" >
+                    <div class="form-double">
+                        <div class="form-str">
+                            <label for="firstName">First Name</label>
+                            <input 
+                                formControlName="firstName"
+                                type="text" 
+                                name="firstName" 
+                                id="firstName" 
+                                placeholder="First Name" 
+                                />
+                        </div>
+                        <div class="form-str">    
+                            <label for="lastName">Last Name</label>
+                            <input 
+                                formControlName="lastName" 
+                                type="text" 
+                                name="lastName" 
+                                id="lastName" 
+                                placeholder="Last Name" 
+                                />
+                            </div>
+                        </div>
+                        <div class="form-double">
+                            <div class="form-str">
+                                <label for="dob">Date of Birth</label>
+                                <input 
+                                    formControlName="dateOfBirth"  
+                                    type="date" 
+                                    name="dob" 
+                                    id="dob"
+                                    />
+                        </div>
+                        <div class="form-str">    
+                            <label for="phoneNumber">Phone Number</label>
+                            <input 
+                                formControlName="phoneNumber" 
+                                type="text" 
+                                name="phoneNumber" 
+                                id="phoneNumber" 
+                                placeholder="Country code + Phone"
+                                />
+                        </div>
+                    </div>
+                    <div class="form-str">
+                        <label for="email">E-mail</label>
+                        <input 
+                            formControlName="email" 
+                            type="text" 
+                            name="email" 
+                            id="email" 
+                            placeholder="Client E-mail"
+                            />
+                    </div>
+                    <div class="form-str">
+                        <label for="iban">Account number</label>
+                        <input 
+                            formControlName="bankAccountNumber" 
+                            type="text" 
+                            name="iban" 
+                            id="iban" 
+                            placeholder="Client Account Number"
+                            />
+                    </div>
+                <input type="submit" value="Save" class="save-btn"/>
+            </form>
+        </div>
     </div>
 </header>

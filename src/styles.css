@@ -71,5 +71,12 @@ table {
 body {
     font-family: "Montserrat", sans-serif;
 	background-color: var(--background);
+	height:100vh;
 }
-  
+
+.main {
+	height:100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
