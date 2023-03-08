@@ -16,8 +16,8 @@ export class ClientService {
     return clients;
   }
   
-  addClient(newClient: { firstName: string; lastName: string; dateOfBirth: Date; phoneNumber: string; email: string; bankAccountNumber: string; }) {
-    let clients = JSON.parse(localStorage.getItem('clients')!);
+  addClient(newClient: any) {
+    let clients = JSON.parse(localStorage.getItem('clients')!) || [];
     clients.push(newClient);
     localStorage.setItem('clients', JSON.stringify(clients));
     this.getClients();
@@ -47,16 +47,16 @@ export class ClientService {
         c.firstName === oldClient.firstName && 
         c.lastName === oldClient.lastName && 
         c.dateOfBirth === oldClient.dateOfBirth)
-    const index = clients.findIndex( (c: { email: any; }) => c.email === uniqueClient.email )
-    console.log(uniqueClient);
-    console.log(index);
-    if (clients.find(
-      (      c: { firstName: string; lastName: string; dateOfBirth: any; email: any; }) =>
-        (c.firstName.toLowerCase() === newClient.firstName.toLowerCase() &&
-        c.lastName.toLowerCase() === newClient.lastName.toLowerCase() &&
-        c.dateOfBirth === newClient.dateOfBirth) ||
-        (c.email === newClient.email) 
-      )) {
+    const index = clients.findIndex( (c: { email: any; }) => c.email === uniqueClient.email );
+    
+    let copyClient = clients.find((c: { firstName: string; lastName: string; dateOfBirth: any; email: any; }) =>
+    (c.firstName.toLowerCase() === newClient.firstName.toLowerCase() &&
+    c.lastName.toLowerCase() === newClient.lastName.toLowerCase() &&
+    c.dateOfBirth === newClient.dateOfBirth) ||
+    c.email === newClient.email);
+    const copyIndex = clients.findIndex( (c: { email: any; }) => c.email === copyClient.email );
+
+    if (copyIndex != index) {
       alert('This client is already in the database');
       return;
     } else {

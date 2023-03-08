@@ -12,7 +12,6 @@ import { ValidatePhone } from 'src/app/ValidatePhone';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   clients!: Client[];
   btnText: string = 'Add New Client';
   color: string = '#5989C1';
@@ -84,14 +83,13 @@ export class HeaderComponent implements OnInit {
       return;
     }
 
-    if (this.clients.filter(
+    if (this.clients.find(
       c =>
         c.firstName.toLowerCase() === form.value.firstName.toLowerCase() &&
         c.lastName.toLowerCase() === form.value.lastName.toLowerCase() &&
         c.dateOfBirth === form.value.dateOfBirth ||
         c.email === form.value.email 
-        //&& c !== this.selectedClient
-      ).length > 0) {
+      )) {
       alert('This client is already in the database');
       return;
     } 
@@ -104,11 +102,9 @@ export class HeaderComponent implements OnInit {
       email: form.value.email,
       bankAccountNumber: form.value.bankAccountNumber
     }
-
     this.clientService.addClient(newClient);
     this.clientForm.reset();
     this.toggleAddClient();
-    this.clientService.getClients();
   }
 
   updateClient(form: FormGroup) {
@@ -124,6 +120,7 @@ export class HeaderComponent implements OnInit {
 
     this.clientService.onUpdate(this.selectedClient, newClient);
     this.toggleAddClient();
+    this.clientForm.reset();
     this.clientService.getClients();
   }
 }
