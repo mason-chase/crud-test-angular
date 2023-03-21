@@ -15,14 +15,26 @@ export class ValidatorCustomer {
       return !hasNameInDatabase(control.value) ? null : {uniqe: "not uniqe"}
 
   }
+  static ValidatorNameEditMode(customerId:string):ValidatorFn{
 
+    return (control) =>
+    {
+
+      return !hasNameInDatabaseEditMode(control.value, customerId) ? null : {uniqe: "not uniqe"}
+    }
+
+  }
   static ValidatorLastName(g: FormControl) {
 
 
     return !hasLastNameInDatabase(g.value)? null : {uniqe: "not uniqe"}
 
   }
-
+  static ValidatorLastNameEditModer(customerId:string):ValidatorFn {
+    return (control) => {
+      return !hasLastNameInDatabaseEditModeer(control.value,customerId) ? null : {uniqe: "not uniqe"}
+    }
+  }
   static ValidtorDataBirth(g: FormControl) {
 
 
@@ -30,6 +42,13 @@ export class ValidatorCustomer {
 
   }
 
+  static ValidtorDataBirthEditMode(customerId:string):ValidatorFn {
+
+    return (control) => {
+
+      return !hasdateOfBirthInDatabaseEditMode(control.value,customerId) ? null : {uniqe: "not uniqe"}
+    }
+  }
 
 }
 export function hasNameInDatabase(FirstName: string): boolean {
@@ -44,6 +63,20 @@ export function hasNameInDatabase(FirstName: string): boolean {
       hasName = true;
     }
   })
+  return hasName;
+}
+  export function hasNameInDatabaseEditMode(FirstName: string,customerId:string): boolean {
+
+    const ls = new LocalStorageService();
+    let hasName = false;
+    const customers = ls.getCustomers().filter(item=>{return item._id!=customerId;});
+
+    customers.forEach((item: Customer) => {
+
+      if (item._firstname == FirstName) {
+        hasName = true;
+      }
+    })
 
   return hasName;
 }
@@ -62,6 +95,21 @@ export function hasLastNameInDatabase(LastName: string): boolean {
   })
   return hasName;
 }
+export function hasLastNameInDatabaseEditModeer(LastName: string,customerId:string): boolean {
+  if (!LastName) {
+    return false;
+  }
+  let hasName = false;
+  const ls = new LocalStorageService();
+  const customers = ls.getCustomers().filter(item=>{return item._id!=customerId;});
+
+  customers.forEach(item => {
+    if (item._lastName == LastName) {
+      hasName = true;
+    }
+  })
+  return hasName;
+}
 
 export function hasdateOfBirthInDatabase(dateOfBirth: Date): boolean {
   if (!dateOfBirth) {
@@ -70,7 +118,25 @@ export function hasdateOfBirthInDatabase(dateOfBirth: Date): boolean {
   const ls = new LocalStorageService();
 
   let hasdateOfBirth = false;
-  ls.getCustomers().forEach(item => {
+  const customers = ls.getCustomers()
+
+  customers.forEach(item => {
+    if (item._dateOfBirth == dateOfBirth) {
+      hasdateOfBirth = true;
+    }
+  })
+  return hasdateOfBirth;
+}
+export function hasdateOfBirthInDatabaseEditMode(dateOfBirth: Date,customerId:string): boolean {
+  if (!dateOfBirth) {
+    return false;
+  }
+  const ls = new LocalStorageService();
+
+  let hasdateOfBirth = false;
+  const customers = ls.getCustomers().filter(item=>{return item._id!=customerId;});
+
+  customers.forEach(item => {
     if (item._dateOfBirth == dateOfBirth) {
       hasdateOfBirth = true;
     }

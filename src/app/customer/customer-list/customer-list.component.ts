@@ -29,8 +29,8 @@ customerList : Customer[]=[]
     this.cs.removeCustomer(id)
   }
 
-  update() {
-    this.router.navigate(['user', user.id, 'details']);
+  update(id:string) {
+    this.router.navigate(['add', {customerId:id}]);
 
   }
 }

@@ -4,6 +4,7 @@ import {ValidatorCustomer} from "../Validtor/ValidatorCustomer";
 import {LocalStorageService} from "../../services/local-storage.service";
 import {Customer} from "../Model/Customer";
 import {CustomerService} from "../../services/customer.service";
+import {ActivatedRoute, Router} from "@angular/router";
 /*interface FormGroupCutomer {
   firstname:FormControl<string>,
   Lastname:FormControl
@@ -18,7 +19,7 @@ import {CustomerService} from "../../services/customer.service";
   styleUrls: ['./add-customer.component.css'],
 })
 export class AddCustomerComponent implements OnInit {
-  formgroup = this.fb.group({
+/*  formgroup = this.fb.group({
 
     firstName: new FormControl(null,[ Validators.required,ValidatorCustomer.ValidatorName]),
     Lastname: new FormControl(null, [Validators.required,ValidatorCustomer.ValidatorLastName]),
@@ -26,21 +27,29 @@ export class AddCustomerComponent implements OnInit {
     phoneNumber: new FormControl(null, Validators.required),
     email: new FormControl(null, Validators.required),
     bankAccountNumber: new FormControl(null, [Validators.required]),
-  })
-
-  constructor(private fb : FormBuilder  , private  cs : CustomerService,private cd:ChangeDetectorRef) {
+  })*/
+   formgroup: FormGroup=this.fb.group({});
+  customerId=undefined;
+  constructor(private fb : FormBuilder  , private  cs : CustomerService,private cd:ChangeDetectorRef , private  route : ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
+// @ts-ignore
+    this.customerId = this.route.snapshot.paramMap.get('customerId')??undefined;
+
+    this.setFormGroup( this.customerId )
 
 
   }
 
   click()
   {
+    debugger
     if (this.formgroup.valid)
-    this.cs.addCustomer(this.prepare());
+    {
+        this.save()
+    }
     Object.keys(this.formgroup.controls).forEach(key => {
       this.formgroup.controls[key].patchValue(undefined);
     });
@@ -69,4 +78,23 @@ export class AddCustomerComponent implements OnInit {
   }
 
 
+  private setFormGroup(customerId:any) {
+    debugger
+    const customer = this.cs.getCustomerById(customerId)
+    this.formgroup = this.fb.group({
+      firstName: new FormControl(customer?._firstname??undefined,customerId?[ValidatorCustomer.ValidatorNameEditMode(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidatorName]),
+      Lastname: new FormControl(customer?._lastName??undefined, customerId?[ValidatorCustomer.ValidatorLastNameEditModer(customerId), Validators.required]:[Validators.required]),
+      dateOfBirth: new FormControl(customer?._dateOfBirth??undefined, customerId?[ValidatorCustomer.ValidtorDataBirthEditMode(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidtorDataBirthEditMode(customerId)]),
+      phoneNumber: new FormControl(customer?._phoneNumber??undefined, Validators.required),
+      email: new FormControl(customer?._email??undefined, Validators.required),
+      bankAccountNumber: new FormControl(customer?._bankAccountNumber??undefined, [Validators.required]),
+    })
+  }
+
+  private save() {
+    if (this.customerId)
+    this.cs.addCustomer(this.prepare());
+    else
+    this.cs.updateCustomer(this.prepare() , this.customerId)
+  }
 }

@@ -37,4 +37,21 @@ export class CustomerService {
   private addMultiCustomer(customers: Customer[]) {
     this.ls.setItem(JSON.stringify(customers))
   }
+
+  getCustomerById(customerId: string) :Customer|undefined{
+    const customers = this.getListCustomer();
+    return customers.find(item=>item._id==customerId);
+  }
+
+  updateCustomer(customer: Customer, customerId: any) {
+        const index = this.getListCustomer().findIndex(item=>{return item._id==customerId})
+    debugger
+    if (index!=-1)
+    {
+      const customers = this.getListCustomer();
+      customers[index].setItem(customer._firstname,customer._lastName,customer._dateOfBirth,customer._phoneNumber,customer._email,customer._bankAccountNumber);
+      this.addMultiCustomer(customers);
+
+    }
+  }
 }
