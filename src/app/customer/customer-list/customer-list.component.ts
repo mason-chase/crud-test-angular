@@ -34,4 +34,9 @@ customerList : Customer[]=[]
     this.router.navigate(['add', {customerId:id}]);
 
   }
+
+  add() {
+    this.router.navigate(['add']);
+
+  }
 }
