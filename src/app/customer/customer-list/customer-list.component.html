@@ -1,0 +1,48 @@
+
+
+<div *ngFor="let customer of customerList">
+  <label>{{customer._firstname}}</label>
+  <label>{{customer._lastName}}</label>
+  <label>{{customer._dateOfBirth}}</label>
+  <label>{{customer._phoneNumber}}</label>
+  <label>{{customer._email}}</label>
+  <label>{{customer._bankAccountNumber}}</label>
+</div>
+
+<table>
+
+
+  <thead>
+  <tr>
+    <th>name</th>
+    <th>lname</th>
+    <th>dateBirtsh</th>
+    <th>phone</th>
+    <th>email</th>
+    <th>bank</th>
+    <th>action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customerList">
+    <td>{{customer._firstname}}</td>
+    <td>{{customer._lastName}}</td>
+    <td>{{customer._dateOfBirth}}</td>
+    <td>{{customer._phoneNumber}}</td>
+    <td>{{customer._email}}</td>
+    <td>{{customer._bankAccountNumber}}</td>
+    <td>
+      <div>
+
+        <button (click)="update()">update</button>
+        <button (click)="delete()">remove</button>
+
+      </div>
+    </td>
+  </tr>
+
+  </tbody>
+
+</table>
+
+

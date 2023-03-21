@@ -1,20 +1,22 @@
 export class Customer{
-  private id:number=0;
-  private firstname:string='';
-  private  lastName:string='';
-  private  dateOfBirth:Date=new Date();
-  private  phoneNumber:string='';
-  private  email:string='';
-  private bankAccountNumber:string='';
+
+    _id: string='' ;
+   _firstname:string;
+   _lastName:string;
+   _dateOfBirth:Date;
+   _phoneNumber:string;
+   _email:string;
+   _bankAccountNumber:string='';
 constructor(firstName:string , lastName:string,dataBirth:Date,phoneNumber:string,email:string,bankAccountNumber:string) {
 
-  this.firstname=firstName
-  this.lastName=lastName
-  this.dateOfBirth=dataBirth
-  this.phoneNumber=firstName
-  this.email=email
-  this.bankAccountNumber=bankAccountNumber
+  this._firstname=firstName
+  this._lastName=lastName
+  this._dateOfBirth=dataBirth
+  this._phoneNumber=firstName
+  this._email=email
+  this._bankAccountNumber=bankAccountNumber
 
 
 }
+
 }

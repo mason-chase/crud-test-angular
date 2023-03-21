@@ -1,17 +1,28 @@
 
 
-<form>
+<form *ngIf = "formgroup"[formGroup]="formgroup" >
+<div>
+  <input class="input-class" formControlName="firstName">
+  <label>{{getErrorFormControll('firstName')}}</label>
 
-  <input>
-  <input>
-  <input>
-  <input>
+  <input class="input-class" formControlName="Lastname">
+  <label>{{getErrorFormControll('Lastname')}}</label>
 
+  <input class="input-class" formControlName="dateOfBirth">
+  <label>{{getErrorFormControll('dateOfBirth')}}</label>
+
+  <input class="input-class" formControlName="phoneNumber">
+  <label>{{getErrorFormControll('phoneNumber')}}</label>
+
+  <input class="input-class" formControlName="email">
+  <label>{{getErrorFormControll('email')}}</label>
+
+  <input class="input-class" formControlName="bankAccountNumber">
+  <label>{{getErrorFormControll('bankAccountNumber')}}</label>
+
+
+</div>
 
 </form>
-Firstname
-Lastname
-DateOfBirth
-PhoneNumber
-Email
-BankAccountNumber
+<button (click)="click()" type="submit">افزودن کاربر</button>
+
