@@ -55,10 +55,11 @@ export class AddCustomerComponent implements OnInit {
     if (this.formgroup.valid)
     {
         this.save()
+      Object.keys(this.formgroup.controls).forEach(key => {
+        this.formgroup.controls[key].patchValue(undefined);
+      });
     }
-    Object.keys(this.formgroup.controls).forEach(key => {
-      this.formgroup.controls[key].patchValue(undefined);
-    });
+
     console.log(this.formgroup)
   }
 
@@ -90,9 +91,9 @@ export class AddCustomerComponent implements OnInit {
     this.formgroup = this.fb.group({
       firstName: new FormControl(customer?._firstname??undefined,customerId?[ValidatorCustomer.ValidatorNameEditMode(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidatorName]),
       Lastname: new FormControl(customer?._lastName??undefined, customerId?[ValidatorCustomer.ValidatorLastNameEditModer(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidatorLastName]),
-      dateOfBirth: new FormControl(customer?._dateOfBirth??undefined, customerId?[ValidatorCustomer.ValidtorDataBirthEditMode(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidtorDataBirthEditMode(customerId)]),
-      phoneNumber: new FormControl(customer?._phoneNumber??undefined, Validators.required),
-      email: new FormControl(customer?._email??undefined, Validators.required),
+      dateOfBirth: new FormControl(customer?._dateOfBirth??undefined, customerId?[ValidatorCustomer.ValidtorDataBirthEditMode(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidtorDataBirth]),
+      phoneNumber: new FormControl(customer?._phoneNumber??undefined, [Validators.required,Validators.pattern('[- +()0-9]+')]),
+      email: new FormControl(customer?._email??undefined, [Validators.required , Validators.email]),
       bankAccountNumber: new FormControl(customer?._bankAccountNumber??undefined, [Validators.required]),
     })
   }
