@@ -29,15 +29,21 @@ export class AddCustomerComponent implements OnInit {
     bankAccountNumber: new FormControl(null, [Validators.required]),
   })*/
    formgroup: FormGroup=this.fb.group({});
-  customerId=undefined;
-  constructor(private fb : FormBuilder  , private  cs : CustomerService,private cd:ChangeDetectorRef , private  route : ActivatedRoute) {
+  customerId:any=undefined;
+  constructor(private fb : FormBuilder  , private  cs : CustomerService,private cd:ChangeDetectorRef , private  aroute : ActivatedRoute,private router :Router) {
 
   }
 
   ngOnInit(): void {
 // @ts-ignore
-    this.customerId = this.route.snapshot.paramMap.get('customerId')??undefined;
+    this.customerId = this.aroute.snapshot.paramMap.get('customerId')??undefined;
 
+    const customer = this.cs.getCustomerById(this.customerId);
+    if (!customer && this.customerId)
+    {
+      this.router.navigate(['list']);
+
+    }
     this.setFormGroup( this.customerId )
 
 
@@ -45,7 +51,7 @@ export class AddCustomerComponent implements OnInit {
 
   click()
   {
-    debugger
+
     if (this.formgroup.valid)
     {
         this.save()
@@ -59,7 +65,7 @@ export class AddCustomerComponent implements OnInit {
 
   prepare():Customer
   {
-
+    debugger
     const form = this.formgroup.value;
     const custom = new Customer(form.firstName,form.Lastname,form.dateOfBirth,form.phoneNumber,form.email, form.bankAccountNumber)
     return  custom;
@@ -79,11 +85,11 @@ export class AddCustomerComponent implements OnInit {
 
 
   private setFormGroup(customerId:any) {
-    debugger
+
     const customer = this.cs.getCustomerById(customerId)
     this.formgroup = this.fb.group({
       firstName: new FormControl(customer?._firstname??undefined,customerId?[ValidatorCustomer.ValidatorNameEditMode(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidatorName]),
-      Lastname: new FormControl(customer?._lastName??undefined, customerId?[ValidatorCustomer.ValidatorLastNameEditModer(customerId), Validators.required]:[Validators.required]),
+      Lastname: new FormControl(customer?._lastName??undefined, customerId?[ValidatorCustomer.ValidatorLastNameEditModer(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidatorLastName]),
       dateOfBirth: new FormControl(customer?._dateOfBirth??undefined, customerId?[ValidatorCustomer.ValidtorDataBirthEditMode(customerId), Validators.required]:[Validators.required,ValidatorCustomer.ValidtorDataBirthEditMode(customerId)]),
       phoneNumber: new FormControl(customer?._phoneNumber??undefined, Validators.required),
       email: new FormControl(customer?._email??undefined, Validators.required),
@@ -92,9 +98,11 @@ export class AddCustomerComponent implements OnInit {
   }
 
   private save() {
-    if (this.customerId)
-    this.cs.addCustomer(this.prepare());
-    else
-    this.cs.updateCustomer(this.prepare() , this.customerId)
-  }
+    const cutomer = this.prepare()
+    debugger
+    if (!this.customerId)
+    this.cs.addCustomer(cutomer);
+    else {
+      this.cs.updateCustomer(cutomer, this.customerId)
+    }  }
 }

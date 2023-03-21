@@ -32,7 +32,7 @@ export class ValidatorCustomer {
   }
   static ValidatorLastNameEditModer(customerId:string):ValidatorFn {
     return (control) => {
-      return !hasLastNameInDatabaseEditModeer(control.value,customerId) ? null : {uniqe: "not uniqe"}
+      return !hasLastNameInDatabaseEditModeer(control.value,customerId) ? null : {uniqe: "not"}
     }
   }
   static ValidtorDataBirth(g: FormControl) {
@@ -101,8 +101,8 @@ export function hasLastNameInDatabaseEditModeer(LastName: string,customerId:stri
   }
   let hasName = false;
   const ls = new LocalStorageService();
-  const customers = ls.getCustomers().filter(item=>{return item._id!=customerId;});
-
+  const customers = ls.getCustomers().filter((item)=>{return item._id!=customerId;});
+console.log(customers)
   customers.forEach(item => {
     if (item._lastName == LastName) {
       hasName = true;

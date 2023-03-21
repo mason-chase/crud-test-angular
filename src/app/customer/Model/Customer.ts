@@ -12,7 +12,7 @@ constructor(firstName:string , lastName:string,dataBirth:Date,phoneNumber:string
   this._firstname=firstName
   this._lastName=lastName
   this._dateOfBirth=dataBirth
-  this._phoneNumber=firstName
+  this._phoneNumber=phoneNumber
   this._email=email
   this._bankAccountNumber=bankAccountNumber
 

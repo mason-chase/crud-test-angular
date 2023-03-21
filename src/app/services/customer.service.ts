@@ -45,11 +45,14 @@ export class CustomerService {
 
   updateCustomer(customer: Customer, customerId: any) {
         const index = this.getListCustomer().findIndex(item=>{return item._id==customerId})
-    debugger
+debugger
     if (index!=-1)
     {
+
+
       const customers = this.getListCustomer();
-      customers[index].setItem(customer._firstname,customer._lastName,customer._dateOfBirth,customer._phoneNumber,customer._email,customer._bankAccountNumber);
+      customers[index] = new Customer(customer._firstname,customer._lastName,customer._dateOfBirth,customer._phoneNumber,customer._email,customer._bankAccountNumber);
+      customers[index]._id = customerId
       this.addMultiCustomer(customers);
 
     }
