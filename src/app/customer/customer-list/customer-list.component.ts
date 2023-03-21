@@ -27,6 +27,7 @@ customerList : Customer[]=[]
 
   delete(id:string) {
     this.cs.removeCustomer(id)
+    this.getData()
   }
 
   update(id:string) {
