@@ -2,8 +2,6 @@
 
 Please read each note very carefully!
 Feel free to add/change project structure to a clean architecture to your view.
-and if you are not able to work on FrontEnd project, you can add a Swagger UI
-in a new Front project.
 
 Create a simple CRUD application with Angular that implements the below model:
 ```
