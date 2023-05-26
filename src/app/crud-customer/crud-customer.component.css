@@ -1,0 +1,23 @@
+.component-container{
+    margin: 4%;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 32px;
+}
+.customer-list{
+        border: 1px solid #b7b7b780;
+        border-radius: 8px;
+}
+.table-toolbar{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #b7b7b780;
+}
+table{
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.empty-message{
+    margin: 32px 0;
+    text-align: center;
+}

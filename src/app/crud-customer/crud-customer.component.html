@@ -1,0 +1,49 @@
+<div class="component-container">
+    <div class="customer-list">
+        <div class="table-toolbar py-2 px-2">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-success" (click)="openDialog=true">Add New Item</button>
+            </div>
+        </div>
+        <ng-container *ngIf="(customerList | async) as list">
+        <div class="table-responsive" *ngIf="list.length;else emptyTable">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>Num</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>DateOfBirth</th>
+                        <th>PhoneNumber</th>
+                        <th>Email</th>
+                        <th>BankAccountNumber</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of list;let index=index">
+                        <td>{{customer.id}}</td>
+                        <td>{{customer.firstname}}</td>
+                        <td>{{customer.lastname}}</td>
+                        <td>{{customer.dateOfBirth}}</td>
+                        <td>{{customer.phoneNumber}}</td>
+                        <td>{{customer.email}}</td>
+                        <td>{{customer.bankAccountNumber}}</td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-danger mx-1" (click)="deleteItem(customer)">Remove</button>
+                            <button type="button" class="btn btn-sm btn-secondary mx-1" (click)="editItem(customer)">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+    <ng-template #emptyTable>
+        <div class="empty-message">
+            <h4>Table is empty</h4>
+        </div>
+    </ng-template>
+    </div>
+    <app-customer-dialog *ngIf="openDialog" (dialogClosed)="openDialog=false" [customer]="customer"></app-customer-dialog>
+    <app-description></app-description>
+</div>
