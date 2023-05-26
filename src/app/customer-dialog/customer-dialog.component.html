@@ -1,0 +1,84 @@
+<div class="modal modal-lg" tabindex="-1">
+    <div class="modal-dialog shadow">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add/Edit Customer</h5>
+          <button type="button" class="btn-close" (click)="closeDialog()"></button>
+        </div>
+        <div class="modal-body">
+        <form #form="ngForm" [formGroup]="customerForm" (ngSubmit)="submit()" autocomplete="off">
+            <div class="field-row">
+              <div class="form-field">
+                <label class="form-label">Firstname</label>
+                <input class="form-control"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="firstname">
+                <small class="invalid-feedback" *ngIf="customerForm.controls['firstname'].invalid && customerForm.controls['firstname'].touched">
+                  Input must be at least 32 characters long
+                </small>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Lastname</label>
+                <input class="form-control"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="lastname">
+                <small class="invalid-feedback" *ngIf="customerForm.controls['lastname'].invalid && customerForm.controls['lastname'].touched">
+                  Input must be at least 32 characters long
+                </small>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="form-field">
+                <label class="form-label">dateOfBirth</label>
+                <input class="form-control"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="dateOfBirth">
+                <small class="invalid-feedback" *ngIf="customerForm.controls['dateOfBirth'].invalid && customerForm.controls['dateOfBirth'].touched">
+                  xxxx/xx/xx is correct format
+                </small>
+              </div>
+              <div class="form-field">
+                <label class="form-label">phoneNumber</label>
+                <input class="form-control"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="phoneNumber">
+                <small class="invalid-feedback" *ngIf="customerForm.controls['phoneNumber'].invalid && customerForm.controls['phoneNumber'].touched">
+                  Iranian mobile number is correct format
+                </small>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="form-field">
+                <label class="form-label">email</label>
+                <input class="form-control"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="email">
+                <small class="invalid-feedback" *ngIf="customerForm.controls['email'].invalid && customerForm.controls['email'].touched">
+                  The email is not valid
+                </small>
+              </div>
+              <div class="form-field">
+                <label class="form-label">bankAccountNumber</label>
+                <input class="form-control"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="bankAccountNumber">
+                <small class="invalid-feedback" *ngIf="customerForm.controls['bankAccountNumber'].invalid && customerForm.controls['bankAccountNumber'].touched">
+                  Iranian card number format dddd-dddd-dddd-dddd
+                </small>
+              </div>
+            </div>
+        </form>     
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" (click)="closeDialog()">Close</button>
+          <button type="button" class="btn btn-sm btn-primary" [disabled]="customerForm.invalid" (click)="form.ngSubmit.emit()">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>

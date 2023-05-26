@@ -1,0 +1,13 @@
+.modal{
+    background: #00000080;
+}
+.field-row{
+    display: flex;
+    gap: 24px;
+    margin-bottom: 12px;
+}
+.field-row > div{
+    max-width: 100%;
+    flex: 0 0 auto;
+    width: calc(50% - 12px);
+}
