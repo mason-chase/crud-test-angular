@@ -1,7 +1,8 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Customer } from '../shared/modeles/customer';
-import { StorageService } from '../shared/services/storage.service';
+import { map, of } from 'rxjs';
+import { Customer } from '../shared/models/customer';
+import { StorageService, StorageStatus } from '../shared/services/storage.service';
 import { PhoneNumberValidator } from '../shared/validators/custom-validators';
 
 @Component({
@@ -26,18 +27,25 @@ export class CustomerDialogComponent implements OnInit{
 
   constructor(
     private storageService:StorageService
-  ) { }
+  ) { 
+  }
 
+  formgropChanged$ = of(false);
   ngOnInit() {
     if (this.customer) {
-      this.customerForm.setValue({
+      const formInit = {
         firstname:this.customer.firstname,
         lastname: this.customer.lastname,
         dateOfBirth:this.customer.dateOfBirth,
         phoneNumber:this.customer.phoneNumber,
         email: this.customer.email,
         bankAccountNumber:this.customer.bankAccountNumber,
-      });
+      };
+      this.customerForm.setValue(formInit);
+     
+      this.formgropChanged$ =this.customerForm.valueChanges.pipe(
+        map((value) => (JSON.stringify(value) == JSON.stringify(formInit)) ? true : false),
+      );
     }
   }
 
@@ -53,25 +61,24 @@ export class CustomerDialogComponent implements OnInit{
     if (this.customerForm.invalid) {
       return;
     }
+    let status = StorageStatus.SUCCESS;
     if (this.customer) {
-      this.storageService.editItem({...this.customerForm.value, id:this.customer.id});
-      this.closeDialog();
+      status = this.storageService.editItem({...this.customerForm.value, id:this.customer.id});
     } else {
-      const state = this.storageService.addItem(this.customerForm.value);
-      switch (state.status) {
-        case 123:
-          this.customerForm.controls['firstname'].setErrors({'incorrect': true});
-          this.customerForm.controls['lastname'].setErrors({'incorrect': true});
-          this.customerForm.controls['dateOfBirth'].setErrors({'incorrect': true});
-          break;
-        case 5:
-          this.customerForm.controls['email'].setErrors({'incorrect': true});
-          break;
-      
-        default:
-          this.closeDialog();
-          break;
-      }
+      status = this.storageService.addItem(this.customerForm.value);
+    }
+    switch (status) {
+      case StorageStatus.PERSONEXISTS:
+        this.customerForm.controls['firstname'].setErrors({'incorrect': true});
+        break;
+
+      case StorageStatus.EMAILEXISTS:
+        this.customerForm.controls['email'].setErrors({'incorrect': true});
+        break;
+        
+      default:
+        this.closeDialog();
+        break;
     }
     
   }

@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, filter } from 'rxjs';
-import { Customer } from '../modeles/customer';
+import { Customer } from '../models/customer';
+
+export enum StorageStatus {
+  SUCCESS = 0,
+  EMAILEXISTS = 5,
+  PERSONEXISTS = 123
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-
+  
+  store:Customer[] = [];
+  
   private customerSource = new BehaviorSubject<Customer[]>(<any>null);
   getCustomer$: Observable<Customer[]> = this.customerSource.asObservable().pipe(
     filter(x => x != null)
@@ -17,51 +25,62 @@ export class StorageService {
   }
 
   constructor(){
-    this.setCustomer(this.getStorage());
+    this.getStorage()
   }
 
   addItem(item: Customer){
-    const store = this.getStorage();
+    if (this.emailExistence(item)) {
+      return StorageStatus.EMAILEXISTS;
+    }
+    if (this.personExistence(item)) {
+      return StorageStatus.PERSONEXISTS;
+    }
     let autoGenerateId = 0;
-    if (store.length) {
-      autoGenerateId = store[store.length - 1].id + 1;
+    if (this.store.length) {
+      autoGenerateId = this.store[this.store.length - 1].id + 1;
     }
-    const index = store.findIndex(customer => customer.email === item.email);
-    if(index > -1){
-      // email exists
-      return {status:5};
-    }else{
-      let checkExistence = item.firstname + item.lastname + item.dateOfBirth;
-      const check = store.findIndex(customer => customer.firstname + customer.lastname + customer.dateOfBirth === checkExistence);
-      if(check > -1){
-      // user exists
-      return {status:123};
-      }
-      store.push({...item, id:autoGenerateId});
-    }
-    this.updateState(store);
-    return {status:0};
+    this.store.push({...item, id:autoGenerateId});
+    this.updateState(this.store);
+    return StorageStatus.SUCCESS;
   }
 
   editItem(item: Customer){
-    const store = this.getStorage();
-    const index = store.findIndex(customer => customer.id === item.id);
-    store[index] = {...item, id:store[index].id};
-    this.updateState(store);
+    if (this.emailExistence(item, true)) {
+      return StorageStatus.EMAILEXISTS;
+    }
+    if (this.personExistence(item, true)) {
+      return StorageStatus.PERSONEXISTS;
+    }
+    const index = this.store.findIndex(customer => customer.id === item.id);
+    this.store[index] = item;
+    this.updateState(this.store);
+    return StorageStatus.SUCCESS;
   }
 
   deleteItem(item: Customer){
-    const store = this.getStorage();
-    const modified = store.filter(customer => customer.id != item.id);
-    this.updateState(modified);
+    this.store = this.store.filter(customer => customer.id != item.id);
+    this.updateState(this.store);
   }
 
-  getStorage():Customer[]{
+  // in edit mode we should not compare itself with itself so we are using a boolean proprety named exceptItself
+  emailExistence(item: Customer, exceptItself = false){
+    const index = this.store.findIndex(customer => (!exceptItself || customer.id != item.id) && customer.email === item.email);
+    return (index > -1);
+  }
+
+  // in edit mode we should not compare itself with itself so we are using a boolean proprety named exceptItself
+  personExistence(item: Customer, exceptItself = false){
+    const checkExistence = item.firstname + item.lastname + item.dateOfBirth;
+    const index = this.store.findIndex(customer => (!exceptItself || customer.id != item.id) && customer.firstname + customer.lastname + customer.dateOfBirth === checkExistence);
+    return (index > -1);
+  }
+  
+  getStorage(){
     const temp = localStorage.getItem('customers');
     if(temp){
-      return JSON.parse(temp);
+      this.store = JSON.parse(temp);
     }
-    return [];
+    this.setCustomer(this.store);
   }
 
   updateState(modified:Customer[]){

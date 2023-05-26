@@ -15,7 +15,7 @@
                     autocomplete="off"
                     formControlName="firstname">
                 <small class="invalid-feedback" *ngIf="customerForm.controls['firstname'].invalid && customerForm.controls['firstname'].touched">
-                  Input must be at least 32 characters long
+                  The field is mandatory and has a maximum of 32 characters
                 </small>
               </div>
               <div class="form-field">
@@ -25,7 +25,7 @@
                     autocomplete="off"
                     formControlName="lastname">
                 <small class="invalid-feedback" *ngIf="customerForm.controls['lastname'].invalid && customerForm.controls['lastname'].touched">
-                  Input must be at least 32 characters long
+                  The field is mandatory and has a maximum of 32 characters
                 </small>
               </div>
             </div>
@@ -37,7 +37,7 @@
                     autocomplete="off"
                     formControlName="dateOfBirth">
                 <small class="invalid-feedback" *ngIf="customerForm.controls['dateOfBirth'].invalid && customerForm.controls['dateOfBirth'].touched">
-                  xxxx/xx/xx is correct format
+                  Correct format is xxxx/xx/xx
                 </small>
               </div>
               <div class="form-field">
@@ -47,7 +47,7 @@
                     autocomplete="off"
                     formControlName="phoneNumber">
                 <small class="invalid-feedback" *ngIf="customerForm.controls['phoneNumber'].invalid && customerForm.controls['phoneNumber'].touched">
-                  Iranian mobile number is correct format
+                  Iranian mobile number format
                 </small>
               </div>
             </div>
@@ -77,7 +77,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-secondary" (click)="closeDialog()">Close</button>
-          <button type="button" class="btn btn-sm btn-primary" [disabled]="customerForm.invalid" (click)="form.ngSubmit.emit()">Save changes</button>
+          <button type="button" class="btn btn-sm btn-primary" [disabled]="customerForm.invalid || (formgropChanged$ | async)" (click)="form.ngSubmit.emit()">Save changes</button>
         </div>
       </div>
     </div>
