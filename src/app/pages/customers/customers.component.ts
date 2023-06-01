@@ -13,7 +13,31 @@ const FakeData: ICustomer[] = [
     PhoneNumber: '+989302940504',
     DateOfBirth: '21/1/1996',
     BankAccountNumber: '123'
-  }
+  },
+  {
+    Firstname: 'sadegh',
+    Lastname: 'sallari nia',
+    Email: 'mrsadeghsn@gmail.com',
+    PhoneNumber: '+989302940504',
+    DateOfBirth: '21/1/1996',
+    BankAccountNumber: '123'
+  },
+  {
+    Firstname: 'sadegh',
+    Lastname: 'sallari nia',
+    Email: 'mrsadeghsn@gmail.com',
+    PhoneNumber: '+989302940504',
+    DateOfBirth: '21/1/1996',
+    BankAccountNumber: '123'
+  },
+  {
+    Firstname: 'sadegh',
+    Lastname: 'sallari nia',
+    Email: 'mrsadeghsn@gmail.com',
+    PhoneNumber: '+989302940504',
+    DateOfBirth: '21/1/1996',
+    BankAccountNumber: '123'
+  },
 ]
 
 
@@ -45,5 +69,13 @@ export class CustomersComponent implements OnInit {
     let localCustomers: ICustomer[] = JSON.parse(this.localStorage.getItem('CUSTOMERS'))
     customers = [...localCustomers];
     return of(customers)
+  }
+
+  edit(customer: ICustomer) {
+
+  }
+
+  remove(customer: ICustomer) {
+
   }
 }

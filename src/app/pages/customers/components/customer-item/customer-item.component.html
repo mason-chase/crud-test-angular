@@ -1,1 +1,21 @@
-<p>customer-item works!</p>
+<td>
+    <p>{{index}}</p>
+</td>
+<td>
+    <p>{{customer.Firstname | fullname: customer.Lastname}}</p>
+</td>
+<td>
+    <p>email: {{customer.Email}}</p>
+</td>
+<td>
+    <p>phone number: {{customer.PhoneNumber}}</p>
+</td>
+<td>
+    <p>birthday: {{customer.DateOfBirth}}</p>
+</td>
+<td>
+    <p>account: {{customer.BankAccountNumber}}</p>
+</td>
+
+<td> <button class="my-1" (click)="editHandler()">Edit</button></td>
+<td> <button class="my-1" (click)="removeHandler()">remove</button></td>

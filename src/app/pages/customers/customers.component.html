@@ -1,3 +1,6 @@
-<ng-container *ngFor="let customer of customers$ | async">
-    <app-customer-item [customr]="customer"></app-customer-item>
-</ng-container>
+<tr class="row">
+    <ng-container *ngFor="let customer of customers$ | async; let i = index">
+        <app-customer-item [customer]="customer" [index]="i + 1" (edit)="edit($event)"
+            (remove)="remove($event)"></app-customer-item>
+    </ng-container>
+</tr>

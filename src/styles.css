@@ -1,17 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
-.col-12 {
-  width: 100%;
+body {
+  padding: 2rem;
 }
 
-.d-flex {
-  display: flex;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.justify-content-center {
-  justify-content: center;
+p {
+  margin-bottom: 0 !important;
 }
