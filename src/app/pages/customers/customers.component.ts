@@ -46,6 +46,19 @@ export class CustomersComponent implements OnInit {
         edit_mood: false
       }
     });
+    dialog.afterClosed().subscribe((res: ICustomer) => {
+      let existData: ICustomer[] = [];
+      this.customers$.subscribe(res => {
+        existData = res
+      });
+
+      if (res) {
+        existData.unshift(res);
+      }
+      this.handleChanges(existData);
+      this.customers$ = of(existData);
+
+    })
   }
 
   edit(customer: ICustomer) {
@@ -58,6 +71,8 @@ export class CustomersComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe((res: ICustomer) => {
+      console.log('IN EDIT');
+
       this.customers$ = this.customers$.pipe(
         map(customers => {
           let index = customers.findIndex(x => x.PhoneNumber === res.PhoneNumber);
