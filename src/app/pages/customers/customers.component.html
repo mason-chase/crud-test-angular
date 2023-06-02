@@ -1,0 +1,11 @@
+<tr class="row w-100">
+
+    <div class="row m-0 p-0 my-3">
+        <button class="btn-create" (click)="create()">create</button>
+    </div>
+
+    <ng-container *ngFor="let customer of customers$ | async; let i = index">
+        <app-customer-item [customer]="customer" [index]="i + 1" (edit)="edit($event)"
+            (remove)="remove($event)"></app-customer-item>
+    </ng-container>
+</tr>

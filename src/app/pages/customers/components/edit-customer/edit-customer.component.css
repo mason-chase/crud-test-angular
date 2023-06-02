@@ -1,0 +1,10 @@
+:host {
+  width: 100% !important;
+  padding: 0 1rem;
+}
+
+.btn-reg {
+  min-width: 90px;
+  max-width: 90px;
+  color: black;
+}

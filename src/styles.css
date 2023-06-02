@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  padding: 2rem;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.edit-dialog {
+  min-width: 30rem !important;
+  width: 30rem !important;
+  max-width: 30rem !important;
+  margin: 0 auto;
+}
+
+button {
+  border: none;
+  color: white;
+  width: auto !important;
+  padding: 0.25rem 1rem !important;
+}
+
+button:disabled {
+  background-color: #eaeaea;
+  color: black;
+}
+
+.btn-create {
+  background-color: dodgerblue;
+}
+
+.btn-save {
+  background-color: green;
+}
+
+.btn-edit {
+  background-color: darkcyan;
+}
+
+.btn-remove {
+  background-color: crimson;
+}
+
+.error {
+  color: red;
+}
+
+label {
+  padding: 0 !important;
+  margin-bottom: 0.25rem;
+}
+
+.l-h-2 {
+  line-height: 2;
+}
+
+.mdc-menu-surface--open {
+  max-height: 150px !important;
+}
+
+.mat-mdc-menu-item {
+  width: 100% !important;
+}

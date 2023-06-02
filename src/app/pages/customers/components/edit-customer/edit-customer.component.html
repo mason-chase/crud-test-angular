@@ -1,0 +1,48 @@
+<form class="col-12 px-3 d-flex flex-wrap" [formGroup]="form" (ngSubmit)="submitHandler()">
+    <div class="row m-0 mb-3">
+        <label for="firstName">Firstname</label>
+        <input #firstName type="text" formControlName="Firstname">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="lastName">Lastname</label>
+        <input #lastName type="text" formControlName="Lastname">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="phoneNumber">PhoneNumber <small class="error" *ngIf="invalidPhone">
+                Phonenumber is not valid!
+            </small></label>
+        <button type="button" class="btn-reg" [matMenuTriggerFor]="menu">
+            {{selectedReq ||'country'}}
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let reg of regions" (click)="selectedReq = reg; selectReg()">{{reg}}</button>
+        </mat-menu>
+        <div class="col px-0 d-flex flex-grow-1">
+            <span class="mx-1 l-h-2">{{regCodeNumber}}</span>
+            <input #phoneNumber type="text" formControlName="PhoneNumber" [readonly]="edit_mood">
+        </div>
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="email">Email <small class="error"
+                *ngIf="form.controls['Email'].dirty && form.controls['Email'].hasError('pattern')">
+                Email is not valid!
+            </small></label>
+        <input #email type="email" email="true" formControlName="Email">
+
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="dateOfBirth">DateOfBirth</label>
+        <input #dateOfBirth type="text" formControlName="DateOfBirth">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="bankAccountNumber">BankAccountNumber</label>
+        <input #bankAccountNumber type="text" formControlName="BankAccountNumber">
+    </div>
+
+    <div class="col-12 p-0 d-flex">
+        <button class="btn-save" type="submit">Save</button>
+
+        <span class="mx-2" *ngIf="userExistError">This user is already exist</span>
+    </div>
+
+</form>
