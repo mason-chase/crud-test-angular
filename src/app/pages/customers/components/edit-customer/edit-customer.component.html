@@ -1,1 +1,31 @@
-<p>edit-customer works!</p>
+<form class="col-12 px-3 d-flex flex-wrap" [formGroup]="edit_form" (ngSubmit)="editHandler()">
+    <div class="row m-0 mb-3">
+        <label for="firstName">Firstname</label>
+        <input #firstName type="text" formControlName="Firstname">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="lastName">Lastname</label>
+        <input #lastName type="text" formControlName="Lastname">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="phoneNumber">PhoneNumber</label>
+        <input #phoneNumber type="text" formControlName="PhoneNumber" [readonly]="edit_mood">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="email">Email</label>
+        <input #email type="text" formControlName="Email">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="dateOfBirth">DateOfBirth</label>
+        <input #dateOfBirth type="text" formControlName="DateOfBirth">
+    </div>
+    <div class="row m-0 mb-3">
+        <label for="bankAccountNumber">BankAccountNumber</label>
+        <input #bankAccountNumber type="text" formControlName="BankAccountNumber">
+    </div>
+
+    <div class="row m-0 mb-3">
+        <button class="btn-save" type="submit">Save</button>
+    </div>
+
+</form>

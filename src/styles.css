@@ -7,5 +7,40 @@ p {
   margin-bottom: 0 !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.edit-dialog {
+  min-width: 30rem !important;
+  width: 30rem !important;
+  max-width: 30rem !important;
+  margin: 0 auto;
+}
+
+button {
+  border: none;
+  color: white;
+  padding: 0.25rem 1rem !important;
+}
+
+.btn-create {
+  background-color: dodgerblue;
+}
+
+.btn-save {
+  background-color: green;
+}
+
+.btn-edit {
+  background-color: darkcyan;
+}
+
+.btn-remove {
+  background-color: crimson;
+}
