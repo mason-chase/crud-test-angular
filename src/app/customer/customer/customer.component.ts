@@ -23,7 +23,7 @@ export class CustomerComponent implements OnInit {
     DateOfBirth: new FormControl('', [Validators.required]),
     PhoneNumber: new FormControl('', [Validators.required]),
     Email: new FormControl('', [Validators.required]),
-    BankAccountNumber: new FormControl('', [Validators.required])
+    BankAccountNumber: new FormControl('', [Validators.required, Validators.min(10000000), Validators.max(99999999999)])
   });
 
   get f() {

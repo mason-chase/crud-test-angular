@@ -72,7 +72,7 @@
         <!-- Email -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">Email</span>
-            <input type="text" class="form-control" placeholder="Email" formControlName="Email"
+            <input type="email" class="form-control" placeholder="Email" formControlName="Email" email="true"
                 [ngClass]="{ 'is-invalid': Email?.['invalid'] && (Email?.['dirty'] || Email?.['touched']) , 'is-valid': Email?.valid }">
 
             <!-- validation message -->
@@ -86,14 +86,20 @@
         <!-- BankAccountNumber -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">BankAccountNumber</span>
-            <input type="text" class="form-control" placeholder="BankAccountNumber" formControlName="BankAccountNumber"
-                [ngClass]="{ 'is-invalid': BankAccountNumber?.['invalid'] && (BankAccountNumber?.['dirty'] || BankAccountNumber?.['touched']) , 'is-valid': BankAccountNumber?.valid }">
+            <input type="number" class="form-control" placeholder="BankAccountNumber"
+                formControlName="BankAccountNumber"
+                [ngClass]="{ 'is-invalid': BankAccountNumber?.['invalid'] && (BankAccountNumber?.['dirty'] || BankAccountNumber?.['touched']) , 'is-valid': BankAccountNumber?.valid }"
+                min="10000000" max="99999999999">
 
             <!-- validation message -->
             <div class="invalid-feedback"
                 *ngIf="BankAccountNumber?.['invalid'] && (BankAccountNumber?.['dirty'] || BankAccountNumber?.['touched'])">
                 <div *ngIf="BankAccountNumber?.errors?.['required']">
                     * required
+                </div>
+
+                <div *ngIf="BankAccountNumber?.errors?.['min'] || BankAccountNumber?.errors?.['max']">
+                    * should be in correct range (10000000~99999999999)
                 </div>
             </div>
         </div>
