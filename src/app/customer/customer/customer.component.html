@@ -1,1 +1,56 @@
-<p>customer works!</p>
+<!-- 
+    Firstname
+	Lastname
+	DateOfBirth
+	PhoneNumber
+	Email
+	BankAccountNumber
+-->
+
+<form [formGroup]="form">
+    <div class="form-row">
+        <!-- Firstname -->
+        <div class="col-md-6 mb-3">
+            <span class="empty-span field-require">Firstname</span>
+            <input type="text" class="form-control" placeholder="Firstname">
+        </div>
+
+        <!-- Lastname -->
+        <div class="col-md-6 mb-3">
+            <span class="empty-span field-require">Lastname</span>
+            <input type="text" class="form-control" placeholder="Lastname">
+        </div>
+
+        <!-- DateOfBirth -->
+        <div class="col-md-6 mb-3">
+            <span class="empty-span field-require">DateOfBirth</span>
+            <input type="text" class="form-control" placeholder="DateOfBirth">
+        </div>
+
+        <!-- PhoneNumber -->
+        <div class="col-md-6 mb-3">
+            <span class="empty-span field-require">PhoneNumber</span>
+            <input type="text" class="form-control" placeholder="PhoneNumber">
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+            <span class="empty-span field-require">Email</span>
+            <input type="text" class="form-control" placeholder="Email">
+        </div>
+
+        <!-- BankAccountNumber -->
+        <div class="col-md-6 mb-3">
+            <span class="empty-span field-require">BankAccountNumber</span>
+            <input type="text" class="form-control" placeholder="BankAccountNumber">
+        </div>
+
+    </div>
+
+    <!-- submit -->
+    <div class="form-row">
+        <div class="col-md-12 text-left">
+            <button class="btn btn-success px-5 ml-2" type="submit">Add new customer</button>
+        </div>
+    </div>
+</form>
