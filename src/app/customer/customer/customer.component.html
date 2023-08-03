@@ -66,6 +66,10 @@
                 <div *ngIf="PhoneNumber?.errors?.['required']">
                     * required
                 </div>
+
+                <div *ngIf="!PhoneNumber?.errors?.['required'] && PhoneNumber?.errors?.['wrongNumber']">
+                    * incorrect type of phone number
+                </div>
             </div>
         </div>
 

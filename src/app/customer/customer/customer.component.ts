@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { PhoneNumberUtil } from 'google-libphonenumber';
 
 interface Customer {
   Firstname: string,
@@ -21,7 +22,7 @@ export class CustomerComponent implements OnInit {
     Firstname: new FormControl('', [Validators.required]),
     Lastname: new FormControl('', [Validators.required]),
     DateOfBirth: new FormControl('', [Validators.required]),
-    PhoneNumber: new FormControl('', [Validators.required]),
+    PhoneNumber: new FormControl('', [Validators.required, PhoneNumberValidator('US')]),
     Email: new FormControl('', [Validators.required]),
     BankAccountNumber: new FormControl('', [Validators.required, Validators.min(10000000), Validators.max(99999999999)])
   });
@@ -81,4 +82,20 @@ export class CustomerComponent implements OnInit {
 
   }
 
+}
+
+const phoneNumberUtil = PhoneNumberUtil.getInstance();
+
+export function PhoneNumberValidator(regionCode: string): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any; } | null => {
+    let validNumber = false;
+    try {
+      const phoneNumber = phoneNumberUtil.parseAndKeepRawInput(
+        control.value, regionCode
+      );
+      validNumber = phoneNumberUtil.isValidNumber(phoneNumber);
+    } catch (e) { }
+
+    return validNumber ? null : { 'wrongNumber': { value: control.value } };
+  };
 }
