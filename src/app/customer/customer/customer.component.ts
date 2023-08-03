@@ -18,17 +18,24 @@ interface Customer {
 export class CustomerComponent implements OnInit {
 
   form = new FormGroup({
-    Firstname: new FormControl(''),
-    Lastname: new FormControl(''),
-    DateOfBirth: new FormControl(''),
-    PhoneNumber: new FormControl(''),
-    Email: new FormControl(''),
-    BankAccountNumber: new FormControl('')
+    Firstname: new FormControl('', [Validators.required]),
+    Lastname: new FormControl('', [Validators.required]),
+    DateOfBirth: new FormControl('', [Validators.required]),
+    PhoneNumber: new FormControl('', [Validators.required]),
+    Email: new FormControl('', [Validators.required]),
+    BankAccountNumber: new FormControl('', [Validators.required])
   });
 
   get f() {
     return this.form.getRawValue();
   }
+
+  get Firstname() { return this.form.get('Firstname'); }
+  get Lastname() { return this.form.get('Lastname'); }
+  get DateOfBirth() { return this.form.get('DateOfBirth'); }
+  get PhoneNumber() { return this.form.get('PhoneNumber'); }
+  get Email() { return this.form.get('Email'); }
+  get BankAccountNumber() { return this.form.get('BankAccountNumber'); }
 
   customers!: Customer[];
 
@@ -59,7 +66,7 @@ export class CustomerComponent implements OnInit {
       customers.push(this.f);
       this.setCustomers(customers);
       this.showCusomers();
-    } else { // duplicate
+    } else { // duplicate by email
       if (!customers.find(x => x.Email == this.f.Email)) {
         customers.push(this.f);
         this.setCustomers(customers);
