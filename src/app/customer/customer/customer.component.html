@@ -12,37 +12,37 @@
         <!-- Firstname -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">Firstname</span>
-            <input type="text" class="form-control" placeholder="Firstname">
+            <input type="text" class="form-control" placeholder="Firstname" formControlName="Firstname">
         </div>
 
         <!-- Lastname -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">Lastname</span>
-            <input type="text" class="form-control" placeholder="Lastname">
+            <input type="text" class="form-control" placeholder="Lastname" formControlName="Lastname">
         </div>
 
         <!-- DateOfBirth -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">DateOfBirth</span>
-            <input type="text" class="form-control" placeholder="DateOfBirth">
+            <input type="text" class="form-control" placeholder="DateOfBirth" formControlName="DateOfBirth">
         </div>
 
         <!-- PhoneNumber -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">PhoneNumber</span>
-            <input type="text" class="form-control" placeholder="PhoneNumber">
+            <input type="text" class="form-control" placeholder="PhoneNumber" formControlName="PhoneNumber">
         </div>
 
         <!-- Email -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">Email</span>
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" placeholder="Email" formControlName="Email">
         </div>
 
         <!-- BankAccountNumber -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">BankAccountNumber</span>
-            <input type="text" class="form-control" placeholder="BankAccountNumber">
+            <input type="text" class="form-control" placeholder="BankAccountNumber" formControlName="BankAccountNumber">
         </div>
 
     </div>
@@ -50,7 +50,7 @@
     <!-- submit -->
     <div class="form-row">
         <div class="col-md-12 text-left">
-            <button class="btn btn-success px-5 ml-2" type="submit">Add new customer</button>
+            <button class="btn btn-success px-5 ml-2" type="submit" (click)="addNewCustomer()">Add new customer</button>
         </div>
     </div>
 </form>

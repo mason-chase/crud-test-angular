@@ -24,7 +24,15 @@ export class CustomerComponent implements OnInit {
     PhoneNumber: new FormControl(''),
     Email: new FormControl(''),
     BankAccountNumber: new FormControl('')
-  })
+  });
+
+  get f() {
+    return this.form.getRawValue();
+  }
+
+  customers!: Customer[];
+
+
 
 
   constructor() { }
@@ -33,17 +41,37 @@ export class CustomerComponent implements OnInit {
   }
 
   getCustomers(): Customer[] {
-    return JSON.parse(localStorage.getItem('customers') || '')
+    return JSON.parse(localStorage.getItem('customers') || '[]');
   }
 
   setCustomers(val: Customer[]) {
-    localStorage.setItem('customers', JSON.stringify(val))
+    localStorage.setItem('customers', JSON.stringify(val));
   }
 
   addNewCustomer() {
-    // get current data
-    // check duplicate
-    // add new one
+    // get current data 
+    let customers = this.getCustomers();
+
+
+    // check empty/duplicate
+    if (customers && !customers.length) { // empty
+      // add new one
+      customers.push(this.f);
+      this.setCustomers(customers);
+      this.showCusomers();
+    } else { // duplicate
+      if (!customers.find(x => x.Email == this.f.Email)) {
+        customers.push(this.f);
+        this.setCustomers(customers);
+        this.showCusomers();
+      }
+    }
+  }
+
+  showCusomers() {
+    this.customers = this.getCustomers();
+    console.log(this.customers);
+
   }
 
 }
