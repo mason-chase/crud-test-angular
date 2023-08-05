@@ -68,18 +68,40 @@ export class CustomerComponent implements OnInit {
       this.setCustomers(customers);
       this.showCusomers();
     } else { // duplicate by email
+      /// update array on local storage
       if (!customers.find(x => x.Email == this.f.Email)) {
         customers.push(this.f);
         this.setCustomers(customers);
         this.showCusomers();
       }
+
+      /// insert on db
+      this.addToDb(this.f);
     }
   }
 
   showCusomers() {
     this.customers = this.getCustomers();
     console.log(this.customers);
+  }
 
+  addToDb(newCustomer: Customer) {
+    /** check unique of record by: Firstname, Lastname and DateOfBirth
+     * there are different ways to check primary fields on db side: 
+     * 1- (recomended) check them on db by itself by when it wants to insert new record, so we have a request with response duplicate
+     * 2- get records from db by Email and check inside them 
+     * 
+     *  let customers: Customer[] = dbService.getCustomer(newCustomer.Email);
+
+        if (customers) {
+          if (customers.find(x =>
+            x.Firstname == newCustomer.Firstname
+            && x.Lastname == newCustomer.Lastname
+            && x.DateOfBirth == newCustomer.DateOfBirth)
+          )
+            dbService.insertCustomer(newCustomer);
+    }
+     */
   }
 
 }
