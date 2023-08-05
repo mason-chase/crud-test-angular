@@ -42,7 +42,7 @@
         <!-- DateOfBirth -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">DateOfBirth</span>
-            <input type="text" class="form-control" placeholder="DateOfBirth" formControlName="DateOfBirth"
+            <input type="date" class="form-control" placeholder="DateOfBirth" formControlName="DateOfBirth"
                 [ngClass]="{ 'is-invalid': DateOfBirth?.['invalid'] && (DateOfBirth?.['dirty'] || DateOfBirth?.['touched']) , 'is-valid': DateOfBirth?.valid }">
 
             <!-- validation message -->
