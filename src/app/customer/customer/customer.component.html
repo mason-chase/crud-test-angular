@@ -57,7 +57,7 @@
         <!-- PhoneNumber -->
         <div class="col-auto mb-3">
             <span class="empty-span field-require">PhoneNumber</span>
-            <input type="text" class="form-control" placeholder="PhoneNumber" formControlName="PhoneNumber"
+            <input type="tel" class="form-control" placeholder="PhoneNumber" formControlName="PhoneNumber"
                 [ngClass]="{ 'is-invalid': PhoneNumber?.['invalid'] && (PhoneNumber?.['dirty'] || PhoneNumber?.['touched']) , 'is-valid': PhoneNumber?.valid }">
 
             <!-- validation message -->
