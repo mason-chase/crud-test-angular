@@ -20,6 +20,7 @@ Customer {
 - [DDD](https://en.wikipedia.org/wiki/Domain-driven_design)
 - [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)
 - Clean git commits that shows your work progress.
+- [Microfrontend](https://en.wikipedia.org/wiki/Microfrontend)
 
 ### Validations (Must)
 
