@@ -1,0 +1,27 @@
+
+
+<form *ngIf = "formgroup"[formGroup]="formgroup" >
+<div>
+  <input class="input-class" formControlName="firstName" placeholder="Fname">
+  <label>{{getErrorFormControll('firstName')}}</label>
+
+  <input class="input-class" formControlName="Lastname" placeholder="Lname">
+  <label>{{getErrorFormControll('Lastname')}}</label>
+
+  <input class="input-class" formControlName="dateOfBirth" type="date" placeholder="dateOfBirth">
+  <label>{{getErrorFormControll('dateOfBirth')}}</label>
+
+  <input class="input-class" formControlName="phoneNumber" placeholder="phone">
+  <label>{{getErrorFormControll('phoneNumber')}}</label>
+
+  <input class="input-class" formControlName="email" placeholder="mail">
+  <label>{{getErrorFormControll('email')}}</label>
+
+  <input class="input-class" formControlName="bankAccountNumber" placeholder="bank">
+  <label>{{getErrorFormControll('bankAccountNumber')}}</label>
+
+
+</div>
+</form>
+<button (click)="click()" type="submit">{{customerId?'update':'add'}}</button>
+
