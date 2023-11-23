@@ -1,0 +1,41 @@
+<div class="table-content">
+    <table>
+        <thead>
+            <tr class="table-head">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Phone Number</th>
+                <th>E-mail</th>
+                <th>Bank Account Number</th>
+                <th> </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let client of clients" >
+            <tr class="client-info">
+                <td>{{client.firstName}}</td>                
+                <td>{{client.lastName}}</td>
+                <td>{{client.dateOfBirth}}</td>
+                <td>{{client.phoneNumber}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.bankAccountNumber}}</td>
+                <td>
+                    <button (click)="onEdit(client.email)">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </button>
+                </td>
+                <td class="last">
+                    <button (click)="onDelete(client.email)">
+                        <span class="material-symbols-outlined delete">
+                            delete
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr class="space"></tr>
+        </tbody>
+    </table>
+</div>
