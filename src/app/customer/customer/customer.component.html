@@ -1,0 +1,122 @@
+<!-- 
+    Firstname
+	Lastname
+	DateOfBirth
+	PhoneNumber
+	Email
+	BankAccountNumber
+-->
+
+<form [formGroup]="form">
+    <div class="form-row">
+        <!-- Firstname -->
+        <div class="col-auto mb-3">
+            <span class="empty-span field-require">Firstname</span>
+            <input type="text" class="form-control" placeholder="Firstname" formControlName="Firstname"
+                [ngClass]="{ 'is-invalid': Firstname?.['invalid'] && (Firstname?.['dirty'] || Firstname?.['touched']) , 'is-valid': Firstname?.valid }">
+
+            <!-- validation message -->
+            <div class="invalid-feedback"
+                *ngIf="Firstname?.['invalid'] && (Firstname?.['dirty'] || Firstname?.['touched'])">
+                <div *ngIf="Firstname?.errors?.['required']">
+                    * required
+                </div>
+            </div>
+        </div>
+
+        <!-- Lastname -->
+        <div class="col-auto mb-3">
+            <span class="empty-span field-require">Lastname</span>
+            <input type="text" class="form-control" placeholder="Lastname" formControlName="Lastname"
+                [ngClass]="{ 'is-invalid': Lastname?.['invalid'] && (Lastname?.['dirty'] || Lastname?.['touched']) , 'is-valid': Lastname?.valid }">
+
+            <!-- validation message -->
+            <div class="invalid-feedback"
+                *ngIf="Lastname?.['invalid'] && (Lastname?.['dirty'] || Lastname?.['touched'])">
+                <div *ngIf="Lastname?.errors?.['required']">
+                    * required
+                </div>
+            </div>
+        </div>
+
+        <!-- DateOfBirth -->
+        <div class="col-auto mb-3">
+            <span class="empty-span field-require">DateOfBirth</span>
+            <input type="date" class="form-control" placeholder="DateOfBirth" formControlName="DateOfBirth"
+                [ngClass]="{ 'is-invalid': DateOfBirth?.['invalid'] && (DateOfBirth?.['dirty'] || DateOfBirth?.['touched']) , 'is-valid': DateOfBirth?.valid }">
+
+            <!-- validation message -->
+            <div class="invalid-feedback"
+                *ngIf="DateOfBirth?.['invalid'] && (DateOfBirth?.['dirty'] || DateOfBirth?.['touched'])">
+                <div *ngIf="DateOfBirth?.errors?.['required']">
+                    * required
+                </div>
+            </div>
+        </div>
+
+        <!-- PhoneNumber -->
+        <div class="col-auto mb-3">
+            <span class="empty-span field-require">PhoneNumber</span>
+            <input type="tel" class="form-control" placeholder="PhoneNumber" formControlName="PhoneNumber"
+                [ngClass]="{ 'is-invalid': PhoneNumber?.['invalid'] && (PhoneNumber?.['dirty'] || PhoneNumber?.['touched']) , 'is-valid': PhoneNumber?.valid }">
+
+            <!-- validation message -->
+            <div class="invalid-feedback"
+                *ngIf="PhoneNumber?.['invalid'] && (PhoneNumber?.['dirty'] || PhoneNumber?.['touched'])">
+                <div *ngIf="PhoneNumber?.errors?.['required']">
+                    * required
+                </div>
+
+                <div *ngIf="!PhoneNumber?.errors?.['required'] && PhoneNumber?.errors?.['wrongNumber']">
+                    * incorrect type of phone number
+                </div>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-auto mb-3">
+            <span class="empty-span field-require">Email</span>
+            <input type="email" class="form-control" placeholder="Email" formControlName="Email" email="true"
+                [ngClass]="{ 'is-invalid': Email?.['invalid'] && (Email?.['dirty'] || Email?.['touched']) , 'is-valid': Email?.valid }">
+
+            <!-- validation message -->
+            <div class="invalid-feedback" *ngIf="Email?.['invalid'] && (Email?.['dirty'] || Email?.['touched'])">
+                <div *ngIf="Email?.errors?.['required']">
+                    * required
+                </div>
+            </div>
+        </div>
+
+        <!-- BankAccountNumber -->
+        <div class="col-auto mb-3">
+            <span class="empty-span field-require">BankAccountNumber</span>
+            <input type="number" class="form-control" placeholder="BankAccountNumber"
+                formControlName="BankAccountNumber"
+                [ngClass]="{ 'is-invalid': BankAccountNumber?.['invalid'] && (BankAccountNumber?.['dirty'] || BankAccountNumber?.['touched']) , 'is-valid': BankAccountNumber?.valid }"
+                min="10000000" max="99999999999">
+
+            <!-- validation message -->
+            <div class="invalid-feedback"
+                *ngIf="BankAccountNumber?.['invalid'] && (BankAccountNumber?.['dirty'] || BankAccountNumber?.['touched'])">
+                <div *ngIf="BankAccountNumber?.errors?.['required']">
+                    * required
+                </div>
+
+                <div *ngIf="BankAccountNumber?.errors?.['min'] || BankAccountNumber?.errors?.['max']">
+                    * should be in correct range (10000000~99999999999)
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- submit -->
+    <div class="form-row">
+        <div class="col-md-12 text-left">
+            <button class="btn btn-success px-5 ml-2" type="submit" (click)="addNewCustomer()"
+                [disabled]="form.invalid">
+                Add new customer
+            </button>
+        </div>
+    </div>
+</form>
