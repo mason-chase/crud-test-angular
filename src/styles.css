@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-snack-bar-container-danger {
+    padding: 20px;
+    background-color: red;
+    color: white;
+}
+
+.mat-snack-bar-container-success {
+    padding: 20px;
+    background-color: #51a351;
+    color: white;
+}

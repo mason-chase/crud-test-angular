@@ -1,0 +1,56 @@
+<div class="container" [formGroup]="customerForm">
+    <h2 class="row">create customer form</h2>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="Firstname" placeholder="Placeholder">
+            <mat-error *ngIf="customerForm.get('Firstname')?.invalid && customerForm.get('Firstname')?.touched">First
+                name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="Lastname" placeholder="Placeholder">
+            <mat-error *ngIf="customerForm.get('Lastname')?.invalid && customerForm.get('Lastname')?.touched">Last name
+                is required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Date of birth</mat-label>
+            <input matInput formControlName="DateOfBirth" placeholder="Placeholder">
+            <mat-error *ngIf="customerForm.get('DateOfBirth')?.invalid && customerForm.get('DateOfBirth')?.touched">Date
+                of birth is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input matInput formControlName="PhoneNumber" placeholder="Placeholder">
+            <mat-hint>2025550195</mat-hint>
+            <mat-error data-cy="invalid-phone-number"
+                *ngIf="customerForm.get('PhoneNumber')?.invalid && customerForm.get('PhoneNumber')?.touched">Invalid
+                phone number formate</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="Email" placeholder="Placeholder">
+            <mat-hint>yourEmailAddress@gmail.com</mat-hint>
+            <mat-error data-cy="invalid-email"
+                *ngIf="customerForm.get('Email')?.invalid && customerForm.get('Email')?.touched">Invalid email address
+                formate</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Bank account number</mat-label>
+            <input matInput formControlName="BankAccountNumber" type="number" placeholder="Placeholder">
+            <mat-error
+                *ngIf="customerForm.get('BankAccountNumber')?.invalid && customerForm.get('BankAccountNumber')?.touched">
+                Bank account number is required</mat-error>
+        </mat-form-field>
+    </div>
+    <mat-error class="duplicate-error" *ngIf="submitResult === 409" data-cy="duplicated-customer-info">The customer
+        information is duplicate!</mat-error>
+    <button *ngIf="btnType === 'insert'" (click)="submitForm()" mat-raised-button data-cy="submit-customer-form"
+        color="primary" [disabled]="customerForm.invalid" type="submit" >Save</button>
+    <button *ngIf="btnType === 'edit'" (click)="edit()" mat-raised-button data-cy="edit-customer-form"
+        color="primary" [disabled]="customerForm.invalid" type="submit" >Update</button>
+</div>

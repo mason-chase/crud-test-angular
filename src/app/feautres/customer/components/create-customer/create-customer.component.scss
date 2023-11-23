@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+
+    mat-form-field {
+        margin: 0 16px;
+    }
+}
+
+.duplicate-error {
+    margin-bottom: 16px;
+}
