@@ -1,0 +1,10 @@
+table {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-top: 32px;
+    ::ng-deep{
+        .mat-cell,.mat-header-cell{
+            text-align: center;
+        }
+    }
+}
