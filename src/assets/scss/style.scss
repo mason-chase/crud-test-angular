@@ -1,0 +1,41 @@
+// =====================================================
+//  Styles for student project.
+// =====================================================
+
+@import "base/base";
+@import "layout/layout";
+@import "bootstrap/grid";
+@import "bootstrap/utillities";
+@import "components/buttons";
+@import "components/card";
+@import "components/form";
+@import "components/label";
+@import "components/spinners";
+@import "components/bullet";
+@import "plugins/flaticon/flaticon.css";
+@import "plugins/flaticon2/flaticon.css";
+@import "plugins/keenthemes-icons/font/ki.css";
+@import "kit/kit";
+@import "vendors/vendors";
+@import "material/material";
+
+
+//.aside-open {
+//  overflow: hidden;
+//}
+
+.IRANSans-x-bold {
+  font-family: IRANSansX_Bold, sans-serif;
+}
+
+.IRANSans-x {
+  font-family: IRANSansX, sans-serif;
+}
+
+.Fa-Num-bold {
+  font-family: Fa_Num_Bold, sans-serif;
+}
+
+.Fa-Num {
+  font-family: Fa_Num, sans-serif;
+}

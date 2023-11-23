@@ -24,10 +24,16 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets/prod",
+                "output": "./assets"
+              }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/style.rtl.css",
+              "src/assets/scss/style.scss"
             ],
             "scripts": []
           },

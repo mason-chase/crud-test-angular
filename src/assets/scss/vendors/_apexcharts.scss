@@ -1,0 +1,144 @@
+//
+// Apexcharts
+//
+
+.apexcharts-tooltip-text-y-value, .apexcharts-tooltip-text-goals-value, .apexcharts-tooltip-text-z-value {
+  font-weight: normal !important;
+  font-family: var(--font-family-base-bold) !important;
+}
+
+// Text
+.apexcharts-text,
+.apexcharts-title-text,
+.apexcharts-legend-text {
+	font-family: var(--font-family-base) !important;
+}
+
+.apexcharts-tooltip-text-y-label, .apexcharts-tooltip-text-goals-label {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.apexcharts-tooltip-text-y-value, .apexcharts-tooltip-text-goals-value {
+  display: inline-block;
+  font-weight: normal !important;
+  font-family: var(--font-family-base-bold) !important;
+  margin-left: unset !important;
+}
+
+.apexcharts-title-text {
+	font-weight: var(--font-family-base) !important;
+}
+
+.apexcharts-pie-label {
+	font-weight: var(--font-family-base) !important;
+	//font-size: $font-size-sm;
+}
+
+// Dropdown
+.apexcharts-toolbar{
+	text-align: left !important;
+}
+
+.apexcharts-menu {
+	background: var(--bg-primary-light);
+	border: 0 !important;
+	padding: 0.5rem 0 !important;
+  box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15) !important;
+	border-radius: 5px !important;
+	overflow: hidden;
+	min-width: 10rem !important;
+
+	.apexcharts-menu-item {
+		//padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+		//transition: $transition;
+
+		&:hover{
+			//background-color: $hover-bg !important;
+		}
+	}
+}
+
+// Tooltips
+.apexcharts-tooltip {
+	&.apexcharts-theme-light {
+		//@include border-radius($border-radius);
+    box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15) !important;
+		border: 0 !important;
+		background: var(--bg-primary-light);
+
+		.apexcharts-tooltip-title {
+			background: #F8F9FAFF !important;
+			border: 0 !important;
+		}
+	}
+
+	.apexcharts-tooltip-title {
+		padding: 0.5rem 1rem;
+	}
+
+	.apexcharts-tooltip-series-group {
+	}
+}
+
+.apexcharts-xaxistooltip {
+	&.apexcharts-theme-light {
+		//@include border-radius($border-radius !important);
+    border-radius: 5px !important;
+    box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15) !important;
+		border: 0 !important;
+		background: var(--bg-primary-light) !important;
+
+		&:before {
+			border-bottom: 0 !important;
+		}
+
+		&:after {
+			border-bottom-color: var(--bg-primary-light) !important;
+		}
+	}
+}
+
+// Border radius integration
+.card-rounded-bottom {
+	.apexcharts-canvas {
+		svg {
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+	}
+}
+
+// Border radius options
+.rounded {
+	.apexcharts-canvas {
+		svg {
+			border-radius: 5px !important;
+		}
+	}
+}
+
+.rounded-sm {
+	.apexcharts-canvas {
+		svg {
+			border-radius: 5px !important;
+		}
+	}
+}
+
+.rounded-lg {
+	.apexcharts-canvas {
+		svg {
+			border-radius: 5px !important;
+		}
+	}
+}
+
+.rounded-xl {
+	.apexcharts-canvas {
+		svg {
+			border-radius: 5px !important;
+		}
+	}
+}

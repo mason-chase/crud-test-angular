@@ -1,0 +1,223 @@
+<section class="d-flex flex-column">
+
+  <div class="container modal-content">
+    <div class="modal-header">
+      <button
+        routerLink=""
+        type="button"
+        class="btn btn-light-facebook btn-elevate mr-2"
+      >
+        < Back to Dashboard
+      </button>
+    </div>
+    <div
+      class="overlay overlay-block modal-body"
+      style="min-height: 404px;cursor: default"
+    >
+      <ng-container *ngIf="isLoading$ | async">
+        <div class="overlay-layer bg-transparent">
+          <div class="spinner spinner-lg spinner-success"></div>
+        </div>
+      </ng-container>
+
+      <ng-container>
+        <form action="#" class="form form-label-right" [formGroup]="formGroup">
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <label class="form-label">Enter First name</label>
+              <input
+                type="text"
+                class="form-control form-control-lg form-control-solid"
+                name="firstName"
+                placeholder="First Name"
+                autocomplete="off"
+                [class.is-invalid]="isControlInvalid('firstName')"
+                [class.is-valid]="isControlValid('firstName')"
+                formControlName="firstName"
+              />
+              <div class="valid-feedback" *ngIf="isControlValid('firstName')">
+                First name was entered correct
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('required', 'firstName')"
+              >
+                First name is required
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('minlength', 'firstName')"
+              >
+                First name should have at least 3 symbols
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('maxlength', 'firstName')"
+              >
+                First name should have maximum 100 symbols
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <label class="form-label">Enter Last name</label>
+              <input
+                type="text"
+                class="form-control form-control-lg form-control-solid is-invalid"
+                name="lastName"
+                placeholder="Last Name"
+                autocomplete="off"
+                [class.is-invalid]="isControlInvalid('lastName')"
+                [class.is-valid]="isControlValid('lastName')"
+                formControlName="lastName"
+              />
+              <div class="valid-feedback" *ngIf="isControlValid('lastName')">
+                Last name was entered correct
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('required', 'lastName')"
+              >
+                Last name is required
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('minlength', 'lastName')"
+              >
+                Last name should have at least 3 symbols
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('maxLength', 'lastName')"
+              >
+                Last name should have maximum 100 symbols
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <label class="form-label">Enter phone number</label>
+              <input
+                type="text"
+                class="form-control form-control-lg form-control-solid is-invalid"
+                name="phone"
+                placeholder="Phone number"
+                autocomplete="off"
+                [class.is-invalid]="isControlInvalid('phone')"
+                [class.is-valid]="isControlValid('phone')"
+                formControlName="phone"
+              />
+              <div class="valid-feedback" *ngIf="isControlValid('phone')">
+                Phone number was entered correct
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('required', 'phone')"
+              >
+                Phone number is required
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('pattern', 'phone')"
+              >
+                Phone number should be in a standard form!
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-lg-4">
+              <label class="form-label">Enter Email</label>
+              <input
+                type="email"
+                class="form-control form-control-lg form-control-solid"
+                name="email"
+                placeholder="Email"
+                autocomplete="off"
+                [class.is-invalid]="isControlInvalid('email')"
+                [class.is-valid]="isControlValid('email')"
+                formControlName="email"
+              />
+              <div class="valid-feedback" *ngIf="isControlValid('email')">
+                Email was entered correct
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('required', 'email')"
+              >
+                Email is required
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('email', 'email')"
+              >
+                Email format is incorrect
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <label style="margin-bottom: 23px">Date of Birth</label>
+              <div class="input-group input-group-solid">
+                <input
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid('dateOfBirth')"
+                  [class.is-valid]="isControlValid('dateOfBirth')"
+                  type="date"
+                  id="start"
+                  name="trip-start"
+                  value="2018-07-22"
+                  min="2018-01-01"
+                  max="2018-12-31"
+                  formControlName="dateOfBirth"
+                  style="margin-top: 0"
+                >
+              </div>
+              <div class="valid-feedback" *ngIf="isControlValid('dateOfBirth')">
+                Date of Birth was entered correct
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('required', 'dateOfBirth')"
+              >
+                Please enter <b>Date of Birth</b> in 'mm/dd/yyyy' format
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <label class="form-label">Enter Bank account number</label>
+              <input
+                type="text"
+                class="form-control form-control-lg form-control-solid"
+                name="bankAccountNumber"
+                placeholder="Bank account number"
+                autocomplete="off"
+                [class.is-invalid]="isControlInvalid('bankAccountNumber')"
+                [class.is-valid]="isControlValid('bankAccountNumber')"
+                formControlName="bankAccountNumber"
+              />
+              <div class="valid-feedback" *ngIf="isControlValid('bankAccountNumber')">
+                Bank account number was entered correct
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="controlHasError('required', 'bankAccountNumber')"
+              >
+                Bank account number is required
+              </div>
+            </div>
+          </div>
+        </form>
+      </ng-container>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-facebook btn-elevate mr-2"
+        (click)="save()"
+        [disabled]="formGroup.invalid"
+      >
+        update
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="(log$ | async) as error" class="container modal-content mt-3">
+    <div class="modal-body">
+      {{error}}
+    </div>
+  </div>
+
+</section>

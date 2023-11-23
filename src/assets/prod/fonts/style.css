@@ -1,0 +1,17 @@
+@import "iransans/style.css";
+
+.IRANSans-x-bold {
+  font-family: IRANSansX_Bold, sans-serif;
+}
+
+.IRANSans-x {
+  font-family: IRANSansX, sans-serif;
+}
+
+.Fa-Num-bold {
+  font-family: Fa_Num_Bold, sans-serif;
+}
+
+.Fa-Num {
+  font-family: Fa_Num, sans-serif;
+}

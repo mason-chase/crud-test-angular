@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/prod/fonts/style.css";
+* {
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f7ff !important ;
+  font-family: IRANSansX, sans-serif;
+}
+
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+.platform-logo-m04cze0ztws {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* forms ------------------------------------------------------------------------------------------------------------ */
+.form-control.form-control-solid {
+  background-color: #f3f6f9;
+  border-color: #f3f6f9;
+  color: #3f4254;
+  transition: color .15s ease,background-color .15s ease,border-color .15s ease,box-shadow .15s ease;
+}
+.form-control-lg {
+  border-radius: .42rem;
+}
+.form-control {
+  font-family: IRANSansX, sans-serif;
+  display: block;
+  width: 100%;
+  padding: 12px 1rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #3f4254;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgb(228, 230, 239);
+  border-radius: .42rem;
+  box-shadow: none;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control.form-control-solid.active, .form-control.form-control-solid.focus, .form-control.form-control-solid:active, .form-control.form-control-solid:focus {
+  background-color: #ebedf3;
+  border-color: #ebedf3;
+  color: #3f4254;
+  transition: color .15s ease,background-color .15s ease,border-color .15s ease,box-shadow .15s ease;
+}
+
+.form-control.active, .form-control.focus, .form-control:active, .form-control:focus {
+  box-shadow: none !important;
+}
+.form-control:focus {
+  outline: 0;
+}
+
+.form-control.form-control-lg.form-control-solid:-webkit-autofill {
+  background: #f3f6f9;
+  border-color: #f3f6f9;
+}
+
+.form-group {
+  margin-bottom: 1.75rem;
+}
+
+.form-group input {
+  font-family: IRANSansX, sans-serif;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-family: IRANSansX, sans-serif;
+  font-weight: 400;
+  color: #474766;
+}

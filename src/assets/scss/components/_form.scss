@@ -1,0 +1,50 @@
+.input-icon {
+  position: relative;
+
+  input {
+    padding-right: 42px;
+  }
+
+  i {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(1.5em + 1.3rem);
+
+    svg g [fill] {
+      fill: #7E8299;
+    }
+
+  }
+
+}
+
+.form-control {
+
+  svg g [fill] {
+    fill: #B5B5C3;
+  }
+
+}
+
+body.ltr {
+
+  .input-icon {
+
+    input {
+      padding-right: unset;
+      padding-left: 42px;
+    }
+
+    i {
+      right: unset;
+      left: 0;
+    }
+
+  }
+
+}

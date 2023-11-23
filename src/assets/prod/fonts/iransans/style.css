@@ -1,0 +1,19 @@
+@font-face {
+  font-family: IRANSansX;
+  src: url("IRANSansWeb.ttf");
+}
+
+@font-face {
+  font-family: IRANSansX_Bold;
+  src: url("IRANSansWeb_Bold.ttf");
+}
+
+@font-face {
+  font-family: Fa_Num;
+  src: url("IRANSansWeb_FaNum.ttf");
+}
+
+@font-face {
+  font-family: Fa_Num_Bold;
+  src: url("IRANSansWeb_FaNum_Bold.ttf");
+}

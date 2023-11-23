@@ -1,0 +1,362 @@
+// =====================================================
+//  Styles for student header structure.
+// =====================================================
+
+@import "../components/dropdown-menu";
+
+.aside-open header {
+  padding-right: 0;
+
+  ul {
+
+    &:first-child {
+      margin-right: -128px;
+
+      .option {
+        opacity: 0;
+      }
+    }
+
+  }
+}
+
+body.ltr.aside-open header {
+  padding-right: 26px;
+  padding-left: 0;
+
+  ul {
+
+    &:first-child {
+      //margin-right: unset;
+      //margin-left: -128px;
+      //transition: margin-left 0.2s;
+
+      .option {
+        opacity: 0;
+      }
+    }
+
+  }
+
+}
+
+
+
+header {
+  display: flex;
+  line-height: 22px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 26px;
+  position: relative;
+  z-index: 2;
+  color: #5E6278;
+  background-color: var(--bg-primary-light);
+  width: 100%;
+
+  ul {
+    font-family: $font-persian-bold;
+    list-style-type: none;
+    padding: 0;
+
+    &:first-child {
+      transition: margin-right 0.2s;
+      width: 110px;
+      margin: 0;
+      overflow: visible;
+
+      li {
+        transition: opacity 0.2s ease, background-color 0.2s ease;
+        border-radius: 0.42rem;
+        position: relative;
+
+        &:nth-child(2) {
+          margin: 0 6px;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+
+        svg g [fill] {
+          transition: fill 0.2s;
+          fill: #A1A5B7;
+        }
+      }
+
+      li:hover {
+        color: rgba(255,255,255,.5);
+
+        svg g [fill] {
+          fill: var(--color-primary);
+        }
+
+      }
+
+    }
+
+    &:last-child {
+      transition: margin-right 0.3s ease;
+      font-size: 14px;
+      padding-right: 16px;
+      margin-right: 16px;
+      border-right: 2px solid rgb(213, 215, 217);
+
+      //a:hover::before {
+      //  width: 100%;
+      //  right: 0;
+      //}
+      //a::before {
+      //  content: "";
+      //  position: absolute;
+      //  bottom: -6px;
+      //  left: 0;
+      //  right: auto;
+      //  width: 0;
+      //  height: 1px;
+      //  background-color: #009EF7;
+      //  -webkit-transition: all .3s ease;
+      //  -moz-transition: all .3s ease;
+      //  transition: all .3s ease;
+      //}
+      //
+      //.active::before {
+      //  content: "";
+      //  position: absolute;
+      //  bottom: -6px;
+      //  left: 0;
+      //  right: auto;
+      //  width: 100%;
+      //  height: 1px;
+      //  background-color: #009EF785;
+      //  -webkit-transition: all .3s ease;
+      //  -moz-transition: all .3s ease;
+      //  transition: all .3s ease;
+      //}
+
+    }
+
+  }
+
+  li {
+    float: right;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    a {
+      > span {
+        position: relative;
+        margin: 0 4px;
+        padding: 8px 16px;
+        border-radius: 5px;
+        transition: color 0.2s, background-color 0.2s;
+
+        &:hover {
+          background-color: dark('color-primary-transparent');
+          color: var(--color-primary);
+        }
+
+      }
+    }
+
+    .active {
+      background-color: dark('color-primary-transparent');
+      color: var(--color-primary);
+    }
+
+  }
+
+  .bi-list {
+    font-size: 20px;
+  }
+
+  .user-profile {
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    cursor: pointer;
+    padding: 6px 8px;
+    margin-left: 10px;
+    align-items: center;
+    border-radius: 0.42rem;
+
+    &:hover {
+      background: dark('color-primary-transparent');
+      color: var(--color-primary);
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+      border-radius: 0.42rem;
+      color: var(--color-primary);
+      background-color: dark('color-primary-transparent');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  > div:last-child > div:first-child {
+    position: relative;
+    margin: 0 14px;
+    line-height: 24px;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover:before {
+      width: 100%;
+      right: 0;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: auto;
+      width: 0;
+      height: 1px;
+      background-color: #A1A5B7;
+      transition: all 0.3s ease;
+    }
+
+  }
+
+  > div:last-child > div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .pulse {
+      span {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .topbar-item {
+      padding: 6px;
+      cursor: pointer;
+      border-radius: 0.42rem;
+      transition: opacity 0.3s ease-in-out, background-color 0.2s ease;
+
+      &:hover {
+        background-color: dark('color-primary-transparent');
+      }
+
+      &:nth-child(2n+1) {
+        margin: 0 10px;
+      }
+
+    }
+
+    i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    *:hover {
+      svg g [fill] {
+        fill: var(--color-primary);
+      }
+    }
+
+    svg g [fill] {
+      transition: fill 0.3s;
+      fill: #A1A5B7;
+    }
+
+  }
+
+  .official-lafscup-logo {
+    height: 35px;
+
+    img {
+      border-radius: 0.42rem;
+      transition: background-color 0.2s ease;
+      padding: 5px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+    }
+
+  }
+
+}
+
+body.ltr header {
+
+  .user-profile {
+    margin-left: unset;
+    margin-right: 10px;
+
+    span {
+      margin-right: unset;
+      margin-left: 10px;
+    }
+
+  }
+
+  .arrow {
+    transform: scaleX(-1);
+  }
+
+  ul {
+
+    &:last-child {
+      transition: margin-left 0.3s ease;
+      padding-right: unset;
+      padding-left: 16px;
+      margin-right: unset;
+      margin-left: 16px;
+      border-right: unset;
+      border-left: 2px solid rgb(213, 215, 217);
+
+    }
+
+  }
+
+}
+
+.sub-header {
+  height: 280px;
+  color: #5E6278;
+  border-top: 1px solid dark('bg-primary-light', 8%);
+  //background-color: lavender;
+  background-image: linear-gradient(#{var(--bg-primary-light)}, transparent);
+
+  h3 {
+    font-weight: normal;
+    margin-top: 0;
+    font-size: 20px;
+  }
+
+  .wrapper {
+    padding: 50px 0;
+  }
+
+  span {
+    font-size: 14px;
+  }
+
+  .flaticon2-shelter {
+    color: var(--color-primary);
+  }
+
+}

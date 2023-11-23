@@ -1,0 +1,18 @@
+<section class="row main vh-100">
+
+  <div class="col-lg-8 d-flex justify-content-center align-items-center">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center position-static">
+    <div class="upper">
+      <div [ngStyle]="{'background-image': 'url(assets/brand/corex-logo-white.svg)'}"></div>
+      <div class="ltr">Explore the Amazing Corex!</div>
+    </div>
+    <div class="text-center"></div>
+    <div [inlineSVG]="'./assets/svg/corex/Learning-cuate.svg'" [cacheSVG]="true"></div>
+  </div>
+
+</section>

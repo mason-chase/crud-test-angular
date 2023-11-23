@@ -1,0 +1,15 @@
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-primary .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-primary .mat-ripple-element {
+  background: var(--color-primary) !important;
+}
+
+.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+  background-color: var(--color-primary) !important;
+}
+
+.mat-checkbox-inner-container:hover .mat-checkbox-persistent-ripple {
+  opacity: .03 !important;
+}
+
+//.mat-checkbox .mat-ripple-element {
+//  background-color: #0064C6 !important;
+//}

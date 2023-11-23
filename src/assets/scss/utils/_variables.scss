@@ -1,0 +1,95 @@
+// =====================================================
+//  Globalized variables in design system.
+// =====================================================
+
+@import "mixins";
+
+// variables -----------------------------------------------------------------------------------------------------------
+:root {
+
+  @include color-set('color-primary', 210.4, 100%, 60.6%, 1);
+  @include color-set('color-primary-light', 210.4, 100%, 95.1%, 1);
+  @include color-set('color-primary-transparent', 210.2, 100%, 67.1%, 0.07);
+
+  @include color-set('color-secondary', 223.2, 100%, 70.6%, 1);
+  @include color-set('color-secondary-light', 224, 100%, 94.1%, 1);
+  @include color-set('color-secondary-transparent', 223.2, 100%, 70.6%, 0.07);
+
+  @include color-set('color-success', 177.2, 75.9%, 43.9%, 1);
+  @include color-set('color-success-light', 177.4, 74.2%, 87.8%, 1);
+  @include color-set('color-success-transparent', 177.2, 75.9%, 43.9%, 0.07);
+
+  @include color-set('color-warning', 39.5, 100%, 50%, 1);
+  @include color-set('color-warning-light', 40, 100%, 93.5%, 1);
+  @include color-set('color-warning-transparent', 39.5, 100%, 50%, 0.07);
+
+  @include color-set('color-danger', 353.6, 90.3%, 63.5%, 1);
+  @include color-set('color-danger-light', 353.8, 100%, 94.3%, 1);
+  @include color-set('color-danger-transparent', 353.6, 90.3%, 63.5%, 0.07);
+
+}
+
+:root {
+
+  --font-persian: IRANSansX, sans-serif;
+  --font-persian-bold: IRANSansX_Bold, sans-serif;
+
+  --font-family-base: IRANSansX, sans-serif;
+  --font-family-base-bold: IRANSansX_Bold, sans-serif;
+
+  --font-latin: IRANSansX, sans-serif;
+  --font-latin-bold: IRANSansX_Bold, sans-serif;
+
+}
+
+:root {
+
+  @include color-set('bg-primary', 210, 33.3%, 96.5%, 1);
+  @include color-set('bg-primary-light', 0, 0%, 98.4%, 1);
+
+  @include color-set('bg-secondary', 213.9, 41.8%, 10.8%, 1);
+  @include color-set('bg-secondary-light', 213.6, 41%, 12%, 1);
+
+}
+
+
+
+
+// colors --------------------------------------------------------------------------------------------------------------
+$color-primary: #{var(--color-primary)};
+$color-primary-light: #{var(--color-primary-light)};
+$color-primary-transparent: #{var(--color-primary-transparent)};
+
+$color-secondary: #{var(--color-secondary)};
+$color-secondary-light: #{var(--color-secondary-light)};
+$color-secondary-transparent: #{var(--color-secondary-transparent)};
+
+$color-success: #{var(--color-success)};
+$color-success-light: #{var(--color-success-light)};
+$color-success-transparent: #{var(--color-success-transparent)};
+
+$color-warning: #{var(--color-warning)};
+$color-warning-light: #{var(--color-warning-light)};
+$color-warning-transparent: #{var(--color-warning-transparent)};
+
+$color-danger: #{var(--color-danger)};
+$color-danger-light: #{var(--color-danger-light)};
+$color-danger-transparent: #{var(--color-danger-transparent)};
+
+
+// background colors ---------------------------------------------------------------------------------------------------
+$bg-primary: #{var(--bg-primary)};
+$bg-primary-light: #{var(--bg-primary-light)};
+
+$bg-secondary: #{var(--bg-secondary)};
+$bg-secondary-light: #{var(--bg-secondary-light)};
+
+
+// fonts ---------------------------------------------------------------------------------------------------------------
+$font-persian: #{var(--font-persian)};
+$font-persian-bold: #{var(--font-persian-bold)};
+
+$font-latin: #{var(--font-latin)};
+$font-latin-bold: #{var(--font-latin-bold)};
+
+

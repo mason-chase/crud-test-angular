@@ -1,0 +1,5 @@
+
+// Custom darken() function. Only accepts hsla() color system.
+@function dark($name, $percent: 5%) {
+  @return hsl(var(--#{$name}-h), var(--#{$name}-s), calc(var(--#{$name}-l) - #{$percent}), var(--#{$name}-a));
+}

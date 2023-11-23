@@ -1,0 +1,154 @@
+<section class="wrapper flex-column">
+
+  <div class="container">
+    <div class="upper">
+
+      <div class="search">
+        <!--<div [inlineSVG]="'./assets/svg/icons/General/gen004.svg'"></div>
+        <div>
+          Search tasks projects teams ...
+        </div>-->
+        <div>Wellcome back {{authService.currentUser? authService.currentUser.firstName: ''}} ! ( that's my nickname for obvious reasons I've never been told of )</div>
+      </div>
+
+      <div [inlineSVG]="'assets/svg/logos/angular-icon-1.svg'" class="profile"></div>
+
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="card card-custom gutter-b">
+      <div class="card-header">
+        <div class="card-title">
+          <h3 class="card-label">Customer list</h3>
+        </div>
+        <div class="card-toolbar">
+          <a type="button" class="btn btn-primary" routerLink="/create">New Customer</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- begin: Filtration form -->
+        <div class="form form-label-right">
+          <div class="form-group row">
+            <!--<div class="col-lg-4">
+              <div class="row" [formGroup]="filterGroup">
+                <div class="col-lg-6">
+                  <select class="form-control" name="status" placeholder="Filter by Status" formControlName="status">
+                    <option value="">All</option>
+                    <option value="1">Selling</option>
+                    <option value="2">Sold</option>
+                  </select><small class="form-text text-muted"><b>Filter</b> by Status</small>
+                </div>
+                <div class="col-lg-6">
+                  <select class="form-control" placeholder="Filter by Contition" name="condition"
+                          formControlName="condition">
+                    <option value="">All</option>
+                    <option value="1">New</option>
+                    <option value="2">Used</option>
+                  </select><small class="form-text text-muted"><b>Filter</b> by Condition</small>
+                </div>
+              </div>
+            </div>-->
+            <div class="col-lg-2" [formGroup]="searchGroup">
+              <input type="text" class="form-control" name="searchText" placeholder="Search" value=""
+                     formControlName="searchTerm" /><small class="form-text text-muted"><b>Search</b> in all fields</small>
+            </div>
+          </div>
+        </div>
+        <!-- end: Filtration form -->
+
+        <!-- begin: Grouping -->
+        <ng-container *ngIf="grouping.getSelectedRowsCount()">
+          <div class="form">
+            <div class="row align-items-center form-group-actions margin-top-20 margin-bottom-20">
+              <div class="col-xl-12">
+                <div class="form-group form-group-inline">
+                  <div class="form-label form-label-no-wrap">
+                    <label class="font-bold font-danger"><span>Selected records count:
+                    <b>{{ grouping.getSelectedRowsCount() }}</b></span></label>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-danger font-weight-bolder font-size-sm mr-1">
+                      <i class="fa fa-trash"></i> Delete All
+                    </button>&nbsp;
+                    <button type="button" class="btn btn-light-primary font-weight-bolder font-size-sm mr-1">
+                      <i class="fa fa-stream"></i> Fetch Selected
+                    </button>&nbsp;
+                    <button type="button" class="btn btn-light-primary font-weight-bolder font-size-sm">
+                      <i class="fa fa-sync-alt"></i> Update Status
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!-- end: Grouping -->
+        <!-- begin:Table -->
+        <div class="table-responsive angular-bootstrap-table">
+          <table class="table table-head-custom table-vertical-center overflow-hidden">
+            <thead>
+            <th>
+              FIRSTNAME
+              <!--<app-sort-icon column="VINCode" [activeColumn]="sorting.column" [activeDirection]="sorting.direction"
+                             (sort)="sort($event)"></app-sort-icon>-->
+            </th>
+            <th>
+              LASTNAME
+              <!--<app-sort-icon column="manufacture" [activeColumn]="sorting.column" [activeDirection]="sorting.direction"
+                             (sort)="sort($event)"></app-sort-icon>-->
+            </th>
+            <th>
+              EMAIL
+              <!--<app-sort-icon column="model" [activeColumn]="sorting.column" [activeDirection]="sorting.direction"
+                             (sort)="sort($event)"></app-sort-icon>-->
+            </th>
+            <th>
+              PHONE
+              <!--<app-sort-icon column="modelYear" [activeColumn]="sorting.column" [activeDirection]="sorting.direction"
+                             (sort)="sort($event)"></app-sort-icon>-->
+            </th>
+            <th>
+              YEAR
+              <!--<app-sort-icon column="price" [activeColumn]="sorting.column" [activeDirection]="sorting.direction"
+                             (sort)="sort($event)"></app-sort-icon>-->
+            </th>
+            <th>BANK ACCOUNT</th>
+            <th>ACTIONS</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let customer of customerService.items$ | async">
+              <td>{{ customer.firstName }}</td>
+              <td>{{ customer.lastName }}</td>
+              <td>{{ customer.email }}</td>
+              <td>{{ customer.phone }}</td>
+              <td>{{ customer.dateOfBirth | localDate: 'long' }}</td>
+              <td>{{ customer.bankAccountNumber }}</td>
+              <td>
+                <a title="Edit product" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                   [routerLink]="'/update/' + customer.id">
+                <span [inlineSVG]="'./assets/svg/icons/Communication/Write.svg'" [cacheSVG]="true"
+                      class="svg-icon svg-icon-md svg-icon-primary">
+                </span>
+                </a>
+                <a title="Delete product" class="btn btn-icon btn-light btn-hover-danger btn-sm"
+                   (click)="delete(customer.id)">
+                <span [inlineSVG]="'./assets/svg/icons/General/Trash.svg'" [cacheSVG]="true"
+                      class="svg-icon svg-icon-md svg-icon-danger">
+                </span>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- end: Table -->
+        <app-paginator class="d-flex justify-content-between align-items-center flex-wrap" [paginator]="paginator"
+                       [isLoading]="isLoading" (paginate)="paginate($event)"></app-paginator>
+      </div>
+    </div>
+  </div>
+
+</section>
+
