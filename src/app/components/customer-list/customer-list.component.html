@@ -1,0 +1,101 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="card">
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button
+        pButton
+        pRipple
+        label="New Customer"
+        icon="pi pi-plus"
+        class="p-button-success mr-2"
+        (click)="CustomerDialog()"
+      ></button>
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    #dt
+    [value]="customerList"
+    [rows]="8"
+    [paginator]="true"
+    [globalFilterFields]="[
+      'Firstname',
+      'Lastname',
+      'DateOfBirth',
+      'PhoneNumber',
+      'Email',
+      'BankAccountNumber'
+    ]"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>R</th>
+        <th pSortableColumn="Firstname">
+          First name <p-sortIcon field="FirstName"></p-sortIcon>
+        </th>
+
+        <th pSortableColumn="Lastname">
+          Last name <p-sortIcon field="Lastname"></p-sortIcon>
+        </th>
+        <th pSortableColumn="DateOfBirth">
+          Date Of Birth <p-sortIcon field="DateOfBirth"></p-sortIcon>
+        </th>
+        <th pSortableColumn="PhoneNumber">
+          Phone Number <p-sortIcon field="PhoneNumber"></p-sortIcon>
+        </th>
+        <th pSortableColumn="Email">
+          Email <p-sortIcon field="Email"></p-sortIcon>
+        </th>
+
+        <th pSortableColumn="BankAccountNumber">
+          Bank account number
+          <p-sortIcon field="BankAccountNumber"></p-sortIcon>
+        </th>
+
+        <th>Commands</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+      <tr>
+        <td>{{ rowIndex + 1 }}</td>
+        <td>{{ customer.FirstName }}</td>
+        <td>{{ customer.Lastname }}</td>
+        <td>{{ customer.DateOfBirth }}</td>
+        <td>{{ customer.PhoneNumber }}</td>
+        <td>{{ customer.Email }}</td>
+        <td>{{ customer.BankAccountNumber }}</td>
+
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success mr-2"
+            (click)="CustomerDialog(rowIndex)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-warning"
+            (click)="deleteCustomer(rowIndex,customer)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<app-add-edit-customer
+  *ngIf="showEditDialog"
+  [modelItem]="modelItem"
+  (CustomerDetails)="addEditCustomer($event)"
+  (OnCloseDialog)="closeDialog()"
+></app-add-edit-customer>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

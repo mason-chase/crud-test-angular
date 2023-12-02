@@ -1,0 +1,95 @@
+<p-toast position="top-right"></p-toast>
+<p-dialog [(visible)]="customerDialog" [style]="{width: '450px'}" header="Customer Details" [modal]="true" [closable]="false" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <form [formGroup]="addEditCutomerForm">
+        <div class="p-field">
+
+
+            <!-- <span class="p-float-label input-margin">
+                <input type="text" id="FirstName" formControlName="FirstName" pInputText > 
+                <label for="FirstName">First Name</label>
+            </span> -->
+
+
+
+            <!-- <span class="p-input-icon-left input-margin">
+                <label >First name</label>
+                <input type="text" pInputText formControlName="FirstName"  placeholder="First name">         
+            </span> -->
+
+
+
+            <span class="p-float-label input-margin" style="margin-top: 25px !important;">
+                <input type="text" id="FirstName" formControlName="FirstName" pInputText > 
+                <label for="FirstName">First name</label>
+            </span>
+
+
+            <span class="p-float-label input-margin">
+                <input type="text" id="Lastname" formControlName="Lastname" pInputText > 
+                <label for="Lastname">Last name</label>
+            </span>
+
+
+            <!-- <span class="p-input-icon-left input-margin">
+                <label >Last name</label>
+
+                <input type="text" pInputText formControlName="Lastname" placeholder="Last name">         
+            </span>
+ -->
+
+
+
+            <span class="p-float-label input-margin">
+                <p-calendar inputId="DateOfBirth" formControlName="DateOfBirth"></p-calendar>
+                <label for="DateOfBirth">Date of birth</label>
+            </span>
+
+
+
+            <!-- <span class="p-input-icon-left input-margin">
+                <label >Date of birth</label>
+
+                <i class="pi pi-calendar"></i>
+                <p-calendar appendTo="body" formControlName="DateOfBirth" placeholder="Date of birth"></p-calendar>
+            </span> -->
+
+
+            <span class="p-float-label input-margin">
+                <p-inputNumber inputId="PhoneNumber" mode="decimal" [useGrouping]="false" formControlName="PhoneNumber"></p-inputNumber>
+                <label for="PhoneNumber">Phone number</label>
+            </span>
+          
+
+
+            <span class="p-float-label input-margin">
+                <input type="text" id="Email" formControlName="Email" pInputText > 
+                <label for="Email">Email</label>
+            </span>
+
+
+
+
+
+            <span class="p-float-label input-margin">
+                <p-inputNumber  inputId="BankAccountNumber" mode="decimal" [useGrouping]="false" formControlName="BankAccountNumber"></p-inputNumber>
+                <label for="BankAccountNumber">Bank account number</label>
+            </span>
+
+
+<!-- 
+            <span class="p-input-icon-left input-margin">
+                <label >BankAccountNumber</label>
+                <p-inputNumber formControlName="BankAccountNumber"  placeholder="BankAccountNumber" inputId="withoutgrouping" [useGrouping]="false">
+                </p-inputNumber>
+            </span> -->
+       
+        </div>
+
+    </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="closeDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveCustomer()"></button>
+    </ng-template>
+</p-dialog>
