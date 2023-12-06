@@ -26,8 +26,10 @@ export class CustomerListComponent implements OnInit {
   itemInEditMode: boolean = false;
 
   CustomerDialog(index?: number) {
+    debugger;
     this.activeIndex = index;
-    if (!!index) {
+    if (typeof index != 'undefined' && index != null) {
+      debugger;
       this.itemInEditMode = true;
     }
     if (typeof index != 'undefined') {
@@ -39,6 +41,8 @@ export class CustomerListComponent implements OnInit {
   }
 
   closeDialog() {
+    debugger;
+
     this.showEditDialog = false;
     this.itemInEditMode = false;
   }
@@ -62,6 +66,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   addEditCustomer(customer: ICustomerVM) {
+    debugger;
     let date = new Date(customer.DateOfBirth);
     let year = date.getFullYear();
     let month = date.getMonth();
@@ -71,7 +76,8 @@ export class CustomerListComponent implements OnInit {
     debugger;
 
     if (this.customerList?.length > 0) {
-      let findDuplicateCustomer = this.customerList.filter((x) => {
+      debugger;
+      let DuplicateCustomer = this.customerList.filter((x) => {
         return (
           x.FirstName.toLowerCase().trim() ==
             customer.FirstName.toLowerCase().trim() &&
@@ -81,42 +87,54 @@ export class CustomerListComponent implements OnInit {
         );
       });
 
-      let findDuplicateEmail = this.customerList.filter((x) => {
+      let DuplicateEmails = this.customerList.filter((x) => {
         return (
           x.Email.toLowerCase().trim() == customer.Email.toLowerCase().trim()
         );
       });
 
-      if (findDuplicateEmail.length > 0) {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Email already exists !',
-        });
-        return;
-      }
-
-      if (findDuplicateCustomer.length > 0) {
+      if (DuplicateCustomer.length > 0) {
+        debugger;
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
           detail: 'Customer already exists !',
         });
+
+        return;
+      }
+
+      if (DuplicateEmails.length > 0) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Email already exists !',
+        });
+
         return;
       }
     }
 
     if (this.itemInEditMode) {
+      debugger;
       this.customerList[this.activeIndex] = customer;
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Successful',
+        detail: 'Person edited successfully.',
+        life: 2000,
+      });
     } else {
+      debugger;
       this.customerList.push(customer);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Successful',
+        detail: 'Person added successfully.',
+        life: 2000,
+      });
     }
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Successful',
-      detail: 'Person added successfully.',
-      life: 2000,
-    });
+    this.closeDialog();
     this.SetCustomerToLocalStorage();
   }
 

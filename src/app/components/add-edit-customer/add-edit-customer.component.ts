@@ -49,6 +49,6 @@ export class AddEditCustomerComponent implements OnInit {
       return;
     }
     this.CustomerDetails.emit(this.addEditCutomerForm.value);
-    this.closeDialog();
+    // this.closeDialog();
   }
 }
