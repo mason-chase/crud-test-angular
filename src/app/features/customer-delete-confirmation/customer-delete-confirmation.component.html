@@ -1,0 +1,9 @@
+<p-dialog header="Confirm Deletion" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '400px'}">
+    <div class="p-d-flex p-ai-center p-jc-center">
+        <span>Are you sure you want to delete this customer?</span>
+    </div>
+    <div class="p-d-flex p-ai-center p-jc-center mt-4">
+        <button pButton label="Delete" class="p-button-danger mx-1" (click)="confirmDelete()"></button>
+        <button pButton label="Cancel" class="p-button-secondary mx-1" (click)="cancelDelete()"></button>
+    </div>
+</p-dialog>
