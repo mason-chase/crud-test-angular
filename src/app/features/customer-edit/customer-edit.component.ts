@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/domain/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,7 +14,7 @@ export class CustomerEditComponent implements OnInit {
     customer: Customer | undefined;
     form: FormGroup;
 
-    constructor(private fb: FormBuilder, private route: ActivatedRoute, private customerService: CustomerService) { }
+    constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private customerService: CustomerService) { }
 
     ngOnInit(): void {
         this.route.paramMap.subscribe((params) => {
@@ -61,6 +61,8 @@ export class CustomerEditComponent implements OnInit {
             else {
                 this.customerService.addCustomer(newCustomer);
             }
+
+            this.router.navigate(['/']);
         }
     }
 }
