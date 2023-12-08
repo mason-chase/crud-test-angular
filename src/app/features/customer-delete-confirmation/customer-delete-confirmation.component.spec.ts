@@ -5,8 +5,6 @@ import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CustomerDeleteConfirmationComponent', () => {
-    let fixture: ComponentFixture<CustomerDeleteConfirmationComponent>;
-
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [CustomerDeleteConfirmationComponent],

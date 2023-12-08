@@ -59,24 +59,8 @@ export class CustomerService {
     }
   }
 
-  private isDuplicate(newCustomer: Customer): boolean {
-    return this.customers.some(
-      (existingCustomer) =>
-        existingCustomer.email === newCustomer.email ||
-        (existingCustomer.firstName === newCustomer.firstName &&
-          existingCustomer.lastName === newCustomer.lastName &&
-          this.compareDates(existingCustomer.dateOfBirth, newCustomer.dateOfBirth))
-    );
-  }
-
   removeCustomer(customer: Customer): void {
-    const index = this.customers.findIndex(
-      (existingCustomer) =>
-        existingCustomer.email === customer.email &&
-        existingCustomer.firstName === customer.firstName &&
-        existingCustomer.lastName === customer.lastName &&
-        this.compareDates(existingCustomer.dateOfBirth, customer.dateOfBirth)
-    );
+    const index = this.customers.findIndex(existingCustomer => existingCustomer.id === customer.id);
 
     if (index !== -1) {
       this.customers.splice(index, 1);
@@ -90,18 +74,42 @@ export class CustomerService {
   }
 
   editCustomer(oldCustomer: Customer, newCustomer: Customer): void {
-    const index = this.customers.findIndex(
-      (existingCustomer) =>
-        existingCustomer.email === oldCustomer.email &&
-        existingCustomer.firstName === oldCustomer.firstName &&
-        existingCustomer.lastName === oldCustomer.lastName &&
-        this.compareDates(existingCustomer.dateOfBirth, oldCustomer.dateOfBirth)
-    );
-
+    const index = this.customers.findIndex(existingCustomer => existingCustomer.id === oldCustomer.id);
     if (index !== -1) {
       this.customers[index] = newCustomer;
       this.saveCustomersToLocalStorage();
     }
+  }
+
+  private isDuplicate(newCustomer: Customer, excludeId?: string): boolean {
+    if (this.customers.some(existingCustomer =>
+      existingCustomer.email === newCustomer.email &&
+      existingCustomer.id !== excludeId
+    )) {
+      //TODO better use toaste for alert
+      alert('Email adderess is duplicate.');
+      return true;
+    }
+
+    if (this.customers.some(existingCustomer =>
+      existingCustomer.bankAccountNumber === newCustomer.bankAccountNumber &&
+      existingCustomer.id !== excludeId
+    )) {
+      alert('Bank account number is duplicate.');
+      return true;
+    }
+
+    if (this.customers.some(existingCustomer =>
+      existingCustomer.firstName === newCustomer.firstName &&
+      existingCustomer.lastName === newCustomer.lastName &&
+      this.compareDates(existingCustomer.dateOfBirth, newCustomer.dateOfBirth) &&
+      existingCustomer.id !== excludeId
+    )) {
+      alert('First name, Last name and Date of birth is duplicate.');
+      return true;
+    }
+
+    return false;
   }
 
   private compareDates(date1: Date, date2: Date): boolean {
