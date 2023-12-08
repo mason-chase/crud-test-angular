@@ -9,6 +9,7 @@ import {DialogModule} from 'primeng/dialog';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerDeleteConfirmationComponent } from './customer-delete-confirmation/customer-delete-confirmation.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { CustomerDeleteConfirmationComponent } from './customer-delete-confirmat
     ],
     imports: [
         CommonModule,
+        SharedModule,
         ReactiveFormsModule,
         ToolbarModule,
         TableModule,

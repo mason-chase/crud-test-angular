@@ -35,8 +35,7 @@ export class CustomerListComponent {
   }
 
   deleteCustomer(): void {
-    // Implement delete logic here
-    console.log('Deleting customer:', this.customerToDelete);
+    this.customerService.removeCustomer(this.customerToDelete);
     this.displayDeleteConfirmation = false;
   }
   
