@@ -1,1 +1,40 @@
-List
+<div class="bg-white p-4 mb-4 shadow-md rounded">
+  <h2 class="text-xl font-semibold">Customer List</h2>
+</div>
+
+<p-toolbar styleClass="mb-4">
+  <ng-template pTemplate="left">
+    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+  </ng-template>
+</p-toolbar>
+
+<p-table [value]="customers" [autoLayout]="true">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date of Birth</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Bank Account Number</th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-customer>
+    <tr>
+      <td>{{ customer.firstName }}</td>
+      <td>{{ customer.lastName }}</td>
+      <td>{{ customer.dateOfBirth | date }}</td>
+      <td>{{ customer.phoneNumber }}</td>
+      <td>{{ customer.email }}</td>
+      <td>{{ customer.bankAccountNumber }}</td>
+      <td>
+        <button (click)="editCustomer(customer)" pButton pRipple class="mx-1">Edit</button>
+        <button (click)="showDeleteConfirmation(customer)" pButton pRipple class="mx-1 p-button-danger">Delete</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<app-customer-delete-confirmation [display]="displayDeleteConfirmation" (onDeleteConfirmed)="deleteCustomer()"
+  (onCancel)="cancelDeleteConfirmation()"></app-customer-delete-confirmation>

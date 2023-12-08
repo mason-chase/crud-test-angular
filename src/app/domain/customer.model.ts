@@ -2,6 +2,7 @@ import { EmailValueObject } from "./email.value-object";
 import { PhoneNumberValueObject } from "./phone-number.value-object";
 
 export class Customer {
+    private _id: string;
     private _firstName: string;
     private _lastName: string;
     private _dateOfBirth: Date;
@@ -10,6 +11,7 @@ export class Customer {
     private _bankAccountNumber: string;
   
     constructor(
+      id: string,
       firstName: string,
       lastName: string,
       dateOfBirth: Date,
@@ -17,6 +19,7 @@ export class Customer {
       email: EmailValueObject,
       bankAccountNumber: string
     ) {
+      this._id = id;
       this._firstName = firstName;
       this._lastName = lastName;
       this._dateOfBirth = dateOfBirth;
@@ -25,6 +28,10 @@ export class Customer {
       this._bankAccountNumber = bankAccountNumber;
     }
   
+    get id(): string {
+      return this._id;
+    }
+
     get firstName(): string {
       return this._firstName;
     }

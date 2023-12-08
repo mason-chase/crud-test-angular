@@ -1,6 +1,7 @@
 import { Customer } from './customer.model';
 import { EmailValueObject } from './email.value-object';
 import { PhoneNumberValueObject } from './phone-number.value-object';
+import { v4 as uuidv4 } from 'uuid';
 
 describe('Customer', () => {
   it('should create Customer instance with valid data', () => {
@@ -11,7 +12,7 @@ describe('Customer', () => {
     const email = new EmailValueObject('mh.farzin@example.com');
     const bankAccountNumber = '12345678901234';
 
-    const customer = new Customer(firstName, lastName, dateOfBirth, phoneNumber, email, bankAccountNumber);
+    const customer = new Customer(uuidv4(), firstName, lastName, dateOfBirth, phoneNumber, email, bankAccountNumber);
 
     expect(customer).toBeDefined();
     expect(customer.firstName).toBe(firstName);

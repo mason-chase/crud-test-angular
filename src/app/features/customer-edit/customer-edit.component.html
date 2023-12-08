@@ -1,0 +1,58 @@
+<form [formGroup]="form" class="p-4 bg-gray-100 rounded-md shadow-md">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- First Name -->
+      <div>
+        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name:</label>
+        <input id="firstName" formControlName="firstName" pInputText class="mt-1 p-2 w-full border rounded-md" />
+        <div *ngIf="form.get('firstName')?.hasError('required') && form.controls['firstName']?.touched" class="text-red-500 text-sm mt-1">
+          First Name is required.
+        </div>
+      </div>
+  
+      <!-- Last Name -->
+      <div>
+        <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name:</label>
+        <input id="lastName" formControlName="lastName" pInputText class="mt-1 p-2 w-full border rounded-md" />
+      </div>
+  
+      <!-- Date of Birth -->
+      <div>
+        <label for="dateOfBirth" class="block text-sm font-medium text-gray-700">Date of Birth:</label>
+        <p-calendar id="dateOfBirth" formControlName="dateOfBirth" [showIcon]="true" class="mt-1 p-2 w-full border rounded-md"></p-calendar>
+      </div>
+  
+      <!-- Phone Number -->
+      <div>
+        <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Phone Number:</label>
+        <input id="phoneNumber" formControlName="phoneNumber" pInputText class="mt-1 p-2 w-full border rounded-md" />
+      </div>
+  
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input id="email" formControlName="email" pInputText class="mt-1 p-2 w-full border rounded-md" />
+        <div *ngIf="form.get('email')?.hasError('required') && form.controls['email']?.touched" class="text-red-500 text-sm mt-1">
+          Email is required.
+        </div>
+        <div *ngIf="form.get('email')?.hasError('email') && form.controls['email']?.touched" class="text-red-500 text-sm mt-1">
+          Invalid email format.
+        </div>
+      </div>
+  
+      <!-- Bank Account Number -->
+      <div>
+        <label for="bankAccountNumber" class="block text-sm font-medium text-gray-700">Bank Account Number:</label>
+        <input
+          id="bankAccountNumber"
+          formControlName="bankAccountNumber"
+          pInputText
+          class="mt-1 p-2 w-full border rounded-md"
+        />
+      </div>
+  
+      <!-- Actions buttons -->
+      <div class="col-span-2 mt-4">
+        <button pButton type="button" label="Save" (click)="onSave()" class="p-button-success"></button>
+      </div>
+    </div>
+  </form>

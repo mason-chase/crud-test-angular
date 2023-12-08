@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../domain/customer.model';
+import { EmailValueObject } from '../domain/email.value-object';
+import { PhoneNumberValueObject } from '../domain/phone-number.value-object';
 
 @Injectable({
   providedIn: 'root',
@@ -16,16 +18,38 @@ export class CustomerService {
     const storedCustomers = localStorage.getItem(this.localStorageKey);
 
     if (storedCustomers) {
-      this.customers = JSON.parse(storedCustomers);
+      const parsedCustomers: Record<string, string>[] = JSON.parse(storedCustomers);
+      this.customers = parsedCustomers.map((customerData) => new Customer(
+        customerData['id'],
+        customerData['firstName'],
+        customerData['lastName'],
+        new Date(customerData['dateOfBirth']),
+        new PhoneNumberValueObject(customerData['phoneNumber']),
+        new EmailValueObject(customerData['email']),
+        customerData['bankAccountNumber'],
+      ));
     }
   }
 
   private saveCustomersToLocalStorage(): void {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.customers));
+    const normalizeCustomers = this.customers.map(customer => ({
+      id: customer.id,
+      firstName: customer.firstName,
+      lastName: customer.lastName,
+      dateOfBirth: customer.dateOfBirth,
+      phoneNumber: customer.phoneNumber.toString(),
+      email: customer.email.toString(),
+      bankAccountNumber: customer.bankAccountNumber
+    }))
+    localStorage.setItem(this.localStorageKey, JSON.stringify(normalizeCustomers));
   }
 
   getCustomers(): Customer[] {
     return this.customers;
+  }
+
+  getCustomerById(id: string): Customer | undefined {
+    return this.customers.find((customer) => customer.id === id);
   }
 
   addCustomer(customer: Customer): void {
