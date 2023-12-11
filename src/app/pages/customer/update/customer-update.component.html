@@ -1,0 +1,7 @@
+<div>
+    <h1>Update Customer</h1>
+
+    <app-customer-form [customerForm]="customerForm" [submited]="submited" (submit)="onSubmit()"></app-customer-form>
+
+    <h2 *ngIf="message.text" class="toast {{message.type}}">{{message.text}}</h2>
+</div>
