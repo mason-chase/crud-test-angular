@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+.container {
+  padding: 25px 50px;
+}
+
+.input-class {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid gray;
+  height: 30px;
+  min-width: 200px;
+}
+
+.btn {
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  color: white;
+  padding: 5px 10px;
+  &-primary {
+    background: skyblue;
+  }
+  &-danger {
+    background: #ba0517;
+  }
+  &-warn {
+    background: #ffb75d;
+  }
+}
+
+.toast {
+  width: 200px;
+  color: white;
+  padding: 10px 20px;
+  &.error {
+    background: #ba0517;
+  }
+  &.success {
+    background: #2e844a;
+  }
+}

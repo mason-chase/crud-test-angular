@@ -1,0 +1,27 @@
+<div>
+    <h1>Customer List</h1>
+    <button class="btn btn-primary" (click)="goToCreateCustomer()">Create new Customer</button>
+    <table>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Date of birth</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Bank account number</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let customer of customers">
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.dateOfBirth}}</td>
+            <td>{{customer.phoneNumber}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.bankAccountNumber}}</td>
+            <td class="action">
+                <button class="btn btn-danger" (click)="onDeleteCustomer(customer)">Delete</button>
+                <button class="btn btn-warn"  (click)="onEditCustomer(customer)">Edit</button>
+            </td>
+        </tr>
+    </table>
+</div>

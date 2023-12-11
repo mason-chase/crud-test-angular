@@ -1,0 +1,71 @@
+<div *ngIf="customerForm">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+        <div class="input-class">
+            <input formControlName="firstName" class="form-control" placeholder="First Name">
+            <div *ngIf="
+                    customerForm.controls['firstName'].errors?.['required'] &&
+                    (customerForm.controls['firstName'].touched || customerForm.controls['firstName'].dirty||submited)
+                " class="invalid">
+                First name is required.
+            </div>
+        </div>
+
+        <div class="input-class">
+            <input formControlName="lastName" class="form-control" placeholder="Last Name">
+            <div *ngIf="
+                    customerForm.controls['lastName'].errors?.['required'] &&
+                    (customerForm.controls['lastName'].touched || customerForm.controls['lastName'].dirty||submited)
+                " class="invalid">
+                Last name is required.
+            </div>
+        </div>
+
+
+        <div class="input-class">
+            <input formControlName="dateOfBirth" class="form-control" type="date" placeholder="Date of birth"
+                (keydown)="$event.preventDefault()">
+            <div *ngIf="
+                customerForm.controls['dateOfBirth'].errors?.['required'] &&
+                (customerForm.controls['dateOfBirth'].touched || customerForm.controls['dateOfBirth'].dirty||submited)
+            " class="invalid">
+                Date of birth is required.
+            </div>
+        </div>
+
+        <div class="input-class">
+            <input formControlName="phoneNumber" class="form-control" placeholder="Phone number (999-9999-9999)">
+            <div *ngIf="
+                    customerForm.controls['phoneNumber'].errors?.['required'] &&
+                    (customerForm.controls['phoneNumber'].touched || customerForm.controls['phoneNumber'].dirty||submited)
+                " class="invalid">
+                Phone number is required.
+            </div>
+            <div *ngIf="submited&&customerForm.controls['phoneNumber'].errors?.['invalidPhone']" class="invalid">
+                Invalid phone number
+            </div>
+        </div>
+
+        <div class="input-class">
+            <input formControlName="email" class="form-control" placeholder="Email">
+            <div *ngIf="
+                customerForm.controls['email'].errors?.['required'] &&
+                (customerForm.controls['email'].touched || customerForm.controls['email'].dirty||submited)
+            " class="invalid">
+                Email is required.
+            </div>
+        </div>
+
+        <div class="input-class">
+            <input formControlName="bankAccountNumber" class="form-control" placeholder="Bank account number">
+            <div *ngIf="
+                customerForm.controls['bankAccountNumber'].errors?.['required'] &&
+                (customerForm.controls['bankAccountNumber'].touched || customerForm.controls['bankAccountNumber'].dirty||submited)
+            " class="invalid">
+                Bank account number is required.
+            </div>
+
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
